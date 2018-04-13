@@ -72,6 +72,17 @@
 #table-problems td {
   cursor: pointer; }
 
+.problem-completed-column {
+  width: 32px;
+  text-align: center;
+  padding-left: 6px;
+  padding-right: 6px; }
+
+.problem-completed-icon {
+  width: 24px;
+  text-align: center;
+  vertical-align: middle; }
+
 .problem-number-column {
   width: 64px;
   text-align: right;

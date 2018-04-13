@@ -29,7 +29,15 @@
 				<div class='cell small-12 medium-6 medium-offset-3'>
 					<table id='table-problems' class='unstriped hover'>
 						<% for (var i = 0; i < problems.length; i++) { %>
-							<tr class='problem-item'><td class='problem-number-column'><%- problems[i].problem_id %></td><td class='problem-title-column'><%- problems[i].title %></td></tr>
+							<tr class='problem-item'>
+								<td class='problem-completed-column'>
+									<% if (solved.indexOf(problems[i].problem_id) != -1) { %>
+										<img class='problem-completed-icon' src='<%- sails.config.custom.baseUrl %>images/circle.png' />
+									<% } %>
+								</td>
+								<td class='problem-number-column'><%- problems[i].problem_id %></td>
+								<td class='problem-title-column'><%- problems[i].title %></td>
+							</tr>
 						<% } %>
 					</table>
 				</div>
