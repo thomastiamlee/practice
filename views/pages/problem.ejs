@@ -1,0 +1,264 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<!-- Page CSS -->
+		<link rel='stylesheet' href='<%- sails.config.custom.baseUrl %>styles/app.css' />
+		<!-- End of Page CSS -->
+
+		<!-- CodeMirror CSS -->
+		<link rel='stylesheet' href='<%- sails.config.custom.baseUrl %>styles/codemirror.css' />
+		<link rel='stylesheet' href='<%- sails.config.custom.baseUrl %>styles/base16-light.css' />
+		<!-- End of CodeMirror CSS -->
+
+		<!-- Font Awesome CSS -->
+		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+		<!-- End of Font Awesome CSS -->
+
+		<!-- Script for CodeMirror -->
+		<script src='<%- sails.config.custom.baseUrl %>js/codemirror.js'></script>
+		<script src='<%- sails.config.custom.baseUrl %>js/clike.js'></script>
+		<!-- End of script for CodeMirror -->
+	</head>
+	<body>
+		<%- partial('./partials/topbar.ejs') %>
+
+		<!-- Main container -->
+    <div id='div-code' class='grid-container'>
+			<div class='grid-x'>
+				<div class='cell small-12'>
+					<div id='solved-callout' class="callout success">
+					  <p>You already solved this problem. <a href="#">Next Problem</a></p>
+					</div>
+				</div>
+			</div>
+      <div class='grid-x'>
+        <!-- Problem description -->
+        <div id='div-problem-description' class='cell small-12 medium-4'>
+          <h5 id='task-description-text'><%- problem.problem_id %>. <%- problem.title %></h5>
+          <div id='div-task-panel'>
+            <p>Complete the function that returns the sum of two given integers <span class='code-text'>a</span> and <span class='code-text'>b</span>.</p>
+            <p class='subheading'>Assumptions</p>
+            <ul>
+              <li>Both <span class='code-text'>a</span> and <span class='code-text'>b</span> are in the range [0,100].</li>
+            </ul>
+            <p class='subheading'>Sample Output</p>
+            <ul>
+              <li><span class='code-text'>sum(3,5)</span> returns <span class='code-text'>8</span></li>
+              <li><span class='code-text'>sum(2,9)</span> returns <span class='code-text'>11</span></li>
+              <li><span class='code-text'>sum(50,50)</span> returns <span class='code-text'>100</span></li>
+            </ul>
+          </div>
+        </div>
+        <!-- End of problem description -->
+
+				<!-- Coding panel -->
+        <div id='div-coding-panel' class='cell small-12 medium-8'>
+					<!-- Editor panel -->
+					<pre class='fixed-code'>int sum(int a, int b) {</pre>
+          <div id='editor'>
+
+          </div>
+          <pre class='fixed-code'>}</pre>
+					<!-- End of editor panel -->
+
+					<!-- Test panel -->
+					<p id='test-panel-label'>You can test your code here.  <i id='test-loading-icon' class='fa fa-gear fa-spin'></i></p>
+					<div id='div-test-panel'>
+						<div>
+							<div class='test-input'><label class='code-text'>a</label><input class='test-input-field' type='text' value='3' /></div>
+							<div class='test-input'><label class='code-text'>b</label><input class='test-input-field' type='text' value='5' /></div>
+							<a class='test-panel-button' id='test-button' href='#'>Run</a>
+						</div>
+					</div>
+					<div id='div-console-panel'>
+						<pre id='test-status-text'>.</pre>
+					</div>
+					<!-- End of test panel -->
+
+					<!-- Control panel -->
+					<div id='div-control-panel'>
+						<a class='test-panel-button' id='submit-button' href='#'>Submit Code</a>
+						<span id='submit-loading-icon'><i class='fa fa-gear fa-spin'></i> Checking your code...</span>
+					</div>
+					<!-- End of control panel -->
+
+
+        </div>
+        <!-- End of coding panel -->
+      </div>
+    </div>
+		<!-- End of main container -->
+
+		<!-- Submission modal -->
+		<div class='reveal' id='submission-modal' data-reveal>
+			<p><img id='submission-modal-image' /></p>
+			<p id='submission-modal-text'></p>
+			<div id='div-nav'>
+				<p><a class='nav-button'>Next Problem</a></p>
+				<p><a class='nav-button' href='<%- sails.config.custom.baseUrl %>select'>Back to Problem List</a></p>
+			</div>
+			<button class="close-button" data-close aria-label="Close modal" type="button">
+		    <span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<!-- End of submission modal -->
+
+		<!-- JQuery script -->
+		<script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous'></script>
+		<!-- End of JQuery script -->
+
+		<!-- Foundation scripts -->
+		<script src='<%- sails.config.custom.baseUrl %>js/what-input.js'></script>
+		<script src='<%- sails.config.custom.baseUrl %>js/foundation.min.js'></script>
+		<script src='<%- sails.config.custom.baseUrl %>js/app.js'></script>
+		<script src='<$- sails.config.custom.baseUrl %>js/foundation-reveal.js'></script>
+		<!-- End of Foundation scripts -->
+
+		<!-- Stretchy script -->
+		<script src='<%- sails.config.custom.baseUrl %>js/stretchy.js'></script>
+		<!-- End of stretchy script -->
+
+		<!-- Application scripts -->
+		<script>
+		$(document).ready(function() {
+			testEnabled = true;
+			submitEnabled = true;
+			function clearTestOutput() {
+				$('#div-console-panel').css('display', 'none');
+				$('#div-console-panel').removeClass(['success', 'error', 'failure']);
+				for (var i = 0; i < editor.lineCount(); i++) {
+					editor.removeLineClass(i, 'background', 'line-error');
+				}
+			}
+
+			function triggerRun(type) {
+				testEnabled = false;
+				submitEnabled = false;
+				$('#test-button').addClass('disabled');
+				$('#submit-button').addClass('disabled');
+				if (type == 'test') $('#test-loading-icon').css('visibility', 'visible');
+				else $('#submit-loading-icon').css('visibility', 'visible');
+			}
+
+			function endRun(type) {
+				testEnabled = true;
+				submitEnabled = true;
+				$('#test-button').removeClass('disabled');
+				$('#submit-button').removeClass('disabled');
+				if (type == 'test') $('#test-loading-icon').css('visibility', 'hidden');
+				else $('#submit-loading-icon').css('visibility', 'hidden');
+			}
+
+			function triggerPassed() {
+				$('#div-nav').css('display', 'block');
+				$('#submission-modal-image').attr('src', '<%- sails.config.custom.baseUrl %>images/circle.png');
+				$('#submission-modal-text').text('Congratulations! Your code is correct.');
+				$('#submission-modal').foundation('open');
+				$('#solved-callout').css('display', 'block');
+			}
+
+			function triggerFailed() {
+				$('#div-nav').css('display', 'none');
+				$('#submission-modal-image').attr('src', '<%- sails.config.custom.baseUrl %>images/x.png');
+				$('#submission-modal-text').text('Your code is wrong. Please try again. ');
+				$('#submission-modal').foundation('open');
+			}
+
+			var editor = CodeMirror(document.getElementById('editor'), {
+				mode: 'text/x-java',
+				lineNumbers: true,
+				theme: 'base16-light'
+			});
+
+			editor.on('change', function() {
+				clearTestOutput();
+			});
+
+			$('.test-input-field').focus(function() {
+				$(this).select();
+			});
+
+			$('.test-input-field').on('input propertychange paste', function() {
+				clearTestOutput();
+			});
+
+			$('#test-button').click(function() {
+				if (!testEnabled) return;
+				clearTestOutput();
+				triggerRun('test');
+				var editorValue = editor.getValue();
+				var testValues = [];
+				$('#div-test-panel').find('.test-input-field').each(function() {
+					testValues.push($(this).val());
+				});
+				$.ajax({
+					url: '<%- sails.config.custom.baseUrl %>services/test',
+					type: 'post',
+					data: {
+						problem_id: <%- problem.problem_id %>,
+						user_id: <%- user_id %>,
+						code: editorValue,
+						test_case: testValues
+					},
+					success: function(data) {
+						endRun('test');
+						$('#div-console-panel').css('display', 'block');
+						if (data.type == 'no_error') {
+							$('#div-console-panel').addClass('success');
+							$('#test-status-text').html('Function returned: <span id=\'test-return-value\'>' + data.message + '</span>');
+						}
+						else if (data.type == 'no_output') {
+							$('#div-console-panel').addClass('error');
+							$('#test-status-text').html('Function did not return any value (possible infinite loop).');
+						}
+						else if (data.type == 'failed') {
+							$('#div-console-panel').addClass('failure');
+							$('#test-status-text').html('Failed to run code. Please try again.');
+						}
+						else if (data.type == 'error') {
+							$('#div-console-panel').addClass('error');
+							var lineNumber = data.lineNumber - data.offset - 1;
+							editor.addLineClass(lineNumber, 'background', 'line-error');
+							$('#test-status-text').html('<span id=\'test-return-value\'>' + data.message.replace(/(?:\r\n|\r|\n)/g, '<br />').replace(/' '/g, '&nbsp') + '</span>');
+						}
+					},
+					error: function() {
+						endRun('test');
+						$('#div-console-panel').addClass('failure');
+						$('#test-status-text').css('visibility', 'visible');
+						$('#test-status-text').html('Failed to run code. Please try again.');
+					}
+				});
+			});
+
+			$('#submit-button').click(function() {
+				if (!submitEnabled) return;
+				triggerRun('submit');
+				var editorValue = editor.getValue();
+				$.ajax({
+					url: '<%- sails.config.custom.baseUrl %>services/submit',
+					type: 'post',
+					data: {
+						problem_id: <%- problem.problem_id %>,
+						user_id: <%- user_id %>,
+						code: editorValue
+					},
+					dataType: 'json',
+					success: function(data) {
+						console.log(data);
+						endRun('submit');
+						if (data.type == 'passed') triggerPassed();
+						else triggerFailed();
+					},
+					error: function(data) {
+						console.log('error');
+						endRun('submit');
+						triggerFailed();
+					}
+				});
+			});
+		});
+		</script>
+		<!-- End of application scropts-->
+	</body>
+</html>
