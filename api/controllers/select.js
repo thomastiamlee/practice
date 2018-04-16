@@ -7,6 +7,10 @@ module.exports = {
     p: {
       description: 'The page number',
       type: 'number'
+    },
+    f: {
+      description: 'The filter (u - unsolved, s - solved, a - all)',
+      type: 'string'
     }
   },
   exits: {
@@ -32,13 +36,28 @@ module.exports = {
     if (!inputs.p) {
       inputs.p = 0;
     }
-    var problems = await Problem.find({select: ['problem_id', 'title']}).sort([{ problem_id: 'ASC' }]).limit(10).skip(inputs.p * ITEMS_PER_PAGE);
-    var count = await Problem.count();
-    if (problems.length == 0) {
-      exits.invalidPage();
+    if (!inputs.f) {
+      inputs.f = 'a';
     }
     var solved = await Solve.find({select: ['problem_id'], where: {user_id: this.req.session.user_id}});
     solved = solved.map(x => x.problem_id);
-    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, problems: problems, solved: solved, count: count, page: inputs.p });
+
+    if (inputs.f == 's') {
+      var filter = 's';
+      var problems = await Problem.find({select: ['problem_id', 'title'], where: {problem_id: solved}}).sort([{ problem_id: 'ASC' }]).limit(10).skip(inputs.p * ITEMS_PER_PAGE);
+      var count = await Problem.count({where: {problem_id: solved}});
+    }
+    else if (inputs.f == 'u') {
+      var filter = 'u';
+      var problems = await Problem.find({select: ['problem_id', 'title'], where: {problem_id: {'!=': solved}}}).sort([{ problem_id: 'ASC' }]).limit(10).skip(inputs.p * ITEMS_PER_PAGE);
+      var count = await Problem.count({where: {problem_id: {'!=': solved}}});
+    }
+    else {
+      var filter = 'a';
+      var problems = await Problem.find({select: ['problem_id', 'title']}).sort([{ problem_id: 'ASC' }]).limit(10).skip(inputs.p * ITEMS_PER_PAGE);
+      var count = await Problem.count();
+    }
+
+    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, problems: problems, solved: solved, count: count, page: inputs.p, filter: filter });
   }
 }
