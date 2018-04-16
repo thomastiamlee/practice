@@ -20,7 +20,7 @@ module.exports.custom = {
   // stripeSecret: 'sk_test_Zzd814nldl91104qor5911gjald',
   // …
 
-	baseUrl: 'http://localhost:1337/',
+	baseUrl: 'http://localhot:1337/',
 	tempPath: 'C:/Users/ASUS/Desktop/app/data/temp',
 	logPath: 'C:/Users/ASUS/Desktop/app/data/log'
 
