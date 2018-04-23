@@ -111,7 +111,6 @@
 		<script src='<%- sails.config.custom.baseUrl %>js/what-input.js'></script>
 		<script src='<%- sails.config.custom.baseUrl %>js/foundation.min.js'></script>
 		<script src='<%- sails.config.custom.baseUrl %>js/app.js'></script>
-		<script src='<$- sails.config.custom.baseUrl %>js/foundation-reveal.js'></script>
 		<!-- End of Foundation scripts -->
 
 		<!-- Stretchy script -->
@@ -121,8 +120,34 @@
 		<!-- Application scripts -->
 		<script>
 		$(document).ready(function() {
+			var history = [];
+			var sessionId = '<%- session_id %>';
 			testEnabled = true;
 			submitEnabled = true;
+
+			function flushLog() {
+				var toSend = history.splice(0, history.length);
+				$.ajax({
+					url: '<%- sails.config.custom.baseUrl %>services/log',
+					data: {log_data: toSend, session_id: sessionId},
+					type: 'POST',
+					success: function(data) {
+
+					},
+					error: function(data) {
+
+					}
+				})
+			}
+
+			function initSession() {
+				history.push({type: 'start', timestamp: Date.now()});
+				flushLog();
+				setInterval(function() {
+					flushLog();
+				}, 10000);
+			}
+
 			function clearTestOutput() {
 				$('#div-console-panel').css('display', 'none');
 				$('#div-console-panel').removeClass(['success', 'error', 'failure']);
@@ -164,13 +189,19 @@
 				$('#submission-modal').foundation('open');
 			}
 
+			function logEditorChangeToHistory(timestamp, changeObj) {
+				history.push({type: "document", timestamp: timestamp, changeObj: changeObj});
+			}
+
 			var editor = CodeMirror(document.getElementById('editor'), {
 				mode: 'text/x-java',
 				lineNumbers: true,
 				theme: 'base16-light'
 			});
 
-			editor.on('change', function() {
+			editor.on('change', function(instance, changeObj) {
+				var timestamp = Date.now();
+				logEditorChangeToHistory(timestamp, changeObj);
 				clearTestOutput();
 			});
 
@@ -200,6 +231,7 @@
 						code: editorValue,
 						test_case: testValues
 					},
+					dataType: 'json',
 					success: function(data) {
 						endRun('test');
 						$('#div-console-panel').css('display', 'block');
@@ -245,7 +277,6 @@
 					},
 					dataType: 'json',
 					success: function(data) {
-						console.log(data);
 						endRun('submit');
 						if (data.type == 'passed') triggerPassed();
 						else triggerFailed();
@@ -257,6 +288,7 @@
 					}
 				});
 			});
+			initSession();
 		});
 		</script>
 		<!-- End of application scropts-->
