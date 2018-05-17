@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<!-- Page CSS -->
+		<link rel='stylesheet' href='<%- sails.config.custom.baseUrl %>styles/app.css' />
+		<!-- End of Page CSS -->
+	</head>
+	<body>
+		<!-- Main container -->
+		<div class='grid-container'>
+			<div class='grid-x'>
+				<div class='cell small-12 medium-6 medium-offset-3'>
+          <div id='blocklyDiv' style='height: 480px; width: 600px;'></div>
+				</div>
+			</div>
+		</div>
+		<!-- End of main container -->
+
+    <!-- Toolbox -->
+    <xml id="toolbox" style="display: none">
+      <block type="controls_if"></block>
+      <block type="controls_repeat_ext"></block>
+      <block type="logic_compare"></block>
+      <block type="math_number"></block>
+      <block type="math_arithmetic"></block>
+      <block type="text"></block>
+      <block type="text_print"></block>
+    </xml>
+    <!-- End of toolbox -->
+
+		<!-- JQuery script -->
+		<script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous'></script>
+		<!-- End of JQuery script -->
+
+		<!-- Foundation scripts -->
+		<script src='<%- sails.config.custom.baseUrl %>js/what-input.js'></script>
+		<script src='<%- sails.config.custom.baseUrl %>js/foundation.min.js'></script>
+		<script src='<%- sails.config.custom.baseUrl %>js/app.js'></script>
+		<!-- End of Foundation scripts -->
+
+    <!-- Blockly scripts -->
+    <script src='<%- sails.config.custom.baseUrl %>js/blockly_compressed.js'></script>
+    <script src='<%- sails.config.custom.baseUrl %>js/blocks_compressed.js'></script>
+    <script src='<%- sails.config.custom.baseUrl %>js/en.js'></script>
+    <!-- End of Blockly scripts -->
+
+		<!-- Application scripts -->
+		<script>
+		$(document).ready(function() {
+      var workspacePlayground = Blockly.inject('blocklyDiv',
+      {toolbox: document.getElementById('toolbox')});
+		});
+		</script>
+		<!-- End of application scripts -->
+	</body>
+</html>

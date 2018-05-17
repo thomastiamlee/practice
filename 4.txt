@@ -1,0 +1,12 @@
+QUEST: Quadrilateral Senary Bit Pattern for Facial Expression Recognition
+Monu Verma, Prafulla Saxena, S. K. Vipparthi and Gridhari Singh
+--------------------------------------------------------------------------------
+
+
+
+
+
+
+In Section I., one of the categories to represent expression features is
+referred to as "predefined", but was later on referred to as "predesigned"
+in the same paragraph.
