@@ -13,6 +13,7 @@ module.exports = {
   fn: async function(inputs, exits) {
     if (!fs.existsSync(sails.config.custom.dataPath + '/' + inputs.user_id)) {
       fs.mkdirSync(sails.config.custom.dataPath + '/' + inputs.user_id);
+      fs.mkdirSync(sails.config.custom.dataPath + '/' + inputs.user_id + '/' + 'syntax');
     }
     return exits.success();
   }

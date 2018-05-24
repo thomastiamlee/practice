@@ -98,7 +98,7 @@ function convertExerciseToNativeText(language, node, symbolMappings, templates, 
 	}
 	finalText += convertChunk(node, symbolMappings, templates, load);
 	while (load.length > 0) {
-		finalText += "[LB]" + load[0].label + ": " + convertChunk(load[0].head, symbolMappings, templates, load);
+		finalText += "<br/><br />" + load[0].label + ": " + convertChunk(load[0].head, symbolMappings, templates, load);
 		load.splice(0, 1);
 	}
 	return finalText;
@@ -138,7 +138,7 @@ function getSymbolFromOperand(operand, symbolMappings) {
 	}
 	for (var i = 0; i < symbolMappings.length; i++) {
 		if (symbolMappings[i].obj == operand) {
-			return symbolMappings[i].name;
+			return '<span class=\'code-text\'>' + symbolMappings[i].name + '</span>';
 		}
 	}
 	return null;
