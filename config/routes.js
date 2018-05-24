@@ -34,6 +34,8 @@ module.exports.routes = {
 
 	'/login': 'login',
 
+  'get /mode': 'mode',
+
   'get /select': 'select',
 
   'get /problem': 'problem',

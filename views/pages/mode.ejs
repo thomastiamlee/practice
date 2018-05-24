@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<!-- Page CSS -->
+		<link rel='stylesheet' href='<%- sails.config.custom.baseUrl %>styles/app.css' />
+		<!-- End of Page CSS -->
+	</head>
+	<body>
+		<%- partial('./partials/topbar.ejs') %>
+
+		<!-- Main container -->
+		<div class='grid-container'>
+      <!-- Heading -->
+      <div id='div-mode-select-heading' class='grid-x'>
+        <div class='cell small-12 medium-12 medium-offset-3'>
+          <h3 id='select-mode-text'>SELECT MODE</h3>
+        </div>
+				<div id='div-mode-select' class='cell small-12 medium-6 medium-offset-3'>
+					<a id='syntax-practice-button' class='mode-button'>
+						<h4>Syntax Practice</h4>
+					</a>
+					<a id='logic-practice-button' class='mode-button'>
+						<h4>Logic Practice</h4>
+					</a>
+        </div>
+			</div>
+      <!-- End of Heading -->
+
+		<!-- End of main container -->
+
+		<!-- JQuery script -->
+		<script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous'></script>
+		<!-- End of JQuery script -->
+
+		<!-- Foundation scripts -->
+		<script src='<%- sails.config.custom.baseUrl %>js/what-input.js'></script>
+		<script src='<%- sails.config.custom.baseUrl %>js/foundation.min.js'></script>
+		<script src='<%- sails.config.custom.baseUrl %>js/app.js'></script>
+		<!-- End of Foundation scripts -->
+
+		<!-- Application scripts -->
+		<script>
+		$(document).ready(function() {
+			$('.problem-item').click(function() {
+				var problemId = parseInt($(this).find('.problem-number-column').text());
+				window.location.replace('<%- sails.config.baseUrl %>problem?id=' + problemId);
+			});
+		});
+		</script>
+		<!-- End of application scropts-->
+	</body>
+</html>
