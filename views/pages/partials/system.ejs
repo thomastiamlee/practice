@@ -10,10 +10,10 @@ function flushLog() {
     data: {log_data: toSend, session_id: sessionId},
     type: 'POST',
     success: function(data) {
-
+      //console.log('Data logged');
     },
     error: function(data) {
-
+      //console.log('Error occurred');
     }
   })
 }
@@ -22,7 +22,7 @@ function initSession() {
   history.push({type: 'start', timestamp: Date.now()});
   flushLog();
   setInterval(function() {
-    flushLog();
+    //flushLog();
   }, 10000);
 }
 
@@ -69,6 +69,10 @@ function triggerFailed() {
 
 function logEditorChangeToHistory(timestamp, changeObj) {
   history.push({type: "document", timestamp: timestamp, changeObj: changeObj});
+  console.log(history.length);
+  if (history.length > 50) {
+    flushLog();
+  }
 }
 
 var editor = CodeMirror(document.getElementById('editor'), {

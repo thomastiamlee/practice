@@ -33,13 +33,7 @@
 			</div>
       <div class='grid-x'>
         <!-- Problem description -->
-				<div id='div-problem-description' class='cell small-12 medium-4'>
-					<!-- Guide panel -->
-					<div id='div-guide-panel'>
-						<p>You seem to be confused. Do you want a guide for this problem?</p>
-						<div id='div-guide-buttons'><a id='guide-accept-button' class='guide-button'>Yes</a><a id='guide-deny-button' class='guide-button'>Not now</a></div>
-					</div>
-					<!-- End of guide panel -->
+				<div id='div-problem-description' class='cell small-12 medium-3'>
 					<h5 id='task-description-text'><%- problem.problem_id %>. <%- problem.title %></h5>
           <div id='div-task-panel'>
             <p>Complete the function that returns the sum of two given integers <span class='code-text'>a</span> and <span class='code-text'>b</span>.</p>
@@ -58,7 +52,7 @@
         <!-- End of problem description -->
 
 				<!-- Coding panel -->
-        <div id='div-coding-panel' class='cell small-12 medium-8'>
+        <div id='div-coding-panel' class='cell small-12 medium-5'>
 					<!-- Editor panel -->
 					<pre class='fixed-code'>int sum(int a, int b) {</pre>
           <div id='editor'>
@@ -89,6 +83,38 @@
 					<!-- End of control panel -->
         </div>
         <!-- End of coding panel -->
+
+				<!-- Adaptive panel -->
+				<div id='div-adaptive-panel' class='cell small-12 medium-4'>
+					<!-- Guide panel -->
+					<div id='div-guide-panel'>
+						<p>You seem to be confused. Do you want a guide for this problem?</p>
+						<div id='div-guide-buttons'><a id='guide-accept-button' class='guide-button'>Yes</a><a id='guide-deny-button' class='guide-button'>Not now</a></div>
+					</div>
+					<!-- End of guide panel -->
+
+					<!-- Visualization text panel -->
+					<div id='div-visualization-text-panel'>
+						<p></p>
+					</div>
+					<!-- End of visualization text panel -->
+
+					<!-- Visualization panel -->
+					<div id='div-visualization-panel'>
+						<p id='instruction'>Click on a step to view more information.</p>
+						<div id='flowchart' class='mermaid'>graph TD
+    A[Add a and b]
+		B[Return the result]
+
+		A --> B
+
+		click A expandNode
+		click B expandNode
+						</div>
+					</div>
+					<!-- End of visualization panel -->
+				</div>
+				<!-- End of adaptive panel -->
       </div>
     </div>
 		<!-- End of main container -->
@@ -121,9 +147,24 @@
 		<script src='<%- sails.config.custom.baseUrl %>js/stretchy.js'></script>
 		<!-- End of stretchy script -->
 
+		<!-- Mermaid script -->
+		<script src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
+		<!-- End of Mermaid script -->
+
 		<!-- Application scripts -->
 		<script>
+		var guideTexts = {
+			A: 'To get the sum of two numbers, use the <span class=\'code-text\'>+</span> operator. You can assign the result to a variable using the <span class=\'code-text\'>=</span> operator.',
+			B: 'Use the <span class=\'code-text\'>return</span> keyword to return a value or a variable.'
+		};
+		var expandNode = function(event) {
+			var target = guideTexts[event];
+			$('#div-visualization-text-panel p').html(target);
+		}
+
 		$(document).ready(function() {
+			mermaid.initialize({startOnLoad:true});
+
 			<%- partial('./partials/system.ejs') %>
 		});
 		</script>
