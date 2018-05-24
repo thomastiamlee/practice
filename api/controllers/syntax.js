@@ -61,7 +61,7 @@ module.exports = {
       argumentNames.push(getName(exercise.inputVariables[i], exercise.symbols));
     }
 
-    var problemId = await sails.helpers.writeSyntaxExercise.with({user_id: this.req.session.user_id, exercise_text: exerciseText, test_case_inputs: testCaseInputs, test_case_outputs: testCaseOutputs});
+    var problemId = await sails.helpers.writeSyntaxExercise.with({user_id: this.req.session.user_id, exercise_text: exerciseText, argument_types: argumentTypes, argument_names: argumentNames, test_case_inputs: testCaseInputs, test_case_outputs: testCaseOutputs});
     var problem = {
       problem_id: problemId,
       return_type: 'int',

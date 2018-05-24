@@ -35,7 +35,7 @@ module.exports = {
 			exits.error({type: 'unauthenticated', message: 'You are not logged in.'});
 			return;
 		}
-    var wrapped = await sails.helpers.wrapCode.with({code: inputs.code, problem_id: inputs.problem_id, test_cases: [inputs.test_case]});
+    var wrapped = await sails.helpers.wrapCode.with({code: inputs.code, problem_id: inputs.problem_id, user_id: inputs.user_id, test_cases: [inputs.test_case]});
 		var code = wrapped.code;
 		var offset = wrapped.offset;
 

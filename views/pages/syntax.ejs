@@ -56,7 +56,7 @@
 				<!-- Coding panel -->
         <div id='div-coding-panel' class='cell small-12 medium-8'>
 					<!-- Editor panel -->
-					<pre class='fixed-code'>int sum(int a, int b) {</pre>
+					<pre class='fixed-code'>int <%- problem.method_name %>(<% for (var i = 0; i < problem.argument_types.length; i++) { %><%- problem.argument_types[i] + ' ' + problem.argument_names[i] %><% if (i != problem.argument_types.length - 1) { %>,<%}%><%}%>)</pre>
           <div id='editor'>
 
           </div>
@@ -67,8 +67,9 @@
 					<p id='test-panel-label'>You can test your code here.  <i id='test-loading-icon' class='fa fa-gear fa-spin'></i></p>
 					<div id='div-test-panel'>
 						<div>
-							<div class='test-input'><label class='code-text'>a</label><input class='test-input-field' type='text' value='3' /></div>
-							<div class='test-input'><label class='code-text'>b</label><input class='test-input-field' type='text' value='5' /></div>
+							<% for (var i = 0; i < problem.argument_types.length; i++) { %>
+								<div class='test-input'><label class='code-text'><%- problem.argument_names[i] %></label><input class='test-input-field' type='text' value='<%- problem.test_case_inputs[0].split(',')[i] %>' /></div>
+							<% } %>
 							<a class='test-panel-button' id='test-button' href='#'>Run</a>
 						</div>
 					</div>

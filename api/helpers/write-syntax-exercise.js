@@ -14,6 +14,16 @@ module.exports = {
       description: 'The text of the generated exercise',
       required: true
     },
+    argument_types: {
+      type: ['string'],
+      description: 'The data types of the function arguments',
+      required: true
+    },
+    argument_names: {
+      type: ['string'],
+      description: 'The names of the function arguments',
+      required: true
+    },
     test_case_inputs: {
       type: ['string'],
       description: 'The inputs of the test cases',
@@ -41,12 +51,25 @@ module.exports = {
     var id = max + 10001;
 
     var information = inputs.exercise_text + '\n';
+    for (var i = 0; i < inputs.argument_types.length; i++) {
+      information += inputs.argument_types[i]
+      if (i != inputs.argument_types.length - 1) {
+        information += ",";
+      }
+    }
+    information += "\n";
+    for (var i = 0; i < inputs.argument_names.length; i++) {
+      information += inputs.argument_names[i]
+      if (i != inputs.argument_names.length - 1) {
+        information += ",";
+      }
+    }
+    information += "\n";
     for (var i = 0; i < inputs.test_case_inputs.length; i++) {
       information += inputs.test_case_inputs[i] + "#" + inputs.test_case_outputs[i] + "\n";
     }
 
     fs.writeFileSync(path + "/" + index + '.txt', information,'utf-8');
-
     return exits.success(id);
   }
 }

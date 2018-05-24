@@ -17,6 +17,11 @@ module.exports = {
   friendlyName: 'Wrap code',
   description: 'Wrap the submitted code snippet to make the full Java class for compilation',
   inputs: {
+    user_id: {
+      type: 'number',
+      description: 'The user ID',
+      required: false
+    },
     problem_id: {
       type: 'number',
       description: 'The problem ID',
@@ -33,7 +38,18 @@ module.exports = {
     }
   },
   fn: async function(inputs, exits) {
-    var problem = await Problem.findOne({problem_id: inputs.problem_id});
+    if (inputs.problem_id > 10000) {
+      var problemInformation = await sails.helpers.getSyntaxExercise.with({user_id: inputs.user_id, problem_id: inputs.problem_id});
+      var problem = {
+        return_type: 'int',
+        method_name: 'theFunction',
+        argument_names: problemInformation.argument_names,
+        argument_types: problemInformation.argument_types
+      }
+    }
+    else {
+      var problem = await Problem.findOne({problem_id: inputs.problem_id});
+    }
     if (!problem) {
       return exits.error('invalid problem ID');
     }
@@ -45,7 +61,6 @@ module.exports = {
 
     var res = IMPORT_STATEMENT;
     res += CLASS_HEADER;
-
 
     res += returnType + ' ' + methodName + '(';
     for (var i = 0; i < argumentNames.length; i++) {
