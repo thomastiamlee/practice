@@ -30,16 +30,27 @@ module.exports = {
 			exits.error({type: 'unauthenticated', message: 'You are not logged in.'});
 			return;
 		}
-		var problem = await Problem.findOne({problem_id: inputs.problem_id});
-		if (!problem) {
-			exits.error({type: 'invalid', message: 'Invalid problem ID.'});
+		if (inputs.problem_id > 10000) {
+			var problemInformation = await sails.helpers.getSyntaxExercise.with({user_id: inputs.user_id, problem_id: inputs.problem_id});
+			sails.log.info(problemInformation);
+			var testCaseInputs = problemInformation.test_case_inputs;
+			var testCaseOutputs = problemInformation.test_case_outputs;
+			for (var i = 0; i < testCaseInputs.length; i++) {
+				testCaseInputs[i] = testCaseInputs[i].split(',');
+			}
 		}
-		var testCaseInputs = problem.test_case_inputs;
-		var testCaseOutputs = problem.test_case_outputs;
-		for (var i = 0; i < testCaseInputs.length; i++) {
-			testCaseInputs[i] = testCaseInputs[i].split(',');
+		else {
+			var problem = await Problem.findOne({problem_id: inputs.problem_id});
+			if (!problem) {
+				exits.error({type: 'invalid', message: 'Invalid problem ID.'});
+			}
+			var testCaseInputs = problem.test_case_inputs;
+			var testCaseOutputs = problem.test_case_outputs;
+			for (var i = 0; i < testCaseInputs.length; i++) {
+				testCaseInputs[i] = testCaseInputs[i].split(',');
+			}
 		}
-		var wrapped = await sails.helpers.wrapCode.with({code: inputs.code, problem_id: inputs.problem_id, test_cases: testCaseInputs});
+		var wrapped = await sails.helpers.wrapCode.with({code: inputs.code, user_id: inputs.user_id, problem_id: inputs.problem_id, test_cases: testCaseInputs});
 
 		var completed = false;
 		compile_run.runJava(wrapped.code, '', function(stdout, stderr, err) {

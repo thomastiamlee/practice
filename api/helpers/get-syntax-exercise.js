@@ -29,9 +29,10 @@ module.exports = {
     var test_case_inputs = [];
     var test_case_outputs = [];
     for (var i = 3; i < data.length; i++) {
+      if (data[i].trim() == "") continue;
       var line = data[i].split('#');
-      test_case_inputs = line[0];
-      test_case_outputs = line[1];
+      test_case_inputs.push(line[0]);
+      test_case_outputs.push(line[1]);
     }
     var problemInformation = {
       exercise_text: exercise_text,
