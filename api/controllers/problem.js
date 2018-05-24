@@ -37,7 +37,6 @@ module.exports = {
       return;
     }
     var sessionId = await sails.helpers.initializeSession.with({user_id: this.req.session.user_id});
-    sails.log.info(sessionId);
     exits.success({user_id: this.req.session.user_id, email: this.req.session.email, problem: problem, session_id: sessionId});
   }
 }

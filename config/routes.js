@@ -40,6 +40,8 @@ module.exports.routes = {
 
   'get /problem': 'problem',
 
+  'get /syntax': 'syntax',
+
   'get /logout': 'logout',
 
   'post /services/test': 'services/test',
