@@ -9,7 +9,7 @@ module.exports = {
     success: {
       description: 'User can do syntax practice',
       responseType: 'view',
-      viewTemplatePath: 'pages/syntax'
+      viewTemplatePath: 'pages/problem'
     },
     unauthenticated: {
       description: 'There is no session or session has expired',
