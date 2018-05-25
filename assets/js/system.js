@@ -98,6 +98,7 @@ function displayVisualization() {
   $('#div-guide-panel').hide();
   $('#div-visualization-panel').css('visibility', 'visible');
   $('#div-visualization-text-panel').css('visibility', 'visible');
+  mermaid.initialize({startOnLoad:true});
 }
 
 var editor = CodeMirror(document.getElementById('editor'), {
@@ -206,6 +207,5 @@ function initializeSystem() {
     eventGuideOffered = false;
   });
 
-  mermaid.initialize({startOnLoad:true});
   initSession();
 }

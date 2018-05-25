@@ -16,12 +16,18 @@
           <h3 id='select-mode-text'>SELECT MODE</h3>
         </div>
 				<div id='div-mode-select' class='cell small-12 medium-6 medium-offset-3'>
-					<a id='syntax-practice-button' class='mode-button'>
-						<h4>Syntax Practice</h4>
-					</a>
-					<a id='logic-practice-button' class='mode-button'>
-						<h4>Logic Practice</h4>
-					</a>
+					<div id='div-syntax-panel' class='mode-panel'>
+						<a href='<% sails.config.custom.baseUrl %>syntax' id='syntax-practice-button' class='mode-button'>
+							<h4>Syntax Practice</h4>
+						</a>
+						<p>In this mode, you can practice the syntax of the programming language. You have to translate the given statements into the appropriate programming constructs. The problems change every time so you can keep on practicing!</p>
+					</div>
+					<div id='div-logic-panel' class='mode-panel'>
+						<a href='<% sails.config.custom.baseUrl %>select' id='logic-practice-button' class='mode-button'>
+							<h4>Logic Practice</h4>
+						</a>
+						<p>In this mode, you can practice writing programs for all sorts of situations. You have to think of the right operations to perform the given tasks. There are many problems to solve so try and challenge them all!</p>
+					</div>
         </div>
 			</div>
       <!-- End of Heading -->
