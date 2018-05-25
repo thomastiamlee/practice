@@ -74,6 +74,6 @@ module.exports = {
   		test_case_outputs: testCaseOutputs
     }
 
-    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, problem: problem, session_id: sessionId});
+    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, problem: problem, session_id: sessionId, exercise_mode: 'syntax'});
   }
 }
