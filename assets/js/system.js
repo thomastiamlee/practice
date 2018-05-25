@@ -1,15 +1,17 @@
 /* Visualization functions */
-var guideTexts = {
+var eventGuideOffered = false;
+var eventGuideAccepted = false;
+
+guideTexts = {
   A: 'To get the sum of two numbers, use the <span class=\'code-text\'>+</span> operator. You can assign the result to a variable using the <span class=\'code-text\'>=</span> operator.',
   B: 'Use the <span class=\'code-text\'>return</span> keyword to return a value or a variable.'
 };
-var expandNode = function(event) {
+expandNode = function(event) {
   var target = guideTexts[event];
   $('#div-visualization-text-panel p').html(target);
 }
 
-/* Code editor functions */
-var sessionId = data_sessionId;
+sessionId = data_sessionId;
 testEnabled = true;
 submitEnabled = true;
 
@@ -82,6 +84,20 @@ function logEditorChangeToHistory(timestamp, changeObj) {
   if (sessionLog.length > 50) {
     flushLog();
   }
+}
+
+function offerGuide() {
+  if (eventGuideOffered) return;
+  eventGuideOffered = true;
+  $('#div-guide-panel').slideDown(175);
+}
+
+function displayVisualization() {
+  if (eventGuideAccepted) return;
+  eventGuideAccepted = true;
+  $('#div-guide-panel').hide();
+  $('#div-visualization-panel').css('visibility', 'visible');
+  $('#div-visualization-text-panel').css('visibility', 'visible');
 }
 
 var editor = CodeMirror(document.getElementById('editor'), {
@@ -179,6 +195,15 @@ function initializeSystem() {
         triggerFailed();
       }
     });
+  });
+
+  $('#guide-accept-button').on('click', function() {
+    displayVisualization();
+  });
+
+  $('#guide-deny-button').on('click', function() {
+    $('#div-guide-panel').css('display', 'none');
+    eventGuideOffered = false;
   });
 
   mermaid.initialize({startOnLoad:true});

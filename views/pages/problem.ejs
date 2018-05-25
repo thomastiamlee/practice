@@ -172,6 +172,13 @@
 
 		$(document).ready(function() {
 			initializeSystem();
+
+			/* Debugging purposes */
+			$(document).keypress(function(event) {
+				if (event.which == 48) {
+					offerGuide();
+				}
+			});
 		});
 		</script>
 		<!-- End of application scripts-->
