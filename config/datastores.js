@@ -49,8 +49,8 @@ module.exports.datastores = {
     *                                                                          *
     ***************************************************************************/
     adapter: 'sails-mongo',
-    url: 'mongodb://azure2s:galaxy2s@azure-shard-00-00-z9a3v.mongodb.net:27017,azure-shard-00-01-z9a3v.mongodb.net:27017,azure-shard-00-02-z9a3v.mongodb.net:27017/practice?ssl=true&replicaSet=Azure-shard-0&authSource=admin',
-		  
+    //url: 'mongodb://azure2s:galaxy2s@azure-shard-00-00-z9a3v.mongodb.net:27017,azure-shard-00-01-z9a3v.mongodb.net:27017,azure-shard-00-02-z9a3v.mongodb.net:27017/practice?ssl=true&replicaSet=Azure-shard-0&authSource=admin',
+		url: 'mongodb://localhost:27017/practice'
 	},
 
 

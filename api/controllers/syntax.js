@@ -40,6 +40,8 @@ module.exports = {
       testCases = testCaseGenerator.generateTestCases(exercise, 100);
     }
 
+    exerciseText = await sails.helpers.preprocessExerciseText.with({exercise_text: exerciseText});
+
     var testCaseInputs = [];
     var testCaseOutputs = [];
     for (var i = 0; i < testCases.length; i++) {

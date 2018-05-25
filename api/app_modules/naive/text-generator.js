@@ -134,11 +134,11 @@ function getOperatorString(operator) {
 This function returns null is the symbol was not found. */
 function getSymbolFromOperand(operand, symbolMappings) {
 	if (operand instanceof Component.operand) {
-		return operand.value;
+		return '`' + operand.value + '``';
 	}
 	for (var i = 0; i < symbolMappings.length; i++) {
 		if (symbolMappings[i].obj == operand) {
-			return '<span class=\'code-text\'>' + symbolMappings[i].name + '</span>';
+			return '`' + symbolMappings[i].name + '``';
 		}
 	}
 	return null;

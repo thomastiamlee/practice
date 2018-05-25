@@ -28,10 +28,6 @@ module.exports.routes = {
     view: 'pages/homepage'
   },
 
-  'get /blocks': {
-    view: 'pages/block'
-  },
-
 	'/login': 'login',
 
   'get /mode': 'mode',

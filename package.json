@@ -12,6 +12,7 @@
     "compile-run": "^1.2.2",
     "grunt": "1.0.1",
     "pegjs": "^0.10.0",
+    "replaceall": "^0.1.6",
     "sails": "^1.0.0",
     "sails-hook-grunt": "^3.0.2",
     "sails-hook-orm": "^2.0.0-16",

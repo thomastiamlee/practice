@@ -36,6 +36,10 @@ module.exports = {
       exits.invalidID();
       return;
     }
+    problem.task = await sails.helpers.preprocessExerciseText.with({exercise_text: problem.task});
+    for (var i = 0; i < problem.assumptions.length; i++) {
+      problem.assumptions[i] = await sails.helpers.preprocessExerciseText.with({exercise_text: problem.assumptions[i]});
+    }
     var sessionId = await sails.helpers.initializeSession.with({user_id: this.req.session.user_id});
     exits.success({user_id: this.req.session.user_id, email: this.req.session.email, problem: problem, session_id: sessionId, exercise_mode: 'logic'});
   }

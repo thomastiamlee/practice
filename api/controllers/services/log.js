@@ -19,11 +19,14 @@ module.exports = {
 		},
     error: {
       description: 'There was an error in logging the history'
-    }
+    },
+		unauthenticated: {
+			description: 'User is unauthenticated'
+		}
 	},
 	fn: async function(inputs, exits) {
 		if (!this.req.session.user_id) {
-			exits.error({type: 'unauthenticated', message: 'You are not logged in.'});
+			exits.unauthenticated({type: 'unauthenticated', message: 'You are not logged in.'});
 			return;
 		}
 		if (!inputs.log_data) {
