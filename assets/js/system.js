@@ -98,6 +98,7 @@ function displayVisualization() {
   $('#div-guide-panel').hide();
   $('#div-visualization-panel').css('visibility', 'visible');
   $('#div-visualization-text-panel').css('visibility', 'visible');
+  $('#div-visualization-text-panel > p').html('These are the steps you need to solve this problem. <br /><br />Click on a step to see more information.');
   mermaid.initialize({startOnLoad:true});
 }
 

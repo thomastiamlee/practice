@@ -1,6 +1,7 @@
 const generator = require('../app_modules/naive/generator.js');
 const textGenerator = require('../app_modules/naive/text-generator.js');
 const testCaseGenerator = require('../app_modules/naive/test-case-generator.js');
+const reader = require('../app_modules/reader.js');
 const fs = require('fs');
 
 module.exports = {
@@ -54,6 +55,9 @@ module.exports = {
       argumentNames.push(getName(exercise.inputVariables[i], exercise.symbols));
     }
     var problemId = await sails.helpers.writeSyntaxExercise.with({user_id: inputs.user_id, exercise_text: exerciseText, argument_types: argumentTypes, argument_names: argumentNames, test_case_inputs: testCaseInputs, test_case_outputs: testCaseOutputs});
+
+    var flowchart = reader.convertToFlowchartDefinition(exercise);
+    
     var problem = {
       problem_id: problemId,
       return_type: 'int',
@@ -63,7 +67,8 @@ module.exports = {
   		task: exerciseText,
   		assumptions: ["You can ignore cases where numbers are divided by 0."],
   		test_case_inputs: testCaseInputs,
-  		test_case_outputs: testCaseOutputs
+  		test_case_outputs: testCaseOutputs,
+      flowchart: flowchart
     }
 
     return exits.success(problem);

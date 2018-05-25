@@ -60,7 +60,7 @@
 				<!-- Coding panel -->
         <div id='div-coding-panel' class='cell small-5 medium-4'>
 					<!-- Editor panel -->
-					<pre class='fixed-code'>int <%- problem.method_name %>(<% for (var i = 0; i < problem.argument_types.length; i++) { %><%- problem.argument_types[i] + ' ' + problem.argument_names[i] %><% if (i != problem.argument_types.length - 1) { %>,<%}%><%}%>)</pre>
+					<pre class='fixed-code'><%- problem.return_type %> <%- problem.method_name %>(<% for (var i = 0; i < problem.argument_types.length; i++) { %><%- problem.argument_types[i] + ' ' + problem.argument_names[i] %><% if (i != problem.argument_types.length - 1) { %>,<%}%><%}%>)</pre>
           <div id='editor'>
 
           </div>
@@ -108,15 +108,7 @@
 
 					<!-- Visualization panel -->
 					<div id='div-visualization-panel'>
-						<p id='instruction'>Click on a step to view more information.</p>
-						<div id='flowchart' class='mermaid'>graph TD
-    A[Add a and b]
-		B[Return the result]
-
-		A --> B
-
-		click A expandNode
-		click B expandNode
+						<div id='flowchart' class='mermaid'><%- problem.flowchart %>
 						</div>
 					</div>
 					<!-- End of visualization panel -->
@@ -170,10 +162,13 @@
 
 		$(document).ready(function() {
 			initializeSystem();
+			/*
+			<%- problem.flowchart %>
+			*/
 
 			/* Debugging purposes */
-			$(document).keypress(function(event) {
-				if (event.which == 48) {
+			$(document).keydown(function(event) {
+				if (event.which == 113) {
 					offerGuide();
 				}
 			});

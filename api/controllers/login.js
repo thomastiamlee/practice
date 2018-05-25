@@ -39,7 +39,7 @@ module.exports = {
 		else {
 			this.req.session.user_id = account.user_id;
 			this.req.session.email = account.email;
-			exits.success('select');
+			exits.success('mode');
 			return;
 		}
 	}

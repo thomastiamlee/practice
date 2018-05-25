@@ -89,7 +89,10 @@ module.exports = {
 
     for (var i = 0; i < testCases.length; i++) {
       for (var j = 0; j < argumentNames.length; j++) {
-        res += argumentNames[j] + ' = ' + testCases[i][j] + ';\n';
+        if (argumentTypes[j].charAt(argumentTypes[j].length - 1) != ']')
+          res += argumentNames[j] + ' = ' + testCases[i][j] + ';\n';
+        else
+          res += argumentNames[j] + ' = new ' + argumentTypes[j] + testCases[i][j] + ';\n';
       }
       res += '_result += o.' + methodName + '(';
       for (var j = 0; j < argumentNames.length; j++) {

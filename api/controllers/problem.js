@@ -1,3 +1,5 @@
+const replaceall = require('replaceall');
+
 module.exports = {
   friendlyName: 'Solve a problem',
   description: 'Provides an interface for the user to solve the problem',
@@ -40,6 +42,9 @@ module.exports = {
     for (var i = 0; i < problem.assumptions.length; i++) {
       problem.assumptions[i] = await sails.helpers.preprocessExerciseText.with({exercise_text: problem.assumptions[i]});
     }
+
+    problem.flowchart = replaceall('#', '\n', problem.flowchart);
+
     var sessionId = await sails.helpers.initializeSession.with({user_id: this.req.session.user_id});
     exits.success({user_id: this.req.session.user_id, email: this.req.session.email, problem: problem, session_id: sessionId, exercise_mode: 'logic'});
   }

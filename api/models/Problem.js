@@ -9,6 +9,7 @@ module.exports = {
 		task: { type: 'string' },
 		assumptions: { type: 'json', columnType: 'array' },
 		test_case_inputs: { type: 'json', columnType: 'array' },
-		test_case_outputs: { type: 'json', columnType: 'array' }
+		test_case_outputs: { type: 'json', columnType: 'array' },
+		flowchart: { type: 'string' }
 	}
 }
