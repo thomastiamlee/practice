@@ -39,7 +39,7 @@ module.exports = {
 		var code = wrapped.code;
 		var offset = wrapped.offset;
 
-		return compile_run.runJava(code, '', function(stdout, stderr, err) {
+		return compile_run.runJava(code, ['-J-Duser.language=en'], function(stdout, stderr, err) {
       if (!err) {
         if (stderr) {
 					var target = stderr.indexOf('Main.java:') + 10;
