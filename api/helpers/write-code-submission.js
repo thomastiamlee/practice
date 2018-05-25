@@ -10,12 +10,12 @@ module.exports = {
       required: true
     },
     user_id: {
-      type: 'number',
+      type: 'string',
       description: 'The user ID who made the submission',
       required: true
     },
     problem_id: {
-      type: 'number',
+      type: 'string',
       description: 'The problem ID for which the submission is made',
       required: true
     }

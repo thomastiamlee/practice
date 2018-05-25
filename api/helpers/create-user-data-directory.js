@@ -5,7 +5,7 @@ module.exports = {
   description: 'Create user folder in the data directory if it does not exist',
   inputs: {
     user_id: {
-      type: 'number',
+      type: 'string',
       description: 'The user ID',
       required: true
     }

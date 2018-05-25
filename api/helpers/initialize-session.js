@@ -5,7 +5,7 @@ module.exports = {
   description: 'Creates a log file for the session where all logs will be saved. This helper is called every time a user starts solving a problem.',
   inputs: {
     user_id: {
-      type: 'number',
+      type: 'string',
       description: 'The user ID',
       required: true
     }

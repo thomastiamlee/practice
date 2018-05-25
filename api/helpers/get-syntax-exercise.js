@@ -5,7 +5,7 @@ module.exports = {
   description: 'Gets the information from a saved generated syntax exercise.',
   inputs: {
     user_id: {
-      type: 'number',
+      type: 'string',
       description: 'The user ID',
       required: true
     },

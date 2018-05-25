@@ -5,7 +5,7 @@ module.exports = {
   description: 'This writes information of a generated syntax exercise and assigns it a problem ID, so the system can check it later on.',
   inputs: {
     user_id: {
-      type: 'number',
+      type: 'string',
       description: 'The user ID',
       required: true
     },

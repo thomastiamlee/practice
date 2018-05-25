@@ -18,12 +18,12 @@ module.exports = {
   description: 'Wrap the submitted code snippet to make the full Java class for compilation',
   inputs: {
     user_id: {
-      type: 'number',
+      type: 'string',
       description: 'The user ID',
       required: false
     },
     problem_id: {
-      type: 'number',
+      type: 'string',
       description: 'The problem ID',
       required: true
     },
