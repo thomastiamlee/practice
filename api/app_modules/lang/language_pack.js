@@ -39,6 +39,10 @@ data = {
     en: 'If you lost your login credentials, please send an email to g3117002@fun.ac.jp.',
     jp: 'パスワードを紛失した場合は、g3117002@fun.ac.jpまでメールしてください。'
   },
+  change_language: {
+    en: 'Choose a different language.',
+    jp: '別の言語を選択してください。'
+  },
   invalid_login: {
     en: 'No account with that email and password exists. Please try again.',
     jp: '入力されたメールアドレスとパスワードのアカウントは存在しません。もう一度お試しください。'

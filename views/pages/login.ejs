@@ -21,7 +21,8 @@
 						<label><%- languagePack.password %><input id='input-password' type='password' name='password' placeholder='Password' required /><span class='form-error'>Password is required.</span></label>
 						<input id='input-show-password' type='checkbox'><label for='show-password'><%- languagePack.show_password %></label>
 						<p><input type='submit' class='button expanded' value='<%- languagePack.login %>'></input></p>
-						<p id='lost-credentials-text' class='text-center'><%- languagePack.lost_password %></a>
+						<p id='lost-credentials-text' class='text-center'><%- languagePack.lost_password %></p>
+						<p id='change-language-text'><a href='<%- sails.config.custom.baseUrl %>region %>'><%- languagePack.change_language %></a></p>
 					</form>
 					<!-- End of log in form -->
 

@@ -82,6 +82,14 @@
   margin-top: 32px;
   font-size: 12pt; }
 
+#change-language-text {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 12pt;  }
+
+#change-language-text a {
+  color: #3f85bf;  }
+
 /* End of login page */
 
 /* Se;ect mode page */
