@@ -14,6 +14,61 @@
     left: auto;
     margin: 0 auto; } }
 
+/* Region Page */
+#div-region-panel {
+  margin-top: 64px; }
+
+.region-header {
+  font-family: 'Raleway', 'Rounded Mplus 1c', Sans-serif;
+  font-weight: bold;
+  text-align: center;
+  padding: 0px; }
+
+#div-region-select {
+  margin-top: 16px; }
+
+.region-button h4 {
+  font-family: 'Raleway', 'Rounded Mplus 1c', Sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #000000;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 48px;
+  border: 1px solid #05464f;
+  border-radius: 3px;
+  background-image: linear-gradient(bottom, #f2e6c6 0%, #fff3d1 100%);
+  background-image: -o-linear-gradient(bottom, #f2e6c6 0%, #fff3d1 100%);
+  background-image: -moz-linear-gradient(bottom, #f2e6c6 0%, #fff3d1 100%);
+  background-image: -webkit-linear-gradient(bottom, #f2e6c6 0%, #fff3d1 100%);
+  background-image: -ms-linear-gradient(bottom, #f2e6c6 0%, #fff3d1 100%);
+  -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,.4);
+  -moz-box-shadow: 0px 0px 5px rgba(0,0,0,.4);
+  box-shadow: 0px 0px 5px rgba(0,0,0,.4);
+  padding: 24px; }
+
+.region-button h4:hover {
+  background-image: linear-gradient(bottom, #f2ecab 0%, #fff9b7 100%);
+  background-image: -o-linear-gradient(bottom, #f2ecab 0%, #fff9b7 100%);
+  background-image: -moz-linear-gradient(bottom, #f2ecab 0%, #fff9b7 100%);
+  background-image: -webkit-linear-gradient(bottom, #f2ecab 0%, #fff9b7 100%);
+  background-image: -ms-linear-gradient(bottom, #f2ecab 0%, #fff9b7 100%); }
+
+.region-button img {
+  width: 32px;
+  margin-right: 8px; }
+
+#div-region-text {
+  margin-top: 32px; }
+
+#div-region-text p {
+  text-align: center;
+  font-size: 0.75em;
+  padding: 0px;
+  margin: 0px; }
+/* End of Region Page */
+
 /* Login page */
 #form-login {
   padding-top: 96px; }

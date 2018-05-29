@@ -25,8 +25,10 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'pages/homepage'
+    view: 'mode'
   },
+
+  '/region': 'region',
 
 	'/login': 'login',
 

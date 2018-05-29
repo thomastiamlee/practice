@@ -25,7 +25,7 @@ module.exports = {
 	fn: async function(inputs, exits) {
 		var languagePack = await sails.helpers.loadLanguagePack.with({language: 'jp'});
 		if (this.req.session.user_id) {
-			exits.success('select');
+			exits.success('mode');
 			return;
 		}
 		if (this.req.method == 'GET') {
