@@ -13,10 +13,11 @@ module.exports = {
     }
   },
   fn: async function(inputs, exits) {
-    if (!this.req.session.user_id) {
+    var languagePack = await sails.helpers.loadLanguagePack.with({language: 'jp'});
+		if (!this.req.session.user_id) {
       exits.unauthenticated('login');
       return;
     }
-    exits.success({user_id: this.req.session.user_id, email: this.req.session.email});
+    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, languagePack: languagePack});
   }
 }

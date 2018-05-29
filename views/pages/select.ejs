@@ -11,13 +11,13 @@
 			<!-- Problem list heading and filters -->
 			<div id='div-problem-list-heading' class='grid-x'>
 				<div class='cell small-12 medium-3 medium-offset-3'>
-					<h3 id='select-problem-text'>LOGIC PRACTICE</h4>
+					<h3 id='select-problem-text'><%- languagePack.logic_practice_header %></h4>
 				</div>
 				<div id='div-problem-list-filters' class='cell small-12 medium-3'>
 					<ul id='list-filter'>
-						<li><a class='select-problem-option <% if (filter == 'a') { %> selected <% } %>' href='<%- sails.config.custom.baseUrl %>select?f=a'>All</a></li>
-						<li><a class='select-problem-option <% if (filter == 'u') { %> selected <% } %>' href='<%- sails.config.custom.baseUrl %>select?f=u'>Unsolved</a></li>
-						<li><a class='select-problem-option <% if (filter == 's') { %> selected <% } %>' href='<%- sails.config.custom.baseUrl %>select?f=s'>Solved</a></li>
+						<li><a class='select-problem-option <% if (filter == 'a') { %> selected <% } %>' href='<%- sails.config.custom.baseUrl %>select?f=a'><%- languagePack.all_filter %></a></li>
+						<li><a class='select-problem-option <% if (filter == 'u') { %> selected <% } %>' href='<%- sails.config.custom.baseUrl %>select?f=u'><%- languagePack.unsolved_filter %></a></li>
+						<li><a class='select-problem-option <% if (filter == 's') { %> selected <% } %>' href='<%- sails.config.custom.baseUrl %>select?f=s'><%- languagePack.solved_filter %></a></li>
 					</ul>
 				</div>
 			</div>

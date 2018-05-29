@@ -29,6 +29,7 @@ module.exports = {
     }
   },
   fn: async function(inputs, exits) {
+    var languagePack = await sails.helpers.loadLanguagePack.with({language: 'jp'});
     if (!this.req.session.user_id) {
       exits.unauthenticated('login');
       return;
@@ -58,6 +59,6 @@ module.exports = {
       var count = await Problem.count();
     }
 
-    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, problems: problems, solved: solved, count: count, page: inputs.p, filter: filter });
+    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, languagePack: languagePack, problems: problems, solved: solved, count: count, page: inputs.p, filter: filter });
   }
 }

@@ -2,15 +2,15 @@
 <div class="top-bar">
   <div class="top-bar-left">
     <ul class="menu">
-      <li><a class='menu-link' href="<%- sails.config.custom.baseUrl %>mode">HOME</a></li>
-      <li><a class='menu-link' href="<%- sails.config.custom.baseUrl %>syntax">SYNTAX PRACTICE</a></li>
-      <li><a class='menu-link' href="<%- sails.config.custom.baseUrl %>select">LOGIC PRACTICE</a></li>
+      <li><a class='menu-link' href="<%- sails.config.custom.baseUrl %>mode"><%- languagePack.home_topbar %></a></li>
+      <li><a class='menu-link' href="<%- sails.config.custom.baseUrl %>syntax"><%- languagePack.syntax_practice_topbar %></a></li>
+      <li><a class='menu-link' href="<%- sails.config.custom.baseUrl %>select"><%- languagePack.logic_practice_topbar %></a></li>
     </ul>
   </div>
   <div class="top-bar-right">
     <ul class="menu">
       <li class='menu-text'><%- email %></li>
-      <li><a class='menu-link' href='<%- sails.config.custom.baseUrl %>logout'>LOG OUT</a></li>
+      <li><a class='menu-link' href='<%- sails.config.custom.baseUrl %>logout'><%- languagePack.log_out_topbar %></a></li>
     </ul>
   </div>
 </div>

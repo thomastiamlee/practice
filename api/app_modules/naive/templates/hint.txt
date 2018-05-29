@@ -1,0 +1,2 @@
+addition
+To add two values, use the `+`` operator. You can store the result in a variable.[LB]For example: `s = a + b;``

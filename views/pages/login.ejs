@@ -11,17 +11,17 @@
 
 					<!-- Log in form -->
 					<form id='form-login' class='log-in-form' action='login' method='post' data-abide novalidate>
-						<h4 id='login-header' class='text-center'>CODING PRACTICE LOGIN</h4>
+						<h4 id='login-header' class='text-center'><%- languagePack.login_header %></h4>
 						<!-- Login error -->
 						<% if (typeof error !== 'undefined') { %>
-							<div class='callout alert'><p>No account with that email and password exists. Please try again.</p></div>
+							<div class='callout alert'><p><%- languagePack.invalid_login %></p></div>
 						<% } %>
 						<!-- End of login error -->
-						<label>Email<input id='input-email' type='email' name='email' placeholder='somebody@example.com' required /><span class='form-error'>Please provide a valid email address.</span></label>
-						<label>Password<input id='input-password' type='password' name='password' placeholder='Password' required /><span class='form-error'>Password is required.</span></label>
-						<input id='input-show-password' type='checkbox'><label for='show-password'>Show password</label>
-						<p><input type='submit' class='button expanded' value='Log in'></input></p>
-						<p id='lost-credentials-text' class='text-center'>If you lost your login credentials, please send an email to g3117002@fun.ac.jp.</a>
+						<label><%- languagePack.email %><input id='input-email' type='email' name='email' placeholder='somebody@example.com' required /><span class='form-error'>Please provide a valid email address.</span></label>
+						<label><%- languagePack.password %><input id='input-password' type='password' name='password' placeholder='Password' required /><span class='form-error'>Password is required.</span></label>
+						<input id='input-show-password' type='checkbox'><label for='show-password'><%- languagePack.show_password %></label>
+						<p><input type='submit' class='button expanded' value='<%- languagePack.login %>'></input></p>
+						<p id='lost-credentials-text' class='text-center'><%- languagePack.lost_password %></a>
 					</form>
 					<!-- End of log in form -->
 

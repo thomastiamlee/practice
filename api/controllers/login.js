@@ -23,17 +23,18 @@ module.exports = {
 		}
 	},
 	fn: async function(inputs, exits) {
+		var languagePack = await sails.helpers.loadLanguagePack.with({language: 'jp'});
 		if (this.req.session.user_id) {
 			exits.success('select');
 			return;
 		}
 		if (this.req.method == 'GET') {
-			exits.login();
+			exits.login({languagePack: languagePack});
 			return;
 		}
 		var account = await Account.findOne({email: inputs.email, password: inputs.password});
 		if (!account) {
-			exits.login({error: 'failed'});
+			exits.login({error: 'failed', languagePack: languagePack});
 			return;
 		}
 		else {

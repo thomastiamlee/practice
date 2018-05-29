@@ -15,6 +15,7 @@ module.exports = {
     }
   },
   fn: async function(inputs, exits) {
+    var languagePack = await sails.helpers.loadLanguagePack.with({language: 'jp'});
     if (!this.req.session.user_id) {
       exits.unauthenticated('login');
       return;
@@ -23,6 +24,6 @@ module.exports = {
 
     var problem = await sails.helpers.generateSyntaxExercise.with({complexity: 3, user_id: this.req.session.user_id})
 
-    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, problem: problem, session_id: sessionId, exercise_mode: 'syntax'});
+    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, languagePack: languagePack, problem: problem, session_id: sessionId, exercise_mode: 'syntax'});
   }
 }

@@ -7,6 +7,7 @@
  */
 @import url("https://fonts.googleapis.com/css?family=Raleway:900");
 @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro");
+@import url('https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css');
 @media print, screen and (min-width: 40em) {
   .reveal, .reveal.tiny, .reveal.small, .reveal.large {
     right: auto;
@@ -18,7 +19,8 @@
   padding-top: 96px; }
 
 #login-header {
-  font-family: 'Raleway', Sans-serif;
+  font-family: 'Raleway', 'Rounded Mplus 1c', Sans-serif;
+  font-weight: bold;
   padding: 8px; }
 
 #lost-credentials-text {
@@ -29,7 +31,8 @@
 
 /* Se;ect mode page */
 #select-mode-text {
-  font-family: 'Raleway', sans-serif; }
+  font-family: 'Raleway', 'Rounded Mplus 1c', sans-serif;
+  font-weight: bold; }
 
 #div-mode-select-heading {
   margin-top: 32px;  }
@@ -41,7 +44,8 @@
   text-align: center;
   padding-top: 16px;
   padding-bottom: 16px;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', 'Rounded Mplus 1c', sans-serif;
+  font-weight: bold;
   color: #ffffff;
   border: 1px solid #05464f;
   border-radius: 3px;
@@ -106,7 +110,8 @@
 /* Select problem page */
 .menu-link, .menu-link:visited, .menu-link:active {
   color: #d0d0d0;
-  font-family: 'Raleway', sans-serif; }
+  font-weight: bold;
+  font-family: 'Raleway', 'Rounded Mplus 1c', sans-serif; }
 
 .menu-link:hover {
   color: #fafafa;
@@ -131,7 +136,8 @@
 }
 
 #select-problem-text {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', 'Rounded Mplus 1c', sans-serif;
+  font-weight: bold;
   line-height: 32px; }
 
 .select-problem-option, .select-problem-option:hover, .select-problem-option:visited {
@@ -253,11 +259,11 @@
   -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,.4);
   -moz-box-shadow: 0px 0px 5px rgba(0,0,0,.4);
   box-shadow: 0px 0px 5px rgba(0,0,0,.4);
-  background-image: linear-gradient(bottom, #e1e5de 0%, #ecefea 100%);
-  background-image: -o-linear-gradient(bottom, #e1e5de 0%, #ecefea 100%);
-  background-image: -moz-linear-gradient(bottom, #e1e5de 0%, #ecefea 100%);
-  background-image: -webkit-linear-gradient(bottom, #e1e5de 0%, #ecefea 100%);
-  background-image: -ms-linear-gradient(bottom, #e1e5de 0%, #ecefea 100%); }
+  background-image: linear-gradient(bottom, #f7f6f4 0%, #fcfbf9 100%);
+  background-image: -o-linear-gradient(bottom, #f7f6f4 0%, #fcfbf9 100%);
+  background-image: -moz-linear-gradient(bottom, #f7f6f4 0%, #fcfbf9 100%);
+  background-image: -webkit-linear-gradient(bottom, #f7f6f4 0%, #fcfbf9 100%);
+  background-image: -ms-linear-gradient(bottom, #f7f6f4 0%, #fcfbf9 100%); }
 
 #div-visualization-panel p {
   font-size: 0.75em;

@@ -67,7 +67,7 @@ function endRun(type) {
 function triggerPassed() {
   $('#div-nav').css('display', 'block');
   $('#submission-modal-image').attr('src', data_baseUrl + 'images/circle.png');
-  $('#submission-modal-text').text('Congratulations! Your code is correct.');
+  $('#submission-modal-text').text(message_submit_correct);
   $('#submission-modal').foundation('open');
   $('#solved-callout').css('display', 'block');
 }
@@ -75,7 +75,7 @@ function triggerPassed() {
 function triggerFailed() {
   $('#div-nav').css('display', 'none');
   $('#submission-modal-image').attr('src', data_baseUrl + 'images/x.png');
-  $('#submission-modal-text').text('Your code is wrong. Please try again. ');
+  $('#submission-modal-text').text(message_submit_wrong);
   $('#submission-modal').foundation('open');
 }
 
@@ -98,7 +98,7 @@ function displayVisualization() {
   $('#div-guide-panel').hide();
   $('#div-visualization-panel').css('visibility', 'visible');
   $('#div-visualization-text-panel').css('visibility', 'visible');
-  $('#div-visualization-text-panel > p').html('These are the steps you need to solve this problem. <br /><br />Click on a step to see more information.');
+  $('#div-visualization-text-panel > p').html(message_steps_description + '<br /><br />' + message_view_step_information);
   mermaid.initialize({startOnLoad:true});
 }
 
@@ -147,15 +147,15 @@ function initializeSystem() {
         $('#div-console-panel').css('display', 'block');
         if (data.type == 'no_error') {
           $('#div-console-panel').addClass('success');
-          $('#test-status-text').html('Function returned: <span id=\'test-return-value\'>' + data.message + '</span>');
+          $('#test-status-text').html(message_function_returned + ' <span id=\'test-return-value\'>' + data.message + '</span>');
         }
         else if (data.type == 'no_output') {
           $('#div-console-panel').addClass('error');
-          $('#test-status-text').html('Function did not return any value (possible infinite loop).');
+          $('#test-status-text').html(message_function_no_return);
         }
         else if (data.type == 'failed') {
           $('#div-console-panel').addClass('failure');
-          $('#test-status-text').html('Failed to run code. Please try again.');
+          $('#test-status-text').html(message_function_error);
         }
         else if (data.type == 'error') {
           $('#div-console-panel').addClass('error');
@@ -168,7 +168,7 @@ function initializeSystem() {
         endRun('test');
         $('#div-console-panel').addClass('failure');
         $('#test-status-text').css('visibility', 'visible');
-        $('#test-status-text').html('Failed to run code. Please try again.');
+        $('#test-status-text').html(message_function_error);
       }
     });
   });
