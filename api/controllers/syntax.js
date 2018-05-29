@@ -22,7 +22,7 @@ module.exports = {
     }
     var sessionId = await sails.helpers.initializeSession.with({user_id: this.req.session.user_id});
 
-    var problem = await sails.helpers.generateSyntaxExercise.with({complexity: 3, user_id: this.req.session.user_id})
+    var problem = await sails.helpers.generateSyntaxExercise.with({language: this.req.session.region, complexity: 3, user_id: this.req.session.user_id})
 
     exits.success({user_id: this.req.session.user_id, email: this.req.session.email, languagePack: languagePack, problem: problem, session_id: sessionId, exercise_mode: 'syntax'});
   }

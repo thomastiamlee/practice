@@ -13,6 +13,11 @@ module.exports = {
       description: 'The complexity of the exercise to be generated',
       required: true
     },
+    language: {
+      type: 'string',
+      description: 'The desired language of the exercise (either jp or en)',
+      required: true
+    },
     user_id: {
       type: 'string',
       description: 'The user ID',
@@ -31,7 +36,7 @@ module.exports = {
     var testCases = [];
     while (testCases.length < 50) {
       var exercise = generator.generateBasicExercise({complexity: inputs.complexity});
-      var exerciseText = textGenerator.convertExerciseToNativeText('en', exercise.head, exercise.symbols);
+      var exerciseText = textGenerator.convertExerciseToNativeText(inputs.language, exercise.head, exercise.symbols);
       testCases = testCaseGenerator.generateTestCases(exercise, 100);
     }
     exerciseText = await sails.helpers.preprocessExerciseText.with({exercise_text: exerciseText});
@@ -57,7 +62,7 @@ module.exports = {
     var problemId = await sails.helpers.writeSyntaxExercise.with({user_id: inputs.user_id, exercise_text: exerciseText, argument_types: argumentTypes, argument_names: argumentNames, test_case_inputs: testCaseInputs, test_case_outputs: testCaseOutputs});
 
     var flowchart = reader.convertToFlowchartDefinition(exercise);
-    
+
     var problem = {
       problem_id: problemId,
       return_type: 'int',
