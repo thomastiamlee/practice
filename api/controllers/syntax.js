@@ -15,9 +15,9 @@ module.exports = {
     }
   },
   fn: async function(inputs, exits) {
-    var languagePack = await sails.helpers.loadLanguagePack.with({language: 'jp'});
+    var languagePack = await sails.helpers.loadLanguagePack.with({language: this.req.session.region});
     if (!this.req.session.user_id) {
-      exits.unauthenticated('login');
+      exits.unauthenticated('region');
       return;
     }
     var sessionId = await sails.helpers.initializeSession.with({user_id: this.req.session.user_id});

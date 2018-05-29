@@ -10,6 +10,6 @@ module.exports = {
   fn: function(inputs, exits) {
     delete this.req.session.user_id;
     delete this.req.session.email;
-    exits.success('/login');
+    exits.success('/region');
   }
 }

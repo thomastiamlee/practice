@@ -10,7 +10,7 @@
 				<div class='cell small-12 medium-6 medium-offset-3'>
 
 					<!-- Log in form -->
-					<form id='form-login' class='log-in-form' action='login' method='post' data-abide novalidate>
+					<form id='form-login' class='log-in-form' action='<%- sails.config.custom.baseUrl %>login/<%- region %>' method='post' data-abide novalidate>
 						<h4 id='login-header' class='text-center'><%- languagePack.login_header %></h4>
 						<!-- Login error -->
 						<% if (typeof error !== 'undefined') { %>

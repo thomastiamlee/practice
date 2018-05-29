@@ -24,13 +24,11 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'mode'
-  },
+  '/': 'region',
 
-  '/region': 'region',
+  'get /region': 'region',
 
-	'/login': 'login',
+	'/login/:region': 'login',
 
   'get /mode': 'mode',
 

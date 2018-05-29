@@ -20,27 +20,37 @@ module.exports = {
 		success: {
 			description: 'Login was successful',
 			responseType: 'redirect'
+		},
+		notFound: {
+			description: 'Invalid region',
+			responseType: 'notFound'
 		}
 	},
 	fn: async function(inputs, exits) {
-		var languagePack = await sails.helpers.loadLanguagePack.with({language: 'jp'});
+		var region = this.req.param('region');
+		if (region != 'en' && region != 'jp') {
+			exits.notFound();
+			return;
+		}
+		var languagePack = await sails.helpers.loadLanguagePack.with({language: region});
 		if (this.req.session.user_id) {
-			exits.success('mode');
+			exits.success(sails.config.custom.baseUrl + 'mode');
 			return;
 		}
 		if (this.req.method == 'GET') {
-			exits.login({languagePack: languagePack});
+			exits.login({languagePack: languagePack, region: region});
 			return;
 		}
 		var account = await Account.findOne({email: inputs.email, password: inputs.password});
-		if (!account) {
-			exits.login({error: 'failed', languagePack: languagePack});
+		if (!account || account.region != region) {
+			exits.login({error: 'failed', languagePack: languagePack, region: region});
 			return;
 		}
 		else {
 			this.req.session.user_id = account.user_id;
 			this.req.session.email = account.email;
-			exits.success('mode');
+			this.req.session.region = account.region;
+			exits.success(sails.config.custom.baseUrl + 'mode');
 			return;
 		}
 	}
