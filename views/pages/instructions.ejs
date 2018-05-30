@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<%- partial('./partials/head.ejs') %>
+	</head>
+	<body>
+    <%- partial('./partials/topbar.ejs') %>
+
+		<!-- Main container -->
+		<div class='grid-container'>
+			<div class='grid-x'>
+				<div id='div-syntax-information-heading' class='cell small-12 medium-6 medium-offset-3'>
+					<h3 id='syntax-practice-text' class='text-center'><%- languagePack.syntax_practice_header %></h3>
+				</div>
+        <div id='div-syntax-information-panel' class='cell small-12 medium-6 medium-offset-3'>
+          <h6>INSTRUCTIONS</h6>
+          <div id='div-syntax-instructions-panel'>
+            <ul>
+              <li>Complete the functions by translating the operations into code.</li>
+              <li>The system will give you a different problem every time.</li>
+              <li>If you are stuck you can give up to get a different problem.</li>
+            </ul>
+          </div>
+        </div>
+        <div id='div-syntax-solved-panel' class='cell small-12 medium-3 medium-offset-3'>
+          <div id='container'>
+            <p>Number of<br />problems<br />solved</p>
+            <h3>50</h3>
+          </div>
+				</div>
+        <div id='div-syntax-information-panel' class='cell small-12 medium-3'>
+          <a href='<%- sails.config.custom.baseUrl %>syntax'><h4 id='syntax-practice-start-button'>START!</h4></a>
+        </div>
+			</div>
+		</div>
+		<!-- End of main container -->
+
+		<!-- JQuery script -->
+		<script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous'></script>
+		<!-- End of JQuery script -->
+
+		<!-- Foundation scripts -->
+		<script src='<%- sails.config.custom.baseUrl %>js/what-input.js'></script>
+		<script src='<%- sails.config.custom.baseUrl %>js/foundation.min.js'></script>
+		<script src='<%- sails.config.custom.baseUrl %>js/app.js'></script>
+		<!-- End of Foundation scripts -->
+
+		<!-- Application scripts -->
+		<script>
+		</script>
+		<!-- End of application scripts -->
+	</body>
+</html>

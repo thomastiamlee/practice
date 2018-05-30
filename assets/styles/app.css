@@ -170,6 +170,118 @@
   padding: 2px 8px; }
 /* End of select mode page */
 
+/* Instructions page */
+#div-syntax-information-heading {
+  padding-top: 32px;
+  padding-bottom: 16px; }
+
+#syntax-practice-text {
+  text-align: left;
+  font-family: 'Raleway', 'Rounded Mplus 1c', sans-serif;
+  font-weight: bold;
+  line-height: 32px;  }
+
+#div-syntax-information-panel h6 {
+  font-family: 'Raleway', 'Rounded Mplus 1c', sans-serif;
+  font-weight: bold;
+  border: 1px solid #05464f;
+  border-radius: 3px;
+  display: inline-block;
+  padding: 2px 6px;
+  position: relative;
+  left: 8px;
+  color: #fff;
+  background-image: linear-gradient(bottom, #444242 0%, #4f4e4e 100%);
+  background-image: -o-linear-gradient(bottom, #444242 0%, #4f4e4e 100%);
+  background-image: -moz-linear-gradient(bottom, #444242 0%, #4f4e4e 100%);
+  background-image: -webkit-linear-gradient(bottom, #444242 0%, #4f4e4e 100%);
+  background-image: -ms-linear-gradient(bottom, #444242 0%, #4f4e4e 100%);
+  z-index: 100; }
+
+#div-syntax-instructions-panel {
+  border: 1px solid #05464f;
+  position: relative;
+  bottom: 16px;
+  padding: 8px 8px;
+  background-image: linear-gradient(bottom, #f4f4f4 0%, #fcfcfc 100%);
+  background-image: -o-linear-gradient(bottom, #f4f4f4 0%, #fcfcfc 100%);
+  background-image: -moz-linear-gradient(bottom, #f4f4f4 0%, #fcfcfc 100%);
+  background-image: -webkit-linear-gradient(bottom, #f4f4f4 0%, #fcfcfc 100%);
+  background-image: -ms-linear-gradient(bottom, #f4f4f4 0%, #fcfcfc 100%);
+  border: 1px solid #05464f;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,.4);
+  -moz-box-shadow: 0px 0px 5px rgba(0,0,0,.4);
+  box-shadow: 0px 0px 5px rgba(0,0,0,.4);
+  z-index: -100; }
+
+#div-syntax-instructions-panel ul {
+  margin: 0px 32px;
+}
+
+#syntax-practice-start-button {
+  color: #fff;
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border: 1px solid #05464f;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,.4);
+  -moz-box-shadow: 0px 0px 5px rgba(0,0,0,.4);
+  box-shadow: 0px 0px 5px rgba(0,0,0,.4);
+  background-image: linear-gradient(bottom, #ce3f0c 0%, #ed490e 100%);
+  background-image: -o-linear-gradient(bottom, #ce3f0c 0%, #ed490e 100%);
+  background-image: -moz-linear-gradient(bottom, #ce3f0c 0%, #ed490e 100%);
+  background-image: -webkit-linear-gradient(bottom, #ce3f0c 0%, #ed490e 100%);
+  background-image: -ms-linear-gradient(bottom, #ce3f0c 0%, #ed490e 100%);
+  font-weight: bold;
+  font-family: 'Raleway', 'Rounded Mplus 1c', sans-serif;
+  position: relative;
+  top: 40px; }
+
+#syntax-practice-start-button:hover {
+  background-image: linear-gradient(bottom, #e84e17 0%, #ff581c 100%);
+  background-image: -o-linear-gradient(bottom, #e84e17 0%, #ff581c 100%);
+  background-image: -moz-linear-gradient(bottom, #e84e17 0%, #ff581c 100%);
+  background-image: -webkit-linear-gradient(bottom, #e84e17 0%, #ff581c 100%);
+  background-image: -ms-linear-gradient(bottom, #e84e17 0%, #ff581c 100%);  }
+
+#div-syntax-solved-panel #container {
+  background-image: linear-gradient(bottom, #efc9c9 0%, #f9d1d1 100%);
+  background-image: -o-linear-gradient(bottom, #efc9c9 0%, #f9d1d1 100%);
+  background-image: -moz-linear-gradient(bottom, #efc9c9 0%, #f9d1d1 100%);
+  background-image: -webkit-linear-gradient(bottom, #efc9c9 0%, #f9d1d1 100%);
+  background-image: -ms-linear-gradient(bottom, #efc9c9 0%, #f9d1d1 100%);
+  border: 1px solid #05464f;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,.4);
+  -moz-box-shadow: 0px 0px 5px rgba(0,0,0,.4);
+  box-shadow: 0px 0px 5px rgba(0,0,0,.4);
+  padding: 16px;
+  width: 90%;
+  position: relative;
+  margin: 16px auto; }
+
+#div-syntax-solved-panel p {
+  margin: 0px;
+  font-size: 12pt;
+  text-align: left;
+  width: 125px; }
+
+#div-syntax-solved-panel h3 {
+  width: 75px;
+  font-size: 36pt;
+  text-align: center;
+  font-family: 'Arial', 'Rounded Mplus 1c', sans-serif;
+  font-weight: bold;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+/* End of Instructions page */
+
 /* Select problem page */
 .menu-link, .menu-link:visited, .menu-link:active {
   color: #d0d0d0;

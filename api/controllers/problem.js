@@ -25,11 +25,12 @@ module.exports = {
     }
   },
   fn: async function(inputs, exits) {
-    var languagePack = await sails.helpers.loadLanguagePack.with({language: this.req.session.region});
     if (!this.req.session.user_id) {
       exits.unauthenticated('region');
       return;
     }
+    var languagePack = await sails.helpers.loadLanguagePack.with({language: this.req.session.region});
+    
     if (!inputs.id) {
       exits.invalidID();
       return;

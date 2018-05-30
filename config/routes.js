@@ -36,6 +36,8 @@ module.exports.routes = {
 
   'get /problem': 'problem',
 
+  'get /instructions': 'instructions',
+
   'get /syntax': 'syntax',
 
   'get /logout': 'logout',

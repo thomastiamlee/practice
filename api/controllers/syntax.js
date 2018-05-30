@@ -15,13 +15,13 @@ module.exports = {
     }
   },
   fn: async function(inputs, exits) {
-    var languagePack = await sails.helpers.loadLanguagePack.with({language: this.req.session.region});
     if (!this.req.session.user_id) {
       exits.unauthenticated('region');
       return;
     }
-    var sessionId = await sails.helpers.initializeSession.with({user_id: this.req.session.user_id});
+    var languagePack = await sails.helpers.loadLanguagePack.with({language: this.req.session.region});
 
+    var sessionId = await sails.helpers.initializeSession.with({user_id: this.req.session.user_id});
     var problem = await sails.helpers.generateSyntaxExercise.with({language: this.req.session.region, complexity: 3, user_id: this.req.session.user_id})
 
     exits.success({user_id: this.req.session.user_id, email: this.req.session.email, languagePack: languagePack, problem: problem, session_id: sessionId, exercise_mode: 'syntax'});
