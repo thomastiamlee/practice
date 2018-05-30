@@ -20,8 +20,7 @@ module.exports.custom = {
   // stripeSecret: 'sk_test_Zzd814nldl91104qor5911gjald',
   // …
 
-	baseUrl: 'http://localhost/',
-	tempPath: 'C:/Users/Thomas/Desktop/research/app/practice/temp',
-	dataPath: 'C:/Users/Thomas/Desktop/research/app/practice/data'
-
+	baseUrl: 'http://118.27.26.114/',
+	tempPath: '/home/azure2s/temp',
+	dataPath: '/home/azure2s/data'
 };
