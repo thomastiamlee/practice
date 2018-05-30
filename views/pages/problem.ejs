@@ -30,11 +30,11 @@
 				</div>
 				<div class='cell small-12 medium-5' id='div-problem-controls'>
 					<% if (exercise_mode == 'syntax') { %>
-						<a href='<%- sails.config.custom.baseUrl %>generate' class='top-button green' id='top-button-2' href='#'>Next Problem</a>
-						<a href='<%- sails.config.custom.baseUrl %>mode' class='top-button' id='top-button-1' href='#'>Back to Mode Select</a>
+						<a href='<%- sails.config.custom.baseUrl %>generate' class='top-button green' id='top-button-2' href='#'><%- languagePack.next_problem %></a>
+						<a href='<%- sails.config.custom.baseUrl %>mode' class='top-button' id='top-button-1' href='#'><%- languagePack.back_to_mode_select %></a>
 					<% } %>
 					<% if (exercise_mode == 'logic') { %>
-						<a href='<%- sails.config.custom.baseUrl %>select' class='top-button' id='top-button-1' href='#'>Back to Problem List</a>
+						<a href='<%- sails.config.custom.baseUrl %>select' class='top-button' id='top-button-1' href='#'><%- languagePack.back_to_problem_list %></a>
 					<% } %>
 				</div>
 			</div>
@@ -95,7 +95,7 @@
 					<div id='div-control-panel'>
 						<a class='test-panel-button' id='submit-button' href='#'><%- languagePack.submit_code; %></a>
 						<% if (exercise_mode == 'syntax') { %>
-							<a class='test-panel-button' data-tooltip id='give-up-button' title='Forfeit this problem and get a new one.' data-position="right" data-alignment="center" href='#'>Give Up</a><br/><br/>
+							<a class='test-panel-button' data-tooltip id='give-up-button' title='<%- languagePack.forfeit %>' data-position="right" data-alignment="center" href='#'><%- languagePack.give_up %></a><br/><br/>
 						<% } %>
 						<span id='submit-loading-icon'><i class='fa fa-gear fa-spin'></i> <%- languagePack.checking_code; %></span>
 					</div>
@@ -136,7 +136,7 @@
 			<p id='submission-modal-text'></p>
 			<div id='div-nav'>
 				<% if (exercise_mode == 'syntax') { %>
-					<p><a class='nav-button'><%- languagePack.next_problem; %></a></p>
+					<p><a class='nav-button' href='<%- sails.config.custom.baseUrl %>generate'><%- languagePack.next_problem; %></a></p>
 				<% } %>
 				<% if (exercise_mode == 'logic') { %>
 					<p><a class='nav-button' href='<%- sails.config.custom.baseUrl %>select'><%- languagePack.back_to_problem_list; %></a></p>

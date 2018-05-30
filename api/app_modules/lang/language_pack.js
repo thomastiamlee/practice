@@ -99,6 +99,14 @@ data = {
     en: 'Submit Code',
     jp: 'コードを提出する'
   },
+  give_up: {
+    en: 'Give Up',
+    jp: 'Give up'
+  },
+  forfeit: {
+    en: 'Forfeit this problem and get a new one.',
+    jp: 'Forfeit this problem and get a new one.'
+  },
   function_returned: {
     en: 'Function returned: ',
     jp: '返り値: '
@@ -159,6 +167,10 @@ data = {
     en: 'Back to problem list',
     jp: '問題リストに戻る'
   },
+  back_to_mode_select: {
+    en: 'Back to mode select',
+    jp: 'モードセレクトに戻る'
+  },
   already_solved: {
     en: 'You already solved this problem.',
     jp: 'あなたはすでにこの問題を合格しました。'
@@ -166,6 +178,30 @@ data = {
   steps_description: {
     en: 'These are the steps you need to solve this problem.',
     jp: 'これらのステップは、この問題を解決するために必要なステップです'
+  },
+  instructions: {
+    en: 'INSTRUCTIONS',
+    jp: 'INSTRUCTIONS'
+  },
+  inst_1: {
+    en: 'Complete the functions by translating the operations into code.',
+    jp: 'Complete the functions by translating the operations into code.'
+  },
+  inst_2: {
+    en: 'The system will give you a different problem every time.',
+    jp: 'The system will give you a different problem every time.'
+  },
+  inst_3: {
+    en: 'If you are stuck you can give up to get a different problem.',
+    jp: 'If you are stuck you can give up to get a different problem.'
+  },
+  number_solved: {
+    en: 'Number of<br />problems<br />solved',
+    jp: 'Number of<br />problems<br />solved'
+  },
+  start: {
+    en: 'START!',
+    jp: 'スタート！'
   }
 }
 
