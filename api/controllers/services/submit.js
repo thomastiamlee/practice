@@ -71,7 +71,7 @@ module.exports = {
 				}
 				else {
 					stdout = stdout.trim().split('\n');
-					
+
 					if (stdout.length != testCaseOutputs.length) {
 						exits.success({type: 'failed'});
 						completed = true;

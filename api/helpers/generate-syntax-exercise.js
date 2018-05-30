@@ -59,12 +59,9 @@ module.exports = {
       argumentTypes.push('int');
       argumentNames.push(getName(exercise.inputVariables[i], exercise.symbols));
     }
-    var problemId = await sails.helpers.writeSyntaxExercise.with({user_id: inputs.user_id, exercise_text: exerciseText, argument_types: argumentTypes, argument_names: argumentNames, test_case_inputs: testCaseInputs, test_case_outputs: testCaseOutputs});
-
     var flowchart = reader.convertToFlowchartDefinition(exercise);
 
     var problem = {
-      problem_id: problemId,
       return_type: 'int',
   		method_name: 'theFunction',
   		argument_types: argumentTypes,
@@ -76,6 +73,44 @@ module.exports = {
       flowchart: flowchart
     }
 
-    return exits.success(problem);
+    /* Write the syntax exercise to the file. */
+    if (!fs.existsSync(sails.config.custom.dataPath + '/' + inputs.user_id + '/syntax')) {
+      return exits.error('Directory does not exist.');
+    }
+    var path = sails.config.custom.dataPath + '/' + inputs.user_id + '/syntax';
+    var max = 0;
+    fs.readdirSync(path).forEach(file => {
+      var current = parseInt(file);
+      if (current > max) {
+        max = current;
+      }
+    });
+    var index = max + 1;
+    var id = max + 10001;
+
+    var information = exerciseText + '\n';
+    for (var i = 0; i < argumentTypes.length; i++) {
+      information += argumentTypes[i]
+      if (i != argumentTypes.length - 1) {
+        information += ",";
+      }
+    }
+    information += "\n";
+    for (var i = 0; i < argumentNames.length; i++) {
+      information += argumentNames[i]
+      if (i != argumentNames.length - 1) {
+        information += ",";
+      }
+    }
+    information += "\n";
+    for (var i = 0; i < testCaseInputs.length; i++) {
+      information += testCaseInputs[i] + "#" + testCaseOutputs[i] + "\n";
+    }
+    information += 'FLOWCHART\n';
+    information += flowchart;
+
+    fs.writeFileSync(path + "/" + index + '.txt', information,'utf-8');
+
+    return exits.success(id);
   }
 }

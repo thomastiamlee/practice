@@ -28,19 +28,31 @@ module.exports = {
     var argument_names = data[2].split(',');
     var test_case_inputs = [];
     var test_case_outputs = [];
-    for (var i = 3; i < data.length; i++) {
+    var i = 3;
+    for (i = 3; data[i].trim() != 'FLOWCHART'; i++) {
       if (data[i].trim() == "") continue;
       var line = data[i].split('#');
       test_case_inputs.push(line[0]);
       test_case_outputs.push(line[1]);
     }
+    i++;
+    var flowchart = '';
+    for (; i < data.length; i++) {
+      flowchart += data[i] + '\n';
+    }
+
     var problemInformation = {
-      exercise_text: exercise_text,
-      argument_types: argument_types,
-      argument_names: argument_names,
-      test_case_inputs: test_case_inputs,
-      test_case_outputs: test_case_outputs
-    };
+      problem_id: inputs.problem_id,
+      return_type: 'int',
+  		method_name: 'theFunction',
+  		argument_types: argument_types,
+  		argument_names: argument_names,
+  		task: exercise_text,
+  		assumptions: ["You can ignore cases where numbers are divided by 0."],
+  		test_case_inputs: test_case_inputs,
+  		test_case_outputs: test_case_outputs,
+      flowchart: flowchart
+    }
 
     return exits.success(problemInformation);
   }
