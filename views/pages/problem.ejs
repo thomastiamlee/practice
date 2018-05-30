@@ -23,10 +23,19 @@
 		<!-- Main container -->
     <div id='div-code' class='grid-container'>
 			<div class='grid-x'>
-				<div class='cell small-12'>
+				<div class='cell small-12 medium-7'>
 					<div id='solved-callout' class="callout success">
-					  <p><%- languagePack.already_solved; %> <a href="#"><%- languagePack.next_problem; %></a></p>
+					  <p><%- languagePack.already_solved; %></p>
 					</div>
+				</div>
+				<div class='cell small-12 medium-5' id='div-problem-controls'>
+					<% if (exercise_mode == 'syntax') { %>
+						<a href='<%- sails.config.custom.baseUrl %>syntax' class='top-button green' id='top-button-2' href='#'>Next Problem</a>
+						<a href='<%- sails.config.custom.baseUrl %>mode' class='top-button' id='top-button-1' href='#'>Back to Mode Select</a>
+					<% } %>
+					<% if (exercise_mode == 'logic') { %>
+						<a href='<%- sails.config.custom.baseUrl %>select' class='top-button' id='top-button-1' href='#'>Back to Problem List</a>
+					<% } %>
 				</div>
 			</div>
       <div class='grid-x'>
@@ -58,7 +67,7 @@
         <!-- End of problem description -->
 
 				<!-- Coding panel -->
-        <div id='div-coding-panel' class='cell small-5 medium-4'>
+        <div id='div-coding-panel' class='cell small-12 medium-4'>
 					<!-- Editor panel -->
 					<pre class='fixed-code'><%- problem.return_type %> <%- problem.method_name %>(<% for (var i = 0; i < problem.argument_types.length; i++) { %><%- problem.argument_types[i] + ' ' + problem.argument_names[i] %><% if (i != problem.argument_types.length - 1) { %>,<%}%><%}%>)</pre>
           <div id='editor'>
@@ -85,6 +94,9 @@
 					<!-- Control panel -->
 					<div id='div-control-panel'>
 						<a class='test-panel-button' id='submit-button' href='#'><%- languagePack.submit_code; %></a>
+						<% if (exercise_mode == 'syntax') { %>
+							<a class='test-panel-button' data-tooltip id='give-up-button' title='Forfeit this problem and get a new one.' data-position="right" data-alignment="center" href='#'>Give Up</a><br/><br/>
+						<% } %>
 						<span id='submit-loading-icon'><i class='fa fa-gear fa-spin'></i> <%- languagePack.checking_code; %></span>
 					</div>
 					<!-- End of control panel -->
@@ -92,7 +104,7 @@
         <!-- End of coding panel -->
 
 				<!-- Adaptive panel -->
-				<div id='div-adaptive-panel' class='cell small-7 medium-5'>
+				<div id='div-adaptive-panel' class='cell small-12 medium-5'>
 					<!-- Guide panel -->
 					<div id='div-guide-panel'>
 						<p><%- languagePack.guide_offer; %></p>
@@ -123,8 +135,12 @@
 			<p><img id='submission-modal-image' /></p>
 			<p id='submission-modal-text'></p>
 			<div id='div-nav'>
-				<p><a class='nav-button'><%- languagePack.next_problem; %></a></p>
-				<p><a class='nav-button' href='<%- sails.config.custom.baseUrl %>select'><%- languagePack.back_to_problem_list; %></a></p>
+				<% if (exercise_mode == 'syntax') { %>
+					<p><a class='nav-button'><%- languagePack.next_problem; %></a></p>
+				<% } %>
+				<% if (exercise_mode == 'logic') { %>
+					<p><a class='nav-button' href='<%- sails.config.custom.baseUrl %>select'><%- languagePack.back_to_problem_list; %></a></p>
+				<% } %>
 			</div>
 			<button class="close-button" data-close aria-label="Close modal" type="button">
 		    <span aria-hidden="true">&times;</span>

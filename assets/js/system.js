@@ -14,6 +14,7 @@ expandNode = function(event) {
 sessionId = data_sessionId;
 testEnabled = true;
 submitEnabled = true;
+giveUpEnabled = true;
 
 function flushLog() {
   var toSend = sessionLog.splice(0, sessionLog.length);
@@ -49,8 +50,10 @@ function clearTestOutput() {
 function triggerRun(type) {
   testEnabled = false;
   submitEnabled = false;
+  giveUpEnabled = false;
   $('#test-button').addClass('disabled');
   $('#submit-button').addClass('disabled');
+  $('#give-up-button').addClass('disabled');
   if (type == 'test') $('#test-loading-icon').css('visibility', 'visible');
   else $('#submit-loading-icon').css('visibility', 'visible');
 }
@@ -58,8 +61,10 @@ function triggerRun(type) {
 function endRun(type) {
   testEnabled = true;
   submitEnabled = true;
+  giveUpEnabled = true;
   $('#test-button').removeClass('disabled');
   $('#submit-button').removeClass('disabled');
+  $('#give-up-button').removeClass('disabled');
   if (type == 'test') $('#test-loading-icon').css('visibility', 'hidden');
   else $('#submit-loading-icon').css('visibility', 'hidden');
 }
@@ -69,7 +74,15 @@ function triggerPassed() {
   $('#submission-modal-image').attr('src', data_baseUrl + 'images/circle.png');
   $('#submission-modal-text').text(message_submit_correct);
   $('#submission-modal').foundation('open');
-  $('#solved-callout').css('display', 'block');
+  $('#solved-callout').css('visibility', 'visible');
+  testEnabled = false;
+  submitEnabled = false;
+  giveUpEnabled = false;
+  $('#test-button').addClass('disabled');
+  $('#submit-button').addClass('disabled');
+  $('#give-up-button').addClass('disabled');
+  $('#top-button-2').css('display', 'inline-block');
+
 }
 
 function triggerFailed() {
@@ -197,6 +210,11 @@ function initializeSystem() {
         triggerFailed();
       }
     });
+  });
+
+  $('#give-up-button').on('click', function() {
+    if (!giveUpEnabled) return;
+    window.location.replace(data_baseUrl + 'syntax');
   });
 
   $('#guide-accept-button').on('click', function() {
