@@ -214,7 +214,7 @@ function initializeSystem() {
 
   $('#give-up-button').on('click', function() {
     if (!giveUpEnabled) return;
-    window.location.replace(data_baseUrl + 'syntax');
+    window.location.replace(data_baseUrl + 'syntax?generate=yes');
   });
 
   $('#guide-accept-button').on('click', function() {
