@@ -19,7 +19,7 @@ module.exports = {
     var realId = inputs.problem_id - 10000;
     var path = sails.config.custom.dataPath + '/' + inputs.user_id + '/syntax/' + realId + '.txt';
     if (!fs.existsSync(path)) {
-      return exits.error('Exercise does not exist.');
+      return exits.success(null);
     }
 
     var data = fs.readFileSync(path, 'utf-8').split('\n');
