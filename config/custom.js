@@ -20,7 +20,7 @@ module.exports.custom = {
   // stripeSecret: 'sk_test_Zzd814nldl91104qor5911gjald',
   // …
 
-	baseUrl: 'http://localhost:1337/',
+	baseUrl: 'http://localhost/',
 	tempPath: 'C:/Users/Thomas/Desktop/research/app/practice/temp',
 	dataPath: 'C:/Users/Thomas/Desktop/research/app/practice/data'
 
