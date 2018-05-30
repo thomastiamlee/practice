@@ -30,6 +30,7 @@ module.exports = {
 			if (problemId > 10000) {
 				var account = await Account.findOne({user_id: userId});
 				await Account.update({user_id: userId}).set({syntax_solved: account.syntax_solved + 1});
+				await Account.update({user_id: userId}).set({current_syntax_problem: -1});
 			}
 		}
 
