@@ -23,10 +23,13 @@
 		<!-- Main container -->
     <div id='div-code' class='grid-container'>
 			<div class='grid-x'>
-				<div class='cell small-12 medium-7'>
+				<div class='cell small-9 medium-5'>
 					<div id='solved-callout' class="callout success">
 					  <p><%- languagePack.already_solved; %></p>
 					</div>
+				</div>
+				<div class='cell small-3 medium-2'>
+					<p id='solved-counter'><%- languagePack.solved_filter %>: <span id='solved-count'><%- syntax_solved %></span></p>
 				</div>
 				<div class='cell small-12 medium-5' id='div-problem-controls'>
 					<% if (exercise_mode == 'syntax') { %>
@@ -172,6 +175,7 @@
 			data_userId = '<%- user_id %>';
 			data_sessionId = '<%- session_id %>';
 			data_problemId = '<%- problem.problem_id %>';
+			data_exerciseMode = '<%- exercise_mode %>';
 
 			message_submit_correct = '<%- languagePack.submission_correct %>';
 			message_submit_wrong = '<%- languagePack.submission_wrong %>';

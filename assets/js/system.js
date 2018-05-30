@@ -81,7 +81,11 @@ function triggerPassed() {
   $('#test-button').addClass('disabled');
   $('#submit-button').addClass('disabled');
   $('#give-up-button').addClass('disabled');
-  $('#top-button-2').css('display', 'inline-block');
+  if (data_exerciseMode == 'syntax') {
+    $('#top-button-2').css('display', 'inline-block');
+    var s = parseInt($('#solved-count').text());
+    $('#solved-count').text(s + 1)
+  }
 
 }
 

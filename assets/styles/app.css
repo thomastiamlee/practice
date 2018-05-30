@@ -355,6 +355,10 @@
 #div-problem-description {
   padding-right: 16px; }
 
+#solved-counter {
+  text-align: right;
+  font-weight: bold; }
+
 #solved-callout {
   background-image: linear-gradient(bottom, #65e84e 0%, #69fc50 100%);
   background-image: -o-linear-gradient(bottom, #65e84e 0%, #69fc50 100%);
