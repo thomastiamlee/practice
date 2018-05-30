@@ -26,13 +26,19 @@ module.exports = {
     }
 	},
 	fn: async function(inputs, exits) {
+		async function triggerPass(userId, problemId) {
+			if (problemId > 10000) {
+				var account = await Account.findOne({user_id: userId});
+				await Account.update({user_id: userId}).set({syntax_solved: account.syntax_solved + 1});
+			}
+		}
+
 		if (!this.req.session.user_id) {
 			exits.error({type: 'unauthenticated', message: 'You are not logged in.'});
 			return;
 		}
 		if (inputs.problem_id > 10000) {
 			var problemInformation = await sails.helpers.getSyntaxExercise.with({user_id: inputs.user_id, problem_id: inputs.problem_id});
-			sails.log.info(problemInformation);
 			var testCaseInputs = problemInformation.test_case_inputs;
 			var testCaseOutputs = problemInformation.test_case_outputs;
 			for (var i = 0; i < testCaseInputs.length; i++) {
@@ -65,9 +71,7 @@ module.exports = {
 				}
 				else {
 					stdout = stdout.trim().split('\n');
-					sails.log.info(testCaseOutputs);
-					sails.log.info(stdout);
-
+					
 					if (stdout.length != testCaseOutputs.length) {
 						exits.success({type: 'failed'});
 						completed = true;
@@ -84,6 +88,7 @@ module.exports = {
 						completed = true;
 					}
 					else {
+						triggerPass(inputs.user_id, inputs.problem_id);
 						exits.success({type: 'passed'});
 						completed = true;
 					}
