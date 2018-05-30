@@ -38,6 +38,8 @@ module.exports.routes = {
 
   'get /instructions': 'instructions',
 
+  'get /generate': 'generate',
+
   'get /syntax': 'syntax',
 
   'get /logout': 'logout',

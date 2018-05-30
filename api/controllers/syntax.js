@@ -3,17 +3,15 @@
 module.exports = {
   friendlyName: 'Start syntax practice',
   description: 'Provides an interface for the user to do syntax practice',
-  inputs: {
-    generate: {
-      description: 'yes if a new problem is to be generated',
-      type: 'string'
-    }
-  },
   exits: {
     success: {
       description: 'User can do syntax practice',
       responseType: 'view',
       viewTemplatePath: 'pages/problem'
+    },
+    generate: {
+      description: 'Exercise must be generated',
+      responseType: 'redirect'
     },
     unauthenticated: {
       description: 'There is no session or session has expired',
@@ -29,10 +27,9 @@ module.exports = {
     var sessionId = await sails.helpers.initializeSession.with({user_id: this.req.session.user_id});
 
     var account = await Account.findOne({user_id: this.req.session.user_id});
-    var problemId = -1;
-    if (account.current_syntax_problem == -1 || (inputs.generate && inputs.generate == 'yes')) {
-      problemId = await sails.helpers.generateSyntaxExercise.with({language: this.req.session.region, complexity: 1, user_id: this.req.session.user_id})
-      await Account.update({user_id: this.req.session.user_id}).set({current_syntax_problem: problemId})
+    if (account.current_syntax_problem == -1) {
+      exits.generate('generate');
+      return;
     }
     else {
       problemId = account.current_syntax_problem;
