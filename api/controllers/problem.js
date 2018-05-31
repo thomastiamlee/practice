@@ -30,7 +30,7 @@ module.exports = {
       return;
     }
     var languagePack = await sails.helpers.loadLanguagePack.with({language: this.req.session.region});
-    
+
     if (!inputs.id) {
       exits.invalidID();
       return;
@@ -48,6 +48,7 @@ module.exports = {
     problem.flowchart = replaceall('#', '\n', problem.flowchart);
 
     var sessionId = await sails.helpers.initializeSession.with({user_id: this.req.session.user_id});
-    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, languagePack: languagePack, problem: problem, session_id: sessionId, exercise_mode: 'logic'});
+    var timeNow = Date.now();
+    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, languagePack: languagePack, problem: problem, session_id: sessionId, exercise_mode: 'logic', server_timestamp: timeNow});
   }
 }

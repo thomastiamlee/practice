@@ -15,6 +15,10 @@ testEnabled = true;
 submitEnabled = true;
 giveUpEnabled = true;
 
+function getServerTime() {
+  return Date.now() - timeOffset;
+}
+
 function flushLog() {
   var toSend = sessionLog.splice(0, sessionLog.length);
   $.ajax({
@@ -25,13 +29,13 @@ function flushLog() {
 
     },
     error: function(data) {
-      sessionLog.push({type: "corrupt", timestamp: Date.now()});
+      sessionLog.push({type: "corrupt", timestamp: getServerTime()});
     }
   })
 }
 
 function initSession() {
-  sessionLog = [{type: 'start', timestamp: Date.now()}];
+  sessionLog = [{type: 'start', timestamp: getServerTime()}];
   flushLog();
   setInterval(function() {
     flushLog();
@@ -108,7 +112,7 @@ function offerGuide() {
 function displayVisualization() {
   if (eventGuideAccepted) return;
   eventGuideAccepted = true;
-  sessionLog.push({type: "guide_accept", timestamp: Date.now()});
+  sessionLog.push({type: "guide_accept", timestamp: getServerTime()});
 
   $.ajax({
     url: data_baseUrl + 'services/guide',
@@ -123,7 +127,7 @@ function displayVisualization() {
       $('#div-visualization-panel').css('visibility', 'visible');
       $('#div-visualization-text-panel').css('visibility', 'visible');
       $('#div-visualization-text-panel > p').html(message_steps_description + '<br /><br />' + message_view_step_information);
-      sessionLog.push({type: "guide", timestamp: Date.now()});
+      sessionLog.push({type: "guide", timestamp: getServerTime()});
       var hints = data.hints;
       for (var i = 0; i < hints.length; i++) {
         var split = hints[i].split('#');
@@ -137,7 +141,7 @@ function displayVisualization() {
 
 function mermaidEvent(data) {
   $('#div-visualization-text-panel p').html(guideTexts[data]);
-  sessionLog.push({type: "view_hint", timestamp: Date.now(), step: data});
+  sessionLog.push({type: "view_hint", timestamp: getServerTime(), step: data});
   flushLog();
 }
 
@@ -171,7 +175,7 @@ function initializeSystem() {
     $('#div-test-panel').find('.test-input-field').each(function() {
       testValues.push($(this).val());
     });
-    sessionLog.push({type: "run", timestamp: Date.now(), arguments: testValues});
+    sessionLog.push({type: "run", timestamp: getServerTime(), arguments: testValues});
     $.ajax({
       url: data_baseUrl + 'services/test',
       type: 'post',
@@ -186,22 +190,22 @@ function initializeSystem() {
         endRun('test');
         $('#div-console-panel').css('display', 'block');
         if (data.type == 'no_error') {
-          sessionLog.push({type: "run_result", timestamp: Date.now(), verdict: 'no error'});
+          sessionLog.push({type: "run_result", timestamp: getServerTime(), verdict: 'no error'});
           $('#div-console-panel').addClass('success');
           $('#test-status-text').html(message_function_returned + ' <span id=\'test-return-value\'>' + data.message + '</span>');
         }
         else if (data.type == 'no_output') {
-          sessionLog.push({type: "run_result", timestamp: Date.now(), verdict: 'no output'});
+          sessionLog.push({type: "run_result", timestamp: getServerTime(), verdict: 'no output'});
           $('#div-console-panel').addClass('error');
           $('#test-status-text').html(message_function_no_return);
         }
         else if (data.type == 'failed') {
-          sessionLog.push({type: "run_result", timestamp: Date.now(), verdict: 'failed'});
+          sessionLog.push({type: "run_result", timestamp: getServerTime(), verdict: 'failed'});
           $('#div-console-panel').addClass('failure');
           $('#test-status-text').html(message_function_error);
         }
         else if (data.type == 'error') {
-          sessionLog.push({type: "run_result", timestamp: Date.now(), verdict: 'error'});
+          sessionLog.push({type: "run_result", timestamp: getServerTime(), verdict: 'error'});
           $('#div-console-panel').addClass('error');
           var lineNumber = data.lineNumber - data.offset - 1;
           editor.addLineClass(lineNumber, 'background', 'line-error');
@@ -235,11 +239,11 @@ function initializeSystem() {
       success: function(data) {
         endRun('submit');
         if (data.type == 'passed') {
-          sessionLog.push({type: "submit_result", timestamp: Date.now(), verdict: 'pass'});
+          sessionLog.push({type: "submit_result", timestamp: getServerTime(), verdict: 'pass'});
           triggerPassed();
         }
         else {
-          sessionLog.push({type: "run_result", timestamp: Date.now(), verdict: 'fail'});
+          sessionLog.push({type: "run_result", timestamp: getServerTime(), verdict: 'fail'});
           triggerFailed();
         }
         flushLog();
@@ -266,5 +270,7 @@ function initializeSystem() {
     eventGuideOffered = false;
   });
 
+  timeOffset = Date.now() - data_serverTimestamp;
+  console.log(timeOffset);
   initSession();
 }

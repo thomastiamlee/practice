@@ -41,6 +41,7 @@ module.exports = {
       return;
     }
 
-    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, syntax_solved: account.syntax_solved, languagePack: languagePack, problem: problem, session_id: sessionId, exercise_mode: 'syntax'});
+    var timeNow = Date.now();
+    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, syntax_solved: account.syntax_solved, languagePack: languagePack, problem: problem, session_id: sessionId, exercise_mode: 'syntax', server_timestamp: timeNow});
   }
 }
