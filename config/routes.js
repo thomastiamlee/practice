@@ -50,7 +50,9 @@ module.exports.routes = {
 
   'post /services/log': 'services/log',
 
-  'post /services/guide': 'services/guide'
+  'post /services/guide': 'services/guide',
+
+  'post /services/affective': 'services/affective'
 
   /***************************************************************************
   *                                                                          *

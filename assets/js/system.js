@@ -23,10 +23,10 @@ function flushLog() {
   var toSend = sessionLog.splice(0, sessionLog.length);
   $.ajax({
     url: data_baseUrl + 'services/log',
-    data: {log_data: toSend, session_id: sessionId},
+    data: {log_data: toSend, session_id: sessionId, user_id: data_userId},
     type: 'POST',
     success: function(data) {
-
+      requestAffect();
     },
     error: function(data) {
       sessionLog.push({type: "corrupt", timestamp: getServerTime()});
@@ -34,12 +34,26 @@ function flushLog() {
   })
 }
 
+function requestAffect() {
+  $.ajax({
+    url: data_baseUrl + 'services/affective',
+    data: {user_id: data_userId, session_id: sessionId},
+    type: 'POST',
+    success: function(data) {
+      console.log(data);
+    },
+    error: function(data) {
+
+    }
+  })
+}
+
 function initSession() {
-  sessionLog = [{type: 'start', timestamp: getServerTime()}];
+  sessionLog = [{type: 'start', timestamp: getServerTime(), problem_id: data_problemId}];
   flushLog();
   setInterval(function() {
     flushLog();
-  }, 15000);
+  }, 10000);
 }
 
 function clearTestOutput() {
