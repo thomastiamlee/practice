@@ -108,6 +108,7 @@ function offerGuide() {
 function displayVisualization() {
   if (eventGuideAccepted) return;
   eventGuideAccepted = true;
+  sessionLog.push({type: "guide_accept", timestamp: Date.now()});
 
   $.ajax({
     url: data_baseUrl + 'services/guide',
@@ -122,18 +123,22 @@ function displayVisualization() {
       $('#div-visualization-panel').css('visibility', 'visible');
       $('#div-visualization-text-panel').css('visibility', 'visible');
       $('#div-visualization-text-panel > p').html(message_steps_description + '<br /><br />' + message_view_step_information);
+      sessionLog.push({type: "guide", timestamp: Date.now()});
       var hints = data.hints;
       for (var i = 0; i < hints.length; i++) {
         var split = hints[i].split('#');
         var name = split[0];
         guideTexts[name] = split[1];
       }
+      flushLog();
     }
   });
 }
 
 function mermaidEvent(data) {
   $('#div-visualization-text-panel p').html(guideTexts[data]);
+  sessionLog.push({type: "view_hint", timestamp: Date.now(), step: data});
+  flushLog();
 }
 
 var editor = CodeMirror(document.getElementById('editor'), {
@@ -166,6 +171,7 @@ function initializeSystem() {
     $('#div-test-panel').find('.test-input-field').each(function() {
       testValues.push($(this).val());
     });
+    sessionLog.push({type: "run", timestamp: Date.now(), arguments: testValues});
     $.ajax({
       url: data_baseUrl + 'services/test',
       type: 'post',
@@ -180,23 +186,28 @@ function initializeSystem() {
         endRun('test');
         $('#div-console-panel').css('display', 'block');
         if (data.type == 'no_error') {
+          sessionLog.push({type: "run_result", timestamp: Date.now(), verdict: 'no error'});
           $('#div-console-panel').addClass('success');
           $('#test-status-text').html(message_function_returned + ' <span id=\'test-return-value\'>' + data.message + '</span>');
         }
         else if (data.type == 'no_output') {
+          sessionLog.push({type: "run_result", timestamp: Date.now(), verdict: 'no output'});
           $('#div-console-panel').addClass('error');
           $('#test-status-text').html(message_function_no_return);
         }
         else if (data.type == 'failed') {
+          sessionLog.push({type: "run_result", timestamp: Date.now(), verdict: 'failed'});
           $('#div-console-panel').addClass('failure');
           $('#test-status-text').html(message_function_error);
         }
         else if (data.type == 'error') {
+          sessionLog.push({type: "run_result", timestamp: Date.now(), verdict: 'error'});
           $('#div-console-panel').addClass('error');
           var lineNumber = data.lineNumber - data.offset - 1;
           editor.addLineClass(lineNumber, 'background', 'line-error');
           $('#test-status-text').html('<span id=\'test-return-value\'>' + data.message.replace(/(?:\r\n|\r|\n)/g, '<br />').replace(/' '/g, '&nbsp') + '</span>');
         }
+        flushLog();
       },
       error: function() {
         endRun('test');
@@ -208,6 +219,7 @@ function initializeSystem() {
   });
 
   $('#submit-button').click(function() {
+    sessionLog.push({type: "submit", timestamp: Date.now()});
     if (!submitEnabled) return;
     triggerRun('submit');
     var editorValue = editor.getValue();
@@ -222,8 +234,15 @@ function initializeSystem() {
       dataType: 'json',
       success: function(data) {
         endRun('submit');
-        if (data.type == 'passed') triggerPassed();
-        else triggerFailed();
+        if (data.type == 'passed') {
+          sessionLog.push({type: "submit_result", timestamp: Date.now(), verdict: 'pass'});
+          triggerPassed();
+        }
+        else {
+          sessionLog.push({type: "run_result", timestamp: Date.now(), verdict: 'fail'});
+          triggerFailed();
+        }
+        flushLog();
       },
       error: function(data) {
         console.log('error');

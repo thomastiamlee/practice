@@ -1,4 +1,5 @@
 const fs = require('fs');
+const jsonformatter = require('format-json');
 
 module.exports = {
 	friendlyName: 'Log data',
@@ -40,7 +41,8 @@ module.exports = {
 		}
 		var history = JSON.parse(fs.readFileSync(target, 'utf-8'));
 		history = history.concat(inputs.log_data);
-		fs.writeFileSync(target, JSON.stringify(history), 'utf-8');
+		//sails.log.info(jsonformatter.lines(history));
+		fs.writeFileSync(target, jsonformatter.lines(history), 'utf-8');
 		exits.success({type: 'success', message: 'Log data appended.'});
 		return;
 	}
