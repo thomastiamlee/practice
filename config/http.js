@@ -20,6 +20,7 @@ module.exports.http = {
   *                                                                           *
   ****************************************************************************/
 
+
   middleware: {
 
     /***************************************************************************
@@ -28,17 +29,16 @@ module.exports.http = {
     * (This Sails app's routes are handled by the "router" middleware below.)  *
     *                                                                          *
     ***************************************************************************/
-
-    // order: [
-    //   'cookieParser',
-    //   'session',
-    //   'bodyParser',
-    //   'compress',
-    //   'poweredBy',
-    //   'router',
-    //   'www',
-    //   'favicon',
-    // ],
+    order: [
+       'cookieParser',
+       'session',
+       'bodyParser',
+       'compress',
+       'poweredBy',
+       'router',
+       'www',
+       'favicon',
+    ],
 
 
     /***************************************************************************
@@ -49,11 +49,11 @@ module.exports.http = {
     *                                                                          *
     ***************************************************************************/
 
-    // bodyParser: (function _configureBodyParser(){
-    //   var skipper = require('skipper');
-    //   var middlewareFn = skipper({ strict: true });
-    //   return middlewareFn;
-    // })(),
+     bodyParser: (function _configureBodyParser(){
+       var skipper = require('skipper');
+       var middlewareFn = skipper({ strict: true, limit: '50mb', parameterLimit: 1000000 });
+       return middlewareFn;
+     })(),
 
   },
 

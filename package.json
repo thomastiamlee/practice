@@ -10,6 +10,7 @@
     "@sailshq/socket.io-redis": "^5.2.0",
     "async": "2.0.1",
     "compile-run": "^1.2.2",
+    "format-json": "^1.0.3",
     "grunt": "1.0.1",
     "pegjs": "^0.10.0",
     "replaceall": "^0.1.6",
@@ -17,7 +18,8 @@
     "sails-hook-grunt": "^3.0.2",
     "sails-hook-orm": "^2.0.0-16",
     "sails-hook-sockets": "^1.4.0",
-    "sails-mongo": "^1.0.0"
+    "sails-mongo": "^1.0.0",
+    "skipper": "^0.8.5"
   },
   "devDependencies": {
     "@sailshq/eslint": "^4.19.3"
