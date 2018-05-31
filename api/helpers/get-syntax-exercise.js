@@ -37,8 +37,13 @@ module.exports = {
     }
     i++;
     var flowchart = '';
-    for (; i < data.length; i++) {
+    for (; data[i].trim() != 'HINTS'; i++) {
       flowchart += data[i] + '\n';
+    }
+    i++;
+    var hints = [];
+    for (; i < data.length; i++) {
+      hints.push(data[i]);
     }
 
     var problemInformation = {
@@ -51,7 +56,8 @@ module.exports = {
   		assumptions: ["You can ignore cases where numbers are divided by 0."],
   		test_case_inputs: test_case_inputs,
   		test_case_outputs: test_case_outputs,
-      flowchart: flowchart
+      flowchart: flowchart,
+      hints: hints
     }
 
     return exits.success(problemInformation);

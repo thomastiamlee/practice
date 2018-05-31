@@ -1,5 +1,45 @@
 const File = require("fs");
 const Component = require("./component");
+const Peg = require("pegjs");
+const templateGrammarPath = "./api/app_modules/naive/grammar/template-grammar.txt";
+const nativeHintTemplatesPathJP = "./api/app_modules/naive/templates/hint-jp.txt";
+const nativeHintTemplatesPathEN = "./api/app_modules/naive/templates/hint.txt";
+
+function loadNativeHintTemplates() {
+	var data = File.readFileSync(nativeHintTemplatesPath, "utf-8");
+	var grammar = File.readFileSync(templateGrammarPath, "utf-8");
+	var parser = Peg.generate(grammar, {trace: false});
+	var result = parser.parse(data);
+	return result;
+}
+
+function getRandomTemplateText(templates, key) {
+	for (var i = 0; i < templates.length; i++) {
+		if (templates[i].heading == key) {
+			var candidates = templates[i].templates;
+			return candidates[Math.floor(Math.random() * candidates.length)];
+		}
+	}
+	return null;
+}
+
+function getTemplateFromSymbol(symbol) {
+	switch(symbol) {
+		case '+': return 'addition';
+		case '-': return 'subtraction';
+		case '*': return 'multiplication';
+		case '/': return 'division';
+		case '%': return 'modulo';
+		case '==': return 'equal';
+		case '!=': return 'notequal';
+		case '>': return 'greater';
+		case '<': return 'less';
+		case '>=': return 'greaterequal';
+		case '<=': return 'lessequal';
+		case 'return': return 'return';
+		case '=': return 'assignment';
+	}
+}
 
 /* Loads block information from a file.
 The loaded blocks will be stored in the storage array provided). */
@@ -368,18 +408,30 @@ function convertOperandStringToObject(operandString, symbolMappings) {
 }
 
 /* Converts an exercise to a flowchart definition, given its head. */
-function convertToFlowchartDefinition(exercise) {
+function convertToFlowchartDefinition(exercise, language) {
 	var head = exercise.head;
 	var inputs = exercise.inputs;
 	var symbols = exercise.symbols;
 	var res = "graph TD\n";
 	var nodeInformation = "";
 	var nodeConnections = "";
-	
+	var events = "";
+
+	if (language == "jp") {
+		nativeHintTemplatesPath = nativeHintTemplatesPathJP;
+	}
+	else {
+		nativeHintTemplatesPath = nativeHintTemplatesPathEN;
+	}
+
+	var hintTemplates = loadNativeHintTemplates();
+
 	var nodeList = head.getAllChildrenSolutionSuccessors();
+	var hints = [];
 	for (var i = 0; i < nodeList.length; i++) {
 		var currentNode = nodeList[i];
 		var letter = "N" + (i + 1);
+		events += "click " + letter + " mermaidEvent\n";
 		var operandStrings = [];
 		var operands = currentNode.inputOperands;
 		for (var j = 0; j < operands.length; j++) {
@@ -394,7 +446,9 @@ function convertToFlowchartDefinition(exercise) {
 
 		var nodeLine = "";
 		var connectionLine = "";
+		var hintSynbol = '';
 		if (currentNode.type == Component.NODE_TYPE_ASSIGNMENT) {
+			hintSymbol = '=';
 			var variableOutput = getSymbolFromOperand(currentNode.variableOutput, symbols);
 			nodeLine += letter + "[" + variableOutput + " = " + operandStrings[0] + "]\n";
 			if (successors[0] != null) {
@@ -403,6 +457,7 @@ function convertToFlowchartDefinition(exercise) {
 		}
 		else if (currentNode.type == Component.NODE_TYPE_OPERATION) {
 			var operator = currentNode.operator;
+			hintSymbol = operator;
 			var variableOutput = getSymbolFromOperand(currentNode.variableOutput, symbols);
 			nodeLine += letter + "[" + variableOutput + " = " + operandStrings[0] + " " + operator + " " + operandStrings[1] + "]\n";
 			if (successors[0] != null) {
@@ -411,6 +466,7 @@ function convertToFlowchartDefinition(exercise) {
 		}
 		else if (currentNode.type == Component.NODE_TYPE_CONDITION) {
 			var operator = currentNode.operator;
+			hintSymbol = operator;
 			nodeLine += letter + "{" + operandStrings[0] + " " + operator + " " + operandStrings[1] + "}\n";
 			if (successors[0] != null) {
 				connectionLine += letter + " -->|true| N" + (nodeList.indexOf(successors[0]) + 1) + "\n";
@@ -420,14 +476,19 @@ function convertToFlowchartDefinition(exercise) {
 			}
 		}
 		else if (currentNode.type == Component.NODE_TYPE_RETURN) {
+			hintSymbol = 'return';
 			nodeLine += letter + "(return " + operandStrings[0] + ")\n";
 		}
+		var key = getTemplateFromSymbol(hintSymbol);
+		var hintText = getRandomTemplateText(hintTemplates, key);
+		hints.push(letter + '#' + hintText);
+
 		if (nodeLine != "")	nodeInformation += nodeLine;
 		if (connectionLine != "") nodeConnections += connectionLine;
 	}
 
-	res += nodeInformation + nodeConnections;
-	return res;
+	res += nodeInformation + nodeConnections + events;
+	return {flowchart: res, hints: hints};
 }
 
 module.exports = {loadExercise, loadBlocks, buildBlockFromInformation, convertToFlowchartDefinition, getOperandFromSymbol, getSymbolFromOperand};

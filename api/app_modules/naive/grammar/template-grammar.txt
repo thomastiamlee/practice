@@ -11,7 +11,7 @@ start
 	}
 
 item_list
-	= x:item [\r\n]+ y:item_list
+	= x:item [\r\n]+ y:item_list [\r\n]*
 	{
 		return [x].concat(y);
 	}
@@ -19,7 +19,7 @@ item_list
 	{
 		return [x];
 	}
-	
+
 item
 	= x:heading_token [\r\n]+ y:template_list
 	{

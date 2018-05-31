@@ -70,7 +70,8 @@ module.exports = {
   		assumptions: ["You can ignore cases where numbers are divided by 0."],
   		test_case_inputs: testCaseInputs,
   		test_case_outputs: testCaseOutputs,
-      flowchart: flowchart
+      flowchart: flowchart.flowchart,
+      hints: flowchart.hints
     }
 
     /* Write the syntax exercise to the file. */
@@ -107,7 +108,11 @@ module.exports = {
       information += testCaseInputs[i] + "#" + testCaseOutputs[i] + "\n";
     }
     information += 'FLOWCHART\n';
-    information += flowchart;
+    information += flowchart.flowchart;
+    information += 'HINTS\n';
+    for (var i = 0; i < flowchart.hints.length; i++) {
+      information += flowchart.hints[i] + '\n';
+    }
 
     fs.writeFileSync(path + "/" + index + '.txt', information,'utf-8');
 

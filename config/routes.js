@@ -48,7 +48,9 @@ module.exports.routes = {
 
   'post /services/submit': 'services/submit',
 
-  'post /services/log': 'services/log'
+  'post /services/log': 'services/log',
+
+  'post /services/guide': 'services/guide'
 
   /***************************************************************************
   *                                                                          *

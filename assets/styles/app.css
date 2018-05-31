@@ -456,11 +456,11 @@
   -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,.4);
   -moz-box-shadow: 0px 0px 5px rgba(0,0,0,.4);
   box-shadow: 0px 0px 5px rgba(0,0,0,.4);
-  background-image: linear-gradient(bottom, #d7e4ed 0%, #e1ecf4 100%);
-  background-image: -o-linear-gradient(bottom, #d7e4ed 0%, #e1ecf4 100%);
-  background-image: -moz-linear-gradient(bottom, #d7e4ed 0%, #e1ecf4 100%);
-  background-image: -webkit-linear-gradient(bottom, #d7e4ed 0%, #e1ecf4 100%);
-  background-image: -ms-linear-gradient(bottom, #d7e4ed 0%, #e1ecf4 100%);
+  background-image: linear-gradient(bottom, #e1f2f2 0%, #eaffff 100%);
+  background-image: -o-linear-gradient(bottom, #e1f2f2 0%, #eaffff 100%);
+  background-image: -moz-linear-gradient(bottom, #e1f2f2 0%, #eaffff 100%);
+  background-image: -webkit-linear-gradient(bottom, #e1f2f2 0%, #eaffff 100%);
+  background-image: -ms-linear-gradient(bottom, #e1f2f2 0%, #eaffff 100%);
 }
 #div-visualization-text-panel p {
   font-size: 0.9em;
@@ -477,11 +477,11 @@
   -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,.4);
   -moz-box-shadow: 0px 0px 5px rgba(0,0,0,.4);
   box-shadow: 0px 0px 5px rgba(0,0,0,.4);
-  background-image: linear-gradient(bottom, #f7f6f4 0%, #fcfbf9 100%);
-  background-image: -o-linear-gradient(bottom, #f7f6f4 0%, #fcfbf9 100%);
-  background-image: -moz-linear-gradient(bottom, #f7f6f4 0%, #fcfbf9 100%);
-  background-image: -webkit-linear-gradient(bottom, #f7f6f4 0%, #fcfbf9 100%);
-  background-image: -ms-linear-gradient(bottom, #f7f6f4 0%, #fcfbf9 100%); }
+  background-image: linear-gradient(bottom, #f9f9f9 0%, #ffffff 100%);
+  background-image: -o-linear-gradient(bottom, #f9f9f9 0%, #ffffff 100%);
+  background-image: -moz-linear-gradient(bottom, #f9f9f9 0%, #ffffff 100%);
+  background-image: -webkit-linear-gradient(bottom, #f9f9f9 0%, #ffffff 100%);
+  background-image: -ms-linear-gradient(bottom, #f9f9f9 0%, #ffffff 100%); }
 
 #div-visualization-panel p {
   font-size: 0.75em;

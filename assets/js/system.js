@@ -3,8 +3,7 @@ var eventGuideOffered = false;
 var eventGuideAccepted = false;
 
 guideTexts = {
-  A: 'To get the sum of two numbers, use the <span class=\'code-text\'>+</span> operator. You can assign the result to a variable using the <span class=\'code-text\'>=</span> operator.',
-  B: 'Use the <span class=\'code-text\'>return</span> keyword to return a value or a variable.'
+
 };
 expandNode = function(event) {
   var target = guideTexts[event];
@@ -112,11 +111,32 @@ function offerGuide() {
 function displayVisualization() {
   if (eventGuideAccepted) return;
   eventGuideAccepted = true;
-  $('#div-guide-panel').hide();
-  $('#div-visualization-panel').css('visibility', 'visible');
-  $('#div-visualization-text-panel').css('visibility', 'visible');
-  $('#div-visualization-text-panel > p').html(message_steps_description + '<br /><br />' + message_view_step_information);
-  mermaid.initialize({startOnLoad:true});
+
+  $.ajax({
+    url: data_baseUrl + 'services/guide',
+    type: 'post',
+    data: {
+      problem_id: data_problemId,
+      user_id: data_userId
+    },
+    dataType: 'json',
+    success: function(data) {
+      $('#div-guide-panel').hide();
+      $('#div-visualization-panel').css('visibility', 'visible');
+      $('#div-visualization-text-panel').css('visibility', 'visible');
+      $('#div-visualization-text-panel > p').html(message_steps_description + '<br /><br />' + message_view_step_information);
+      var hints = data.hints;
+      for (var i = 0; i < hints.length; i++) {
+        var split = hints[i].split('#');
+        var name = split[0];
+        guideTexts[name] = split[1];
+      }
+    }
+  });
+}
+
+function mermaidEvent(data) {
+  $('#div-visualization-text-panel p').html(guideTexts[data]);
 }
 
 var editor = CodeMirror(document.getElementById('editor'), {
