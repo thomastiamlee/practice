@@ -8,10 +8,10 @@ subtraction
 -To subtract two values, use the `-`` operator. You can store the result in a variable. For example:[LB]`s = a - b;``
 
 multiplication
--To add two values, use the `+`` operator. You can store the result in a variable. For example:[LB]`s = a * b;``
+-To add two values, use the `*`` operator. You can store the result in a variable. For example:[LB]`s = a * b;``
 
 division
--To divide two values, use the `+`` operator. You can store the result in a variable. For example:[LB]`s = a / b;``[LB]The `-`` operator ignores the remainder if the operands are integers.
+-To divide two values, use the `/`` operator. You can store the result in a variable. For example:[LB]`s = a / b;``[LB]The `/`` operator ignores the remainder if the operands are integers.
 
 modulo
 -To get the modulo, use the `%`` operator. You can store the result in a variable. For example:[LB]`s = a % b;``[LB]The `%`` operator divides the two integers but gets the remainder instead of the quotient.
@@ -20,19 +20,19 @@ equal
 -To compare if two values are equal, use an `if`` statement and the `==`` operator. For example:[LB]`if (a == b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
 
 notequal
--To compare if two values are equal, use an `if`` statement and the `==`` operator. For example:[LB]`if (a == b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
+-To compare if two values are equal, use an `if`` statement and the `!=`` operator. For example:[LB]`if (a != b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
 
 greater
--To compare if two values are equal, use an `if`` statement and the `==`` operator. For example:[LB]`if (a == b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
+-To compare if two values are equal, use an `if`` statement and the `>`` operator. For example:[LB]`if (a > b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
 
 less
--To compare if two values are equal, use an `if`` statement and the `==`` operator. For example:[LB]`if (a == b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
+-To compare if two values are equal, use an `if`` statement and the `<`` operator. For example:[LB]`if (a < b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
 
 greaterequal
--To compare if two values are equal, use an `if`` statement and the `==`` operator. For example:[LB]`if (a == b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
+-To compare if two values are equal, use an `if`` statement and the `>=`` operator. For example:[LB]`if (a >= b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
 
 lessequal
--To compare if two values are equal, use an `if`` statement and the `==`` operator. For example:[LB]`if (a == b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
+-To compare if two values are equal, use an `if`` statement and the `<=`` operator. For example:[LB]`if (a <= b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
 
 return
 -To return a value from a function, use the `return`` keyword. For example:[LB]`return s;``
