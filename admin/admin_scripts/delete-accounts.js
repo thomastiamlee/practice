@@ -1,16 +1,15 @@
 const fs = require('fs');
 var MongoClient = require('mongodb').MongoClient;
 
-// Connect to the db
-var numList =
+const START_ID = 101;
+
 
 MongoClient.connect("mongodb://localhost:27017", function (err, client) {
    if(err) throw err;
    var db = client.db('practice');
 
    //Write databse Insert/Update/Query code here..
-   db.collection('account', function (err, collection) {
-     
-     client.close();
-   });
+   var collection = db.collection('account');
+   collection.remove({user_id: { $gte: START_ID }});
+   client.close();
 });
