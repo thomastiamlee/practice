@@ -72,7 +72,7 @@ function generateBasicExercise(options) {
 		}
 		return {head: head, nodes: nodes};
 	}
-	
+
 	function assignParameters(head, nodes) {
 		var symbolMappings = [];
 		var inputVariables = [];
@@ -143,7 +143,7 @@ function generateBasicExercise(options) {
 				var targetIndex = freeIndices[Math.floor(Math.random() * freeIndices.length)];
 				current.attachInputOperand(variable, targetIndex);
 				if (inputVariables.indexOf(variable) == -1) {
-					symbolMappings.push({name: "I" + inputCounter, obj: variable});
+					symbolMappings.push({name: "A" + inputCounter, obj: variable});
 					inputVariables.push(variable);
 				}
 			}
@@ -169,10 +169,10 @@ function generateBasicExercise(options) {
 				current.setOperator(generateRandomOperator(current.type));
 			}
 		}
-		
+
 		return {head: head, symbols: symbolMappings, inputVariables: inputVariables, returnType: "integer"};
 	}
-	
+
 	var structure = generateStructure(complexity);
 	var exercise = assignParameters(structure.head, structure.nodes);
 	return exercise;
