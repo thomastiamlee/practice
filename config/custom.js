@@ -21,6 +21,6 @@ module.exports.custom = {
   // …
 
 	baseUrl: 'http://118.27.26.114/',
-	tempPath: '/home/azure2s/ftp/files/data',
-	dataPath: '/home/azure2s/ftp/files/temp'
+	tempPath: '/home/azure2s/ftp/files/temp',
+	dataPath: '/home/azure2s/ftp/files/data'
 };

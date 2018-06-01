@@ -44,7 +44,7 @@ function requestAffect() {
     success: function(data) {
       if (data.type == 'success') {
         if (data.confused == true) {
-          //offerGuide();
+          offerGuide();
         }
       }
     },
