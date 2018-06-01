@@ -19,14 +19,16 @@ function getServerTime() {
   return Date.now() - timeOffset;
 }
 
-function flushLog() {
+function flushLog(withAffect) {
   var toSend = sessionLog.splice(0, sessionLog.length);
   $.ajax({
     url: data_baseUrl + 'services/log',
     data: {log_data: toSend, session_id: sessionId, user_id: data_userId},
     type: 'POST',
     success: function(data) {
-      requestAffect();
+      if (withAffect) {
+        requestAffect();
+      }
     },
     error: function(data) {
       sessionLog.push({type: "corrupt", timestamp: getServerTime()});
@@ -40,7 +42,11 @@ function requestAffect() {
     data: {user_id: data_userId, session_id: sessionId},
     type: 'POST',
     success: function(data) {
-      console.log(data);
+      if (data.type == 'success') {
+        if (data.confused == true) {
+          offerGuide();
+        }
+      }
     },
     error: function(data) {
 
@@ -52,7 +58,7 @@ function initSession() {
   sessionLog = [{type: 'start', timestamp: getServerTime(), problem_id: data_problemId}];
   flushLog();
   setInterval(function() {
-    flushLog();
+    flushLog(true);
   }, 10000);
 }
 
@@ -257,7 +263,7 @@ function initializeSystem() {
           triggerPassed();
         }
         else {
-          sessionLog.push({type: "run_result", timestamp: getServerTime(), verdict: 'fail'});
+          sessionLog.push({type: "submit_result", timestamp: getServerTime(), verdict: 'fail'});
           triggerFailed();
         }
         flushLog();

@@ -22,5 +22,6 @@ module.exports.custom = {
 
 	baseUrl: 'http://118.27.26.114/',
 	tempPath: '/home/azure2s/temp',
-	dataPath: '/home/azure2s/data'
+	dataPath: '/home/azure2s/data',
+	classifierPath: ''
 };
