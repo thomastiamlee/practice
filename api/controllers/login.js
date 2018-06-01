@@ -50,6 +50,7 @@ module.exports = {
 			this.req.session.user_id = account.user_id;
 			this.req.session.email = account.email;
 			this.req.session.region = account.region;
+			this.req.session.group = account.group;
 			exits.success(sails.config.custom.baseUrl + 'mode');
 			return;
 		}

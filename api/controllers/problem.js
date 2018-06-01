@@ -49,6 +49,6 @@ module.exports = {
 
     var sessionId = await sails.helpers.initializeSession.with({user_id: this.req.session.user_id});
     var timeNow = Date.now();
-    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, languagePack: languagePack, problem: problem, session_id: sessionId, exercise_mode: 'logic', server_timestamp: timeNow});
+    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, group: this.req.session.group, languagePack: languagePack, problem: problem, session_id: sessionId, exercise_mode: 'logic', server_timestamp: timeNow});
   }
 }
