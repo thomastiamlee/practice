@@ -12,6 +12,7 @@
     "compile-run": "^1.2.2",
     "format-json": "^1.0.3",
     "grunt": "1.0.1",
+    "mongodb": "^3.1.0-beta4",
     "pegjs": "^0.10.0",
     "replaceall": "^0.1.6",
     "sails": "^1.0.0",
