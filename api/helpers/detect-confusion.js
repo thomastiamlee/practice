@@ -127,6 +127,7 @@ module.exports = {
     else {
 
       var completed = false;
+
       // Run classifier program
       compile_run.runFile(classifer_path, sequence, function (stdout, stderr, err) {
         completed = true;
