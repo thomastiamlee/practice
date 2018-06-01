@@ -20,12 +20,12 @@ module.exports = {
   fn: async function(inputs, exits) {
     var serverTime = Date.now();
     var interval = 20;
-    var target = sails.config.custom.dataPath + '/' + inputs.user_id + '/' + inputs.session_id + '.txt';
+    var target = sails.config.custom.dataPath + '/' + inputs.user_id + '/sessions/' + inputs.session_id + '/';
     if (!fs.existsSync(target)) {
 			exits.error({type: 'invalid', message: 'Invalid session ID'});
 			return;
 		}
-    var history = JSON.parse(fs.readFileSync(target, 'utf-8'));
+    var history = JSON.parse(fs.readFileSync(target + 'log.txt', 'utf-8'));
 
     function getRecentEvents(seconds, history) {
       var res = [];

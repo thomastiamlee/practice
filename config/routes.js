@@ -52,6 +52,8 @@ module.exports.routes = {
 
   'post /services/guide': 'services/guide',
 
+  'post /services/snap': 'services/snap',
+
   'post /services/affective': 'services/affective'
 
   /***************************************************************************

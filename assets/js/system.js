@@ -129,6 +129,23 @@ function offerGuide() {
   $('#div-guide-panel').slideDown(175);
 }
 
+function uploadSnap(snap) {
+  $.ajax({
+    url: data_baseUrl + 'services/snap',
+    type: 'post',
+    data: {
+      session_id: sessionId,
+      user_id: data_userId,
+      face_data: snap,
+      timestamp: getServerTime()
+    },
+    dataType: 'json',
+    success: function(data) {
+      console.log(data);
+    }
+  });
+}
+
 function displayVisualization() {
   if (eventGuideAccepted) return;
   eventGuideAccepted = true;

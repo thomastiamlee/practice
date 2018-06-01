@@ -12,7 +12,7 @@ module.exports = {
 		session_id: {
 			description: 'The ID assigned to this session (this is different from the session ID of the account)',
 			type: 'string',
-			require: true
+			required: true
 		},
 		user_id: {
 			type: 'string',
@@ -44,15 +44,15 @@ module.exports = {
 			exits.success({type: 'success', message: 'Log data is empty.'});
 			return;
 		}
-		var target = sails.config.custom.dataPath + '/' + this.req.session.user_id + '/' + inputs.session_id + '.txt';
+		var target = sails.config.custom.dataPath + '/' + this.req.session.user_id + '/sessions/' + inputs.session_id + '/';
 		if (!fs.existsSync(target)) {
 			exits.error({type: 'invalid', message: 'Invalid session ID'});
 			return;
 		}
-		var history = JSON.parse(fs.readFileSync(target, 'utf-8'));
+		var history = JSON.parse(fs.readFileSync(target + 'log.txt', 'utf-8'));
 		history = history.concat(inputs.log_data);
 		//sails.log.info(jsonformatter.lines(history));
-		fs.writeFileSync(target, jsonformatter.lines(history), 'utf-8');
+		fs.writeFileSync(target + 'log.txt', jsonformatter.lines(history), 'utf-8');
 		exits.success({type: 'success', message: 'Log data appended.'});
 		return;
 	}

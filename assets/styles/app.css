@@ -684,6 +684,11 @@
   width: 32px;
   margin: 0 auto; }
 
+#camera {
+  width: 320px;
+  height: 240px;
+}
+
 /* End of problem page */
 /*! normalize-scss | MIT/GPLv2 License | bit.ly/normalize-scss */
 /* Document

@@ -13,12 +13,14 @@ module.exports = {
   fn: async function(inputs, exits) {
     await sails.helpers.createUserDataDirectory.with({user_id: inputs.user_id});
 		var serverTimestamp = Date.now();
-    var target = sails.config.custom.dataPath + '/' + inputs.user_id + '/' + serverTimestamp + '.txt';
+    var target = sails.config.custom.dataPath + '/' + inputs.user_id + '/sessions/' + serverTimestamp + '/';
     if (fs.existsSync(target)) {
       return exits.error('Attempted to create a session that already exists.');
     }
     else {
-      fs.writeFileSync(target, '[]', 'utf-8');
+      fs.mkdirSync(target);
+      fs.writeFileSync(target + 'log.txt', '[]', 'utf-8');
+      fs.mkdirSync(target + 'snap');
       return exits.success(serverTimestamp);
     }
   }

@@ -76,7 +76,8 @@ module.exports = {
 
     /* Write the syntax exercise to the file. */
     if (!fs.existsSync(sails.config.custom.dataPath + '/' + inputs.user_id + '/syntax')) {
-      return exits.error('Directory does not exist.');
+      fs.mkdirSync(sails.config.custom.dataPath + '/' + inputs.user_id)
+      fs.mkdirSync(sails.config.custom.dataPath + '/' + inputs.user_id + '/syntax')
     }
     var path = sails.config.custom.dataPath + '/' + inputs.user_id + '/syntax';
     var max = 0;

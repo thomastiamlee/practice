@@ -153,6 +153,12 @@
 		</div>
 		<!-- End of submission modal -->
 
+		<!-- Hidden -->
+		<div id='camera'>
+
+		</div>
+		<!-- End of hidden -->
+
 		<!-- JQuery script -->
 		<script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous'></script>
 		<!-- End of JQuery script -->
@@ -170,6 +176,10 @@
 		<!-- Mermaid script -->
 		<script src='https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js'></script>
 		<!-- End of Mermaid script -->
+
+		<!-- WebcamJS script -->
+		<script src='<%- sails.config.custom.baseUrl %>js/webcam.min.js'></script>
+		<!-- End of WebcamJS script -->
 
 		<!-- Application scripts -->
 		<script>
@@ -192,10 +202,18 @@
 		<script>
 			$(document).ready(function() {
 				initializeSystem();
-				/*
-				<%- problem.flowchart %>
-				*/
+
 				mermaid.initialize({startOnLoad:true});
+				Webcam.attach('camera');
+
+				Webcam.on('load', function() {
+					setInterval(function() {
+						var snap = Webcam.snap(function(data) {
+								uploadSnap(data);
+						});
+					}, 1000)
+				});
+
 				/* Debugging purposes */
 				$(document).keydown(function(event) {
 					if (event.which == 113) {
