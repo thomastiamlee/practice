@@ -62,6 +62,26 @@ function initSession() {
   }, 10000);
 }
 
+function initAffdex() {
+  var divRoot = $("#affdex")[0];
+  detector = new affdex.CameraDetector(divRoot, 320, 240);
+  var faceMode = affdex.FaceDetectorMode.LARGE_FACES;
+  detector.addEventListener("onInitializeSuccess", function() {
+    console.log('affdex initialized!');
+  });
+  detector.addEventListener("onInitializeFailure", function() {
+    console.error("Error starting video.");
+  });
+
+  detector.detectAllExpressions();
+  detector.addEventListener("onImageResultsSuccess", affdexDetected);
+  detector.start();
+}
+
+function affdexDetected(data) {
+  console.log(data);
+}
+
 function clearTestOutput() {
   $('#div-console-panel').css('display', 'none');
   $('#div-console-panel').removeClass(['success', 'error', 'failure']);

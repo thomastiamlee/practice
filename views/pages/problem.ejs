@@ -157,6 +157,9 @@
 		<div id='camera'>
 
 		</div>
+		<div id='affdex'>
+
+		</div>
 		<!-- End of hidden -->
 
 		<!-- JQuery script -->
@@ -181,6 +184,10 @@
 		<script src='<%- sails.config.custom.baseUrl %>js/webcam.min.js'></script>
 		<!-- End of WebcamJS script -->
 
+		<!-- Affdex script -->
+
+		<!-- End of Affdex script -->
+		<script src="https://download.affectiva.com/js/3.2/affdex.js"></script>
 		<!-- Application scripts -->
 		<script>
 			data_baseUrl = '<%- sails.config.custom.baseUrl %>';
@@ -209,11 +216,12 @@
 				Webcam.on('load', function() {
 					setInterval(function() {
 						var snap = Webcam.snap(function(data) {
-								uploadSnap(data);
+								//uploadSnap(data);
 						});
 					}, 1000)
 				});
 
+				//initAffdex();
 				/* Debugging purposes */
 				$(document).keydown(function(event) {
 					if (event.which == 113) {
