@@ -13,6 +13,7 @@ sessionId = data_sessionId;
 testEnabled = true;
 submitEnabled = true;
 giveUpEnabled = true;
+detectingAffect = false;
 
 function getServerTime() {
   return Date.now() - timeOffset;
@@ -57,8 +58,11 @@ function initSession() {
   sessionLog = [{type: 'start', timestamp: getServerTime(), problem_id: data_problemId}];
   flushLog();
   setInterval(function() {
-    flushLog(true);
+    flushLog(detectingAffect);
   }, 10000);
+  setTimeout(function() {
+    detectingAffect = true;
+  }, 5000);
 }
 
 function initAffdex() {
@@ -77,7 +81,7 @@ function initAffdex() {
   detector.start();
 }
 
-var targetExpressions = ['dimpler', 'eyeWiden', 'mouthOpen'];
+var targetExpressions = ['browFurrow', 'eyeWiden', 'mouthOpen'];
 var lastLogged = -1;
 function affdexDetected(data) {
   if (data.length < 1) return;
@@ -91,6 +95,8 @@ function affdexDetected(data) {
   }
   lastLogged = now;
   var obj = {type: 'au', timestamp: now, au: res};
+  console.log(obj)
+
   sessionLog.push(obj);
 }
 
@@ -337,6 +343,10 @@ function initializeSystem() {
   $('#guide-deny-button').on('click', function() {
     $('#div-guide-panel').css('display', 'none');
     eventGuideOffered = false;
+    detectingAffect = false;
+    setTimeout(function() {
+      detectingAffect = true;
+    }, 30000);
   });
 
   timeOffset = Date.now() - data_serverTimestamp;

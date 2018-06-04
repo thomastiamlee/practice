@@ -1,6 +1,7 @@
 const fs = require('fs');
 const compile_run = require('compile-run');
 const classifer_path = 'api/app_modules/classifier/classifier.py';
+const classifer_au_path = 'api/app_modules/classifier/classifierau.py';
 
 module.exports = {
   friendlyName: 'Detect confusion',
@@ -58,6 +59,7 @@ module.exports = {
           submitFailed: false
         })
       }
+      var auFound = false;
       for (var i = 0; i < recent.length; i++) {
         var past = interval - Math.floor((serverTime - recent[i].timestamp) / 1000);
         if (past >= interval) past = interval - 1;
@@ -85,13 +87,23 @@ module.exports = {
           }
         }
         else if (recent[i].type == 'au') {
+          auFound = true;
           if (recent[i].au.mouthOpen >= 90) {
             information[past].mouthOpen = true;
+          }
+          if (recent[i].au.eyeWiden >= 90) {
+            information[past].eyeWiden = true;
+          }
+          if (recent[i].au.browFurrow >= 90) {
+            information[past].browFurrow = true;
           }
         }
       }
 
       var res = '';
+      var resBF = '';
+      var resEW = '';
+      var resMO = '';
       for (var i = 0; i < information.length; i++) {
         var current = information[i];
         var state = -1;
@@ -103,7 +115,7 @@ module.exports = {
           state = 3;
         }
         else if (current.compile) {
-          state = 6;
+          state = 4;
         }
         else if (current.remove) {
           state = 2;
@@ -111,18 +123,45 @@ module.exports = {
         else if (current.insert) {
           state = 1;
         }
-        else if (current.mouthOpen) {
-          state = 4;
-        }
         else {
           state = 0;
         }
-        res += state;
+        if (state > 0) {
+          res += state;
+          resBF += state;
+          resEW += state;
+          resMO += state;
+        }
+        else {
+          res += '0';
+          if (current.mouthOpen) {
+            resMO += '6';
+          }
+          else {
+            resMO += '0';
+          }
+          if (current.eyeWiden) {
+            resEW += '6';
+          }
+          else {
+            resEW += '0';
+          }
+          if (current.browFurrow) {
+            resBF += '6';
+          }
+          else {
+            resBF += '0';
+          }
+        }
+
         if (i != information.length - 1) {
           res += ',';
+          resMO += ',';
+          resEW += ',';
+          resBF += ',';
         }
       }
-      return res;
+      return {auFound: auFound, res: res, resMO: resMO, resEW: resEW, resBF};
     }
 
     var recent = getRecentEvents(interval, history);
@@ -131,35 +170,64 @@ module.exports = {
       return exits.success(false);
     }
     else {
-
       var completed = false;
-      sails.log.info(sequence);
-      // Run classifier program
-      compile_run.runFile(classifer_path, sequence, function (stdout, stderr, err) {
-        completed = true;
-        sails.log.info(stdout);
-        sails.log.info(stderr);
-        if(!err){
-          try {
-            var result = stdout.split('\n');
-            var verdict = result[0].trim();
-            var confidence = result[1].trim();
-          }
-          catch (error) {
-            sails.log.info('failed');
-            return exits.success(false);
-          }
-          if (verdict == 'yes' && confidence >= 2.0) {
-            return exits.success(true);
-          }
-          else {
-            return exits.success(false);
-          }
-        }
-        else{
+
+      if (sequence.auFound == false) {
+        if (sequence.res == null) {
           return exits.success(false);
         }
-      });
+        // Run classifier program
+        compile_run.runFile(classifer_path, sequence.res, function (stdout, stderr, err) {
+          completed = true;
+          sails.log.info(stdout);
+          sails.log.info(stderr);
+          if(!err){
+            try {
+              var verdict = stdout.trim();
+            }
+            catch (error) {
+              return exits.success(false);
+            }
+            if (verdict == 'yes') {
+              return exits.success(true);
+            }
+            else {
+              return exits.success(false);
+            }
+          }
+          else{
+            return exits.success(false);
+          }
+        });
+      }
+      else {
+        if (sequence.res == null) {
+          return exits.success(false);
+        }
+        // Run classifier program
+        compile_run.runFile(classifer_au_path, sequence.resBF + '\n' + sequence.resEW + '\n' + sequence.resMO, function (stdout, stderr, err) {
+          completed = true;
+          sails.log.info(stdout);
+          sails.log.info(stderr);
+          if(!err){
+            try {
+              var verdict = stdout.trim();
+            }
+            catch (error) {
+              return exits.success(false);
+            }
+            if (verdict == 'yes') {
+              return exits.success(true);
+            }
+            else {
+              return exits.success(false);
+            }
+          }
+          else{
+            return exits.success(false);
+          }
+        });
+      }
 
       setTimeout(function() {
         if (!completed) {
