@@ -1,11 +1,11 @@
+x = raw_input();
+
 import csv
 import sys
 import numpy as np
 import random
 from hmmlearn import hmm
 from sklearn.externals import joblib
-
-x = raw_input();
 
 arraystring = x
 test = arraystring.split(",")

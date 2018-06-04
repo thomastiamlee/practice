@@ -127,10 +127,12 @@ module.exports = {
     else {
 
       var completed = false;
-
+      sails.log.info(sequence);
       // Run classifier program
       compile_run.runFile(classifer_path, sequence, function (stdout, stderr, err) {
         completed = true;
+        sails.log.info(stdout);
+        sails.log.info(stderr);
         if(!err){
           var result = stdout.split('\n');
           var verdict = result[0].trim();

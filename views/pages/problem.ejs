@@ -29,8 +29,9 @@
 					</div>
 				</div>
 				<div class='cell small-3 medium-2'>
+
 					<% if (exercise_mode == 'syntax') { %>
-						<p id='solved-counter'><%- languagePack.solved_filter %>: <span id='solved-count'><%- syntax_solved %></span></p>
+						<p id='solved-counter'><span class="dot"></span><%- languagePack.solved_filter %>: <span id='solved-count'><%- syntax_solved %></span></p>
 					<% } %>
 				</div>
 				<div class='cell small-12 medium-5' id='div-problem-controls'>
@@ -229,7 +230,7 @@
 					}, 1000)
 				});
 
-				//initAffdex();
+				initAffdex();
 				/* Debugging purposes */
 				$(document).keydown(function(event) {
 					if (event.which == 113) {

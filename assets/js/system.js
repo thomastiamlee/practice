@@ -68,9 +68,11 @@ function initAffdex() {
   var faceMode = affdex.FaceDetectorMode.LARGE_FACES;
   detector.addEventListener("onInitializeSuccess", function() {
     console.log('affdex initialized!');
+    $('.dot').css('background-color', '#ff6969');
   });
   detector.addEventListener("onInitializeFailure", function() {
-    console.error("Error starting video.");
+    $('.dot').css('background-color', '#000000');
+    console.log('affdex failed!');
   });
 
   detector.detectAllExpressions();
