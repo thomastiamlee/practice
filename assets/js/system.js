@@ -62,7 +62,7 @@ function initSession() {
   }, 10000);
   setTimeout(function() {
     detectingAffect = true;
-  }, 5000);
+  }, 30000);
 }
 
 function initAffdex() {
