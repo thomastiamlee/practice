@@ -1,4 +1,3 @@
-/* Visualization functions */
 var eventGuideOffered = false;
 var eventGuideAccepted = false;
 
@@ -44,7 +43,7 @@ function requestAffect() {
     success: function(data) {
       if (data.type == 'success') {
         if (data.confused == true) {
-          //offerGuide();
+          offerGuide();
         }
       }
     },
@@ -67,12 +66,10 @@ function initAffdex() {
   detector = new affdex.CameraDetector(divRoot, 320, 240);
   var faceMode = affdex.FaceDetectorMode.LARGE_FACES;
   detector.addEventListener("onInitializeSuccess", function() {
-    console.log('affdex initialized!');
     $('.dot').css('background-color', '#ff6969');
   });
   detector.addEventListener("onInitializeFailure", function() {
     $('.dot').css('background-color', '#000000');
-    console.log('affdex failed!');
   });
 
   detector.detectAllExpressions();
@@ -80,8 +77,21 @@ function initAffdex() {
   detector.start();
 }
 
+var targetExpressions = ['dimpler', 'eyeWiden', 'mouthOpen'];
+var lastLogged = -1;
 function affdexDetected(data) {
-  console.log(data);
+  if (data.length < 1) return;
+  var now = Date.now();
+  if (now - lastLogged < 1000) return;
+  var res = {};
+  var face = data[0];
+  var expressions = face.expressions;
+  for (var i = 0; i < targetExpressions.length; i++) {
+    res[targetExpressions[i]] = expressions[targetExpressions[i]];
+  }
+  lastLogged = now;
+  var obj = {type: 'au', timestamp: now, au: res};
+  sessionLog.push(obj);
 }
 
 function clearTestOutput() {

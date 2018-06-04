@@ -14,17 +14,6 @@
     left: auto;
     margin: 0 auto; } }
 
-.dot {
-  position: relative;
-  top: 2px;
-  height: 16px;
-  width: 16px;
-  margin-right: 16px;
-  background-color: #bbbbbb;
-  border-radius: 50%;
-  display: inline-block;
-}
-
 /* Region Page */
 #div-region-panel {
   margin-top: 64px; }
@@ -394,6 +383,17 @@
 #solved-callout a {
   float: right; }
 
+.dot {
+  position: relative;
+  top: 2px;
+  height: 16px;
+  width: 16px;
+  margin-right: 16px;
+  background-color: #bbbbbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
 #div-problem-controls {
   text-align: right; }
 
@@ -698,6 +698,13 @@
 #camera {
   width: 320px;
   height: 240px;
+  visibility: hidden;
+  position: absolute;
+}
+
+#affdex {
+  visibility: hidden;
+  position: absolute;
 }
 
 /* End of problem page */

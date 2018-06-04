@@ -19,7 +19,7 @@ module.exports = {
   },
   fn: async function(inputs, exits) {
     var serverTime = Date.now();
-    var interval = 20;
+    var interval = 30;
     var target = sails.config.custom.dataPath + '/' + inputs.user_id + '/sessions/' + inputs.session_id + '/';
     if (!fs.existsSync(target)) {
 			exits.error({type: 'invalid', message: 'Invalid session ID'});
@@ -31,10 +31,12 @@ module.exports = {
       var res = [];
       var milliseconds = seconds * 1000;
       for (var i = history.length - 1; i >= 0; i--) {
+
         var current = history[i].timestamp;
+
         if (serverTime - current > milliseconds) break;
         var type = history[i].type;
-        if (type == 'document' || type == 'run_result' || type == 'submit_result') {
+        if (type == 'document' || type == 'run_result' || type == 'submit_result' || type == 'au') {
           res.unshift(history[i]);
         }
       }
@@ -56,7 +58,6 @@ module.exports = {
           submitFailed: false
         })
       }
-
       for (var i = 0; i < recent.length; i++) {
         var past = interval - Math.floor((serverTime - recent[i].timestamp) / 1000);
         if (past >= interval) past = interval - 1;
@@ -66,7 +67,7 @@ module.exports = {
           if (recent[i].changeObj.origin == '+input') {
             information[past].insert = true;
           }
-          else if (recent[i].changeObj.origin == '+input') {
+          else if (recent[i].changeObj.origin == '+remove') {
             information[past].remove = true;
           }
         }
@@ -83,6 +84,11 @@ module.exports = {
             information[past].submitFailed = true;
           }
         }
+        else if (recent[i].type == 'au') {
+          if (recent[i].au.mouthOpen >= 90) {
+            information[past].mouthOpen = true;
+          }
+        }
       }
 
       var res = '';
@@ -94,19 +100,19 @@ module.exports = {
           state = 5;
         }
         else if (current.compileError) {
-          state = 4;
+          state = 3;
         }
         else if (current.compile) {
           state = 6;
-        }
-        else if (current.insert && current.remove) {
-          state = 3;
         }
         else if (current.remove) {
           state = 2;
         }
         else if (current.insert) {
           state = 1;
+        }
+        else if (current.mouthOpen) {
+          state = 4;
         }
         else {
           state = 0;
@@ -134,10 +140,16 @@ module.exports = {
         sails.log.info(stdout);
         sails.log.info(stderr);
         if(!err){
-          var result = stdout.split('\n');
-          var verdict = result[0].trim();
-          var confidence = result[1].trim();
-          if (verdict == 'yes') {
+          try {
+            var result = stdout.split('\n');
+            var verdict = result[0].trim();
+            var confidence = result[1].trim();
+          }
+          catch (error) {
+            sails.log.info('failed');
+            return exits.success(false);
+          }
+          if (verdict == 'yes' && confidence >= 2.0) {
             return exits.success(true);
           }
           else {
