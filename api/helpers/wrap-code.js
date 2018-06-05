@@ -109,6 +109,7 @@ module.exports = {
     res += CLOSE_BRACKET;
     res += CLOSE_BRACKET;
 
+    // For Processing
     res = replaceall('float', 'double', res);
 
     return exits.success({code: res, offset: offset});

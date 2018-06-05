@@ -40,7 +40,10 @@ module.exports = {
       exits.invalidID();
       return;
     }
+
+    // For Processing
     problem.return_type = await sails.helpers.preprocessExerciseText.with({exercise_text: problem.return_type});
+    // For Processing
     for (var i = 0; i < problem.argument_types.length; i++) {
       problem.argument_types[i] = await sails.helpers.preprocessExerciseText.with({exercise_text: problem.argument_types[i]});
     }
