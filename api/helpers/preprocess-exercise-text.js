@@ -13,6 +13,8 @@ module.exports = {
   },
   fn: async function(inputs, exits) {
     var result = inputs.exercise_text;
+    // Reaplce all double with float
+    result = replaceall('double', 'float', result);
     // Replace all [LB] with a line break
     result = replaceall('[LB]', '<br />', result);
     // Replace all ` `` pairs with <span class='code-text'></span>

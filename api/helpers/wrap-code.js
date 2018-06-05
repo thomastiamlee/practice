@@ -1,4 +1,5 @@
 const fs = require('fs');
+const replaceall = require('replaceall');
 
 const IMPORT_STATEMENT = 'import java.io.*;\n';
 const CLASS_HEADER = 'public class Main {\n';
@@ -107,6 +108,8 @@ module.exports = {
     res += OUTPUT_STRING;
     res += CLOSE_BRACKET;
     res += CLOSE_BRACKET;
+
+    res = replaceall('float', 'double', res);
 
     return exits.success({code: res, offset: offset});
   }
