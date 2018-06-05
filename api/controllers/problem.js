@@ -50,6 +50,14 @@ module.exports = {
       return;
     }
 
+    // For Japanese language
+    if (this.req.session.region == 'jp') {
+      problem.task = problem.task_jp;
+      problem.title = problem.title_jp;
+      problem.assumptions = problem.assumptions_jp;
+      problem.flowchart = problem.flowchart_jp;      
+    }
+
     // For Processing
     problem.return_type = await sails.helpers.preprocessExerciseText.with({exercise_text: problem.return_type});
     // For Processing

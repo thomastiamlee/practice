@@ -89,6 +89,7 @@ config/local.js
 node_modules
 code
 data
+admin
 
 ################################################
 #
