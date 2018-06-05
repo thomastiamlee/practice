@@ -101,11 +101,11 @@ data = {
   },
   give_up: {
     en: 'Give Up',
-    jp: 'Give up'
+    jp: 'あきらめる'
   },
   forfeit: {
     en: 'Forfeit this problem and get a new one.',
-    jp: 'Forfeit this problem and get a new one.'
+    jp: 'この問題を諦めて新しい問題に行きましょう。'
   },
   function_returned: {
     en: 'Function returned: ',
@@ -120,7 +120,7 @@ data = {
     jp: 'コードの実行に失敗しました。もう一度お試しください。'
   },
   assumptions: {
-    en: 'Assumptions',
+    en: 'Notes',
     jp: 'ノート'
   },
   sample_output: {
@@ -181,23 +181,23 @@ data = {
   },
   instructions: {
     en: 'INSTRUCTIONS',
-    jp: 'INSTRUCTIONS'
+    jp: '説明書'
   },
   inst_1: {
     en: 'Complete the functions by translating the operations into code.',
-    jp: 'Complete the functions by translating the operations into code.'
+    jp: '動作をコードに変換して関数を作成しましょう。'
   },
   inst_2: {
     en: 'The system will give you a different problem every time.',
-    jp: 'The system will give you a different problem every time.'
+    jp: 'システムは毎回違う問題を出題します。'
   },
   inst_3: {
     en: 'If you are stuck you can give up to get a different problem.',
-    jp: 'If you are stuck you can give up to get a different problem.'
+    jp: '困ってしまった場合は、諦めて別の問題に行くことができます。'
   },
   number_solved: {
     en: 'Number of<br />problems<br />solved',
-    jp: 'Number of<br />problems<br />solved'
+    jp: '解けた<br />問題の数<br /> '
   },
   start: {
     en: 'START!',
