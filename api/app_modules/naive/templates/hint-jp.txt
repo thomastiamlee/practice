@@ -1,3 +1,6 @@
+declare
+-To declare a variable, write the data type followed by the name. Make sure the name is unique. For example:[LB]`int x;``
+
 assignment
 -To assign a value to a variable, use the `=`` operator. For example:[LB]`s = a;``[LB]In this case, `s`` will get the value of `a``.
 
@@ -20,19 +23,25 @@ equal
 -To compare if two values are equal, use an `if`` statement and the `==`` operator. For example:[LB]`if (a == b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
 
 notequal
--To compare if two values are equal, use an `if`` statement and the `!=`` operator. For example:[LB]`if (a != b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
+-To compare if two values are not equal, use an `if`` statement and the `!=`` operator. For example:[LB]`if (a != b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
 
 greater
--To compare if two values are equal, use an `if`` statement and the `>`` operator. For example:[LB]`if (a > b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
+-To compare if one value is greater than another value, use an `if`` statement and the `>`` operator. For example:[LB]`if (a > b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
 
 less
--To compare if two values are equal, use an `if`` statement and the `<`` operator. For example:[LB]`if (a < b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
+-To compare if one value is less than another value, use an `if`` statement and the `<`` operator. For example:[LB]`if (a < b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
 
 greaterequal
--To compare if two values are equal, use an `if`` statement and the `>=`` operator. For example:[LB]`if (a >= b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
+-To compare if one value is greater than or equal to another value, use an `if`` statement and the `>=`` operator. For example:[LB]`if (a >= b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
 
 lessequal
--To compare if two values are equal, use an `if`` statement and the `<=`` operator. For example:[LB]`if (a <= b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
+-To compare if one value is less than or equal to another value, use an `if`` statement and the `<=`` operator. For example:[LB]`if (a <= b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
 
 return
 -To return a value from a function, use the `return`` keyword. For example:[LB]`return s;``
+
+looparray
+-To loop through each element of the array, you can use a for loop in which `i`` starts at 0. In each loop, increment `i`` by 1 until the end of the array. For example:[LB]`for (int i = 0; i < arr.length; i++) {``[LB]`  // write your code here``[LB]`}``
+
+whileequal
+-To execute something as long as a condition is true, use a `while`` statement. For example:[LB]`while (a == b) {``[LB]`  // do while true``[LB]`}``
