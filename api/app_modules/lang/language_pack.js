@@ -37,7 +37,7 @@ data = {
   },
   lost_password: {
     en: 'If you lost your login credentials, please send an email to kaoru-lab@fun.ac.jp.',
-    jp: 'パスワードを紛失した場合は、kaoru-lab@fun.ac.jp までメールしてください。'
+    jp: 'パスワードを紛失した場合は、kaoru-lab@fun.ac.jpまでメールしてください。'
   },
   change_language: {
     en: '別の言語を選択してください。',
@@ -53,11 +53,11 @@ data = {
   },
   syntax_practice: {
     en: 'Syntax Practice',
-    jp: '構文演習'
+    jp: '構文演習モード'
   },
   logic_practice: {
     en: 'Logic Practice',
-    jp: '論理演習'
+    jp: '論理演習モード'
   },
   syntax_practice_description: {
     en: 'In this mode, you can practice the syntax of the programming language. You have to translate the given statements into the appropriate programming constructs. The problems change every time so you can keep on practicing!',
@@ -69,11 +69,11 @@ data = {
   },
   solved_filter: {
     en: 'Solved',
-    jp: '合格済み'
+    jp: '合格済'
   },
   unsolved_filter: {
     en: 'Unsolved',
-    jp: '未合格'
+    jp: '未着手'
   },
   all_filter: {
     en: 'All',
@@ -89,7 +89,7 @@ data = {
   },
   run_message: {
     en: 'You can test your code here.',
-    jp: 'ここでコードをテストすることができます。'
+    jp: 'ここでコードをテストできます。'
   },
   run_code: {
     en: 'Run',
@@ -105,7 +105,7 @@ data = {
   },
   forfeit: {
     en: 'Forfeit this problem and get a new one.',
-    jp: 'この問題を諦めて新しい問題に行きましょう。'
+    jp: 'この問題をギブアップして新しい問題に行きましょう。'
   },
   function_returned: {
     en: 'Function returned: ',
@@ -157,7 +157,7 @@ data = {
   },
   submission_correct: {
     en: 'Congratulations! Your code is correct.',
-    jp: 'おめでとう！コードは正常に処理されました！'
+    jp: 'おめでとう！コードは正解です。'
   },
   next_problem: {
     en: 'Next problem',
@@ -173,7 +173,7 @@ data = {
   },
   already_solved: {
     en: 'You already solved this problem.',
-    jp: 'あなたはすでにこの問題を合格しました。'
+    jp: 'すでにこの問題は合格しています。'
   },
   steps_description: {
     en: 'These are the steps you need to solve this problem.',
@@ -181,19 +181,19 @@ data = {
   },
   instructions: {
     en: 'INSTRUCTIONS',
-    jp: '説明書'
+    jp: '説明'
   },
   inst_1: {
     en: 'Complete the functions by translating the operations into code.',
     jp: '動作をコードに変換して関数を作成しましょう。'
   },
   inst_2: {
-    en: 'The system will give you a different problem every time.',
-    jp: 'システムは毎回違う問題を出題します。'
+    en: 'The system will give you a <span class=\'red\'>different problem</span> every time.',
+    jp: 'システムは毎回<span class=\'red\'>違う問題</span>を出題します。'
   },
   inst_3: {
     en: 'If you are stuck you can give up to get a different problem.',
-    jp: '困ってしまった場合は、諦めて別の問題に行くことができます。'
+    jp: '困ってしまった場合は、ギブアップして別の問題に行くことができます。'
   },
   number_solved: {
     en: 'Number of<br />problems<br />solved',

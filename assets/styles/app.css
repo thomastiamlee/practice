@@ -14,6 +14,10 @@
     left: auto;
     margin: 0 auto; } }
 
+.red {
+  color: red;
+}
+
 /* Agreement Page */
 #div-agreement-panel {
   margin-top: 64px; }
