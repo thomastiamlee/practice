@@ -217,6 +217,7 @@ function displayVisualization() {
 function mermaidEvent(data) {
   $('#div-visualization-text-panel p').html(guideTexts[data]);
   sessionLog.push({type: "view_hint", timestamp: getServerTime(), step: data});
+  console.log(guideTexts);
   flushLog();
 }
 

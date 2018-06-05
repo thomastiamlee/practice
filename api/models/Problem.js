@@ -14,6 +14,7 @@ module.exports = {
 		test_case_inputs: { type: 'json', columnType: 'array' },
 		test_case_outputs: { type: 'json', columnType: 'array' },
 		flowchart: { type: 'string' },
-		flowchart_jp: { type: 'string' }
+		flowchart_jp: { type: 'string' },
+		guide_key: { type: 'json', columnType: 'array' }
 	}
 }
