@@ -6,6 +6,7 @@ module.exports = {
 		region: { type: 'string', required: true },
 		group: {type: 'string', required: true },
 		syntax_solved: { type: 'number', required: true },
-		current_syntax_problem: { type: 'number', required: true }
+		current_syntax_problem: { type: 'number', required: true },
+		agreement: { type: 'string', required: true }
 	}
 }

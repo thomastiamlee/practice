@@ -30,6 +30,10 @@ module.exports.routes = {
 
 	'/login/:region': 'login',
 
+  'get /agreement': 'agreement',
+
+  'get /agree': 'agree',
+
   'get /mode': 'mode',
 
   'get /select': 'select',
