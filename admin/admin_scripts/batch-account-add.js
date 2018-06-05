@@ -1,8 +1,8 @@
 const fs = require('fs');
 var MongoClient = require('mongodb').MongoClient;
 
-const ADAPTIVE_TARGET = 'adaptive_extracted.txt';
-const PLAIN_TARGET = 'plain_extracted.txt';
+const ADAPTIVE_TARGET = 'adaptive.txt';
+const PLAIN_TARGET = 'plain.txt';
 const START_ID = 101;
 const REGION = 'jp';
 
@@ -22,11 +22,12 @@ MongoClient.connect("mongodb://localhost:27017", function (err, client) {
      var current = adaptive[i].split(' ');
      var email = current[0];
      var password = current[1];
+		 var userId = current[2];
 
      var user = {
        email: email,
        password: password,
-       user_id: id,
+       user_id: userId,
        region: REGION,
        syntax_solved: 0,
        current_syntax_problem: -1,

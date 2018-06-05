@@ -17,7 +17,7 @@ module.exports = {
       return;
     }
 
-    problemId = await sails.helpers.generateSyntaxExercise.with({language: this.req.session.region, complexity: 1, user_id: this.req.session.user_id})
+    problemId = await sails.helpers.generateSyntaxExercise.with({language: this.req.session.region, complexity: Math.floor(Math.random() * 4) + 1, user_id: this.req.session.user_id})
     await Account.update({user_id: this.req.session.user_id}).set({current_syntax_problem: problemId})
 
     exits.success('syntax');
