@@ -358,10 +358,7 @@ module.exports = {
   * > https://sailsjs.com/config/*#?sailsconfigssl                          *
   *                                                                         *
   **************************************************************************/
-  ssl: {
-    key: '/etc/letsencrypt/live/fun-programming.work/privkey.pem',
-    cert: '/etc/letsencrypt/live/fun-programming.work/fullchain.pem'
-  },
+
 
 
 
