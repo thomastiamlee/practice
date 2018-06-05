@@ -55,20 +55,20 @@ module.exports = {
 
     if (inputs.f == 's') {
       var filter = 's';
-      var problems = await Problem.find({select: ['problem_id', 'title'], where: {problem_id: solved}}).sort([{ problem_id: 'ASC' }]).limit(10).skip(inputs.p * ITEMS_PER_PAGE);
+      var problems = await Problem.find({select: ['problem_id', 'title', 'title_jp'], where: {problem_id: solved}}).sort([{ problem_id: 'ASC' }]).limit(10).skip(inputs.p * ITEMS_PER_PAGE);
       var count = await Problem.count({where: {problem_id: solved}});
     }
     else if (inputs.f == 'u') {
       var filter = 'u';
-      var problems = await Problem.find({select: ['problem_id', 'title'], where: {problem_id: {'!=': solved}}}).sort([{ problem_id: 'ASC' }]).limit(10).skip(inputs.p * ITEMS_PER_PAGE);
+      var problems = await Problem.find({select: ['problem_id', 'title', 'title_jp'], where: {problem_id: {'!=': solved}}}).sort([{ problem_id: 'ASC' }]).limit(10).skip(inputs.p * ITEMS_PER_PAGE);
       var count = await Problem.count({where: {problem_id: {'!=': solved}}});
     }
     else {
       var filter = 'a';
-      var problems = await Problem.find({select: ['problem_id', 'title']}).sort([{ problem_id: 'ASC' }]).limit(10).skip(inputs.p * ITEMS_PER_PAGE);
+      var problems = await Problem.find({select: ['problem_id', 'title', 'title_jp']}).sort([{ problem_id: 'ASC' }]).limit(10).skip(inputs.p * ITEMS_PER_PAGE);
       var count = await Problem.count();
     }
 
-    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, languagePack: languagePack, problems: problems, solved: solved, count: count, page: inputs.p, filter: filter });
+    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, region: this.req.session.region, languagePack: languagePack, problems: problems, solved: solved, count: count, page: inputs.p, filter: filter });
   }
 }

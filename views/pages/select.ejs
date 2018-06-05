@@ -34,7 +34,13 @@
 									<% } %>
 								</td>
 								<td class='problem-number-column'><%- problems[i].problem_id %></td>
-								<td class='problem-title-column'><%- problems[i].title %></td>
+								<td class='problem-title-column'>
+									<% if (region == 'en') { %>
+										<%- problems[i].title %>
+									<% } else { %>
+										<%- problems[i].title_jp %>
+									<% } %>
+								</td>
 							</tr>
 						<% } %>
 					</table>
