@@ -22,7 +22,7 @@ MongoClient.connect("mongodb://localhost:27017", function (err, client) {
      var current = adaptive[i].split(' ');
      var email = current[0];
      var password = current[1];
-		 var userId = current[2];
+		 var userId = parseInt(current[2].trim());
 
      var user = {
        email: email,
@@ -31,7 +31,8 @@ MongoClient.connect("mongodb://localhost:27017", function (err, client) {
        region: REGION,
        syntax_solved: 0,
        current_syntax_problem: -1,
-       group: 'adaptive'
+       group: 'adaptive',
+			 agreement: 'no'
      };
      collection.insert(user);
      id++;
@@ -42,15 +43,17 @@ MongoClient.connect("mongodb://localhost:27017", function (err, client) {
      var current = plain[i].split(' ');
      var email = current[0];
      var password = current[1];
+		 var userId = parseInt(current[2].trim());
 
      var user = {
        email: email,
        password: password,
-       user_id: id,
+       user_id: userId,
        region: REGION,
        syntax_solved: 0,
        current_syntax_problem: -1,
-       group: 'plain'
+       group: 'plain',
+			 agreement: 'no'
      };
      collection.insert(user);
      id++;

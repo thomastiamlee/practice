@@ -16,11 +16,15 @@ module.exports = {
 			description: 'Can choose region',
 			responseType: 'view',
 			viewTemplatePath: 'pages/region'
+		},
+		loggedIn: {
+			description: 'Already logged in',
+			responseType: 'redirect'
 		}
 	},
 	fn: async function(inputs, exits) {
 		if (this.req.session.user_id) {
-			exits.success('mode');
+			exits.loggedIn('mode');
 			return;
 		}
 

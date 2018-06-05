@@ -202,6 +202,42 @@ data = {
   start: {
     en: 'START!',
     jp: 'スタート！'
+  },
+  notice: {
+    en: 'NOTICE',
+    jp: '承諾事項'
+  },
+  preamble_1: {
+    en: 'This application for programming practice is part of a research study by D1 student Thomas Tiam-Lee from Kaoru Sumi Laboratory of Future University Hakodate. Thomas\'s research is about using technology to improve programming education. You are free to use this system for as long as you wish within the specified period.',
+    jp: 'このプログラミング練習システムは，公立はこだて未来大学 角薫研究室の研究の一環として行われます．この研究は，プログラミング教育を改善するための技術に関するものです．指定した期間内であれば，このシステムを自由に利用することができます．'
+  },
+  preamble_2: {
+    en: 'By using this application, you give your consent and agree to the following terms:',
+    jp: 'このシステムを使用することにより、利用者は以下の事項と条件に同意することになります．'
+  },
+  terms_1: {
+    en: 'You are not allowed to use other people\'s accounts and you are not allowed to let other people use your account.',
+    jp: '利用者は他人のアカウントを使用することは許されておらず，他人に自分のアカウントを使用させることは許されていません．'
+  },
+  terms_2: {
+    en: 'If you have friends who want to use the system but were not given an account, please send an email to kaoru-lab@fun.ac.jp.',
+    jp: '本システムを利用したいにも拘わらず，アカウントを持っていない友人がいる場合は，kaoru-lab@fun.ac.jpまで電子メールを送ってください．'
+  },
+  terms_3: {
+    en: 'This system logs your coding history data (typing and submissions), which will be used for research purposes.',
+    jp: '本システムは、研究目的で使用されるコーディングに関する履歴データ（入力と提出）を記録します．'
+  },
+  terms_4: {
+    en: 'This system may also use your PC or laptop\'s webcam to record your facial expressions while you are coding. If you have a camera, please grant access to the application when prompted. Take note that you can still use the system even if you don\'t have a camera.',
+    jp: '本システムでは，PCやノートパソコンのWebカメラを使用して、コーディング中に表情を記録することもあります．カメラを持っている場合は、プロンプトが表示されたらアプリケーションにアクセス権を与えてください．カメラを持っていなくてもシステムを使用できることに注意してください．'
+  },
+  terms_5: {
+    en: 'All data collected from you, including typing and video data, will be treated as confidential and strictly for research purposes only.',
+    jp: '入力データやビデオデータを含め、お客様から収集された全てのデータは機密扱いとなり，個人情報は保護され，研究目的でのみ扱われます．'
+  },
+  agree_terms: {
+    en: 'I agree with the terms.',
+    jp: '同意する'
   }
 }
 

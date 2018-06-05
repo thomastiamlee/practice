@@ -8,28 +8,24 @@
 		<div class='grid-container'>
 			<div class='grid-x'>
 				<div id='div-agreement-panel' class='cell small-12 medium-6 medium-offset-3'>
-					<h4 id='agreement-header' class='text-center'>NOTICE</h4>
+					<h4 id='agreement-header' class='text-center'><%- languagePack.notice %></h4>
 					<div id='div-agreement-text'>
-						<p>This application for programming practice is part of a research study by D1 student Thomas Tiam-Lee from Kaoru Sumi Laboratory
-							of Future University Hakodate. Thomas's research is about using technology to improve programming education. You are free to use
-							this system for as long as you wish within the specified period.</p>
+						<p><%- languagePack.preamble_1 %></p>
 
-						<p>By using this application, you give your consent and agree to the following terms:</p>
+						<p><%- languagePack.preamble_2 %></p>
 
 						<ul>
-							<li>You are not allowed to use other people's accounts and you are not allowed to let other people use your account.</li>
-							<li>If you have friends who want to use the system but were not given an account, please send an email to kaoru-lab@fun.ac.jp.</li>
-							<li>This system logs your coding history data (typing and submissions), which will be used for research purposes.</li>
-							<li>This system may also use your PC or laptop's webcam to record your facial expressions while you are coding. If you have
-								a camera, please grant access to the application when prompted. Take note that you can still use the system even if you don't
-								have a camera.</li>
-							<li>All data collected from you, including typing and video data, will be treated as confidential and strictly for research purposes only.</li>
+							<li><%- languagePack.terms_1 %></li>
+							<li><%- languagePack.terms_2 %></li>
+							<li><%- languagePack.terms_3 %></li>
+							<li><%- languagePack.terms_4 %></li>
+							<li><%- languagePack.terms_5 %></li>
 						</ul>
 					</div>
 				</div>
 				<div id='div-agreement-control-panel' class='cell small-12 medium-6 medium-offset-3'>
 					<a href='<% sails.config.custom.baseUrl %>agree' id='agree-button'>
-						<h4>I agree with the terms</h4>
+						<h4><%- languagePack.agree_terms %></h4>
 					</a>
 				</div>
 			</div>
