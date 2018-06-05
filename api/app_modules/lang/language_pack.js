@@ -17,7 +17,7 @@ data = {
   },
   login_header: {
     en: 'CODING PRACTICE LOGIN',
-    jp: 'プログラム演習にログインする'
+    jp: 'プログラミング演習にログインする'
   },
   email: {
     en: 'Email',
@@ -36,12 +36,12 @@ data = {
     jp: 'ログイン'
   },
   lost_password: {
-    en: 'If you lost your login credentials, please send an email to g3117002@fun.ac.jp.',
-    jp: 'パスワードを紛失した場合は、g3117002@fun.ac.jpまでメールしてください。'
+    en: 'If you lost your login credentials, please send an email to kaoru-lab@fun.ac.jp.',
+    jp: 'パスワードを紛失した場合は、kaoru-lab@fun.ac.jp までメールしてください。'
   },
   change_language: {
-    en: 'Choose a different language.',
-    jp: '別の言語を選択してください。'
+    en: '別の言語を選択してください。',
+    jp: 'Choose a different language.'
   },
   invalid_login: {
     en: 'No account with that email and password exists. Please try again.',
@@ -65,7 +65,7 @@ data = {
   },
   logic_practice_description: {
     en: 'In this mode, you can practice writing programs for all sorts of situations. You have to think of the right operations to perform the given tasks. There are many problems to solve so try and challenge them all!',
-    jp: 'このモードでは、さまざまな状況のプログラムを書くことができます。あなたは、与えられた課題を解決するために正しいコーディングについて考える必要があります。多くの演習問題がありますので、すべて試してみてください！'
+    jp: 'このモードでは、さまざまな状況のプログラムを書くことができます。与えられた課題を解決するために正しいコーディングについて考える必要があります。多くの演習問題がありますので、すべて試してみてください！'
   },
   solved_filter: {
     en: 'Solved',
@@ -101,7 +101,7 @@ data = {
   },
   give_up: {
     en: 'Give Up',
-    jp: 'あきらめる'
+    jp: 'ギブアップ'
   },
   forfeit: {
     en: 'Forfeit this problem and get a new one.',
