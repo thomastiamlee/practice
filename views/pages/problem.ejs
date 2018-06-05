@@ -24,7 +24,7 @@
     <div id='div-code' class='grid-container'>
 			<div class='grid-x'>
 				<div class='cell small-9 medium-5'>
-					<div id='solved-callout' class="callout success">
+					<div id='solved-callout' class="callout success <% if (exercise_mode == 'logic' && problem_solved) { %>yes<% } %>">
 					  <p><%- languagePack.already_solved; %></p>
 					</div>
 				</div>

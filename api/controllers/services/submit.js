@@ -32,6 +32,12 @@ module.exports = {
 				await Account.update({user_id: userId}).set({syntax_solved: account.syntax_solved + 1});
 				await Account.update({user_id: userId}).set({current_syntax_problem: -1});
 			}
+			else {
+				var solved = await Solve.findOne({user_id: userId, problem_id: problemId});
+				if (!solved) {
+					await Solve.create({user_id: userId, problem_id: problemId});
+				}
+			}
 		}
 
 		if (!this.req.session.user_id) {

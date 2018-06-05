@@ -425,6 +425,10 @@
   visibility: hidden;
   margin-bottom: 8px; }
 
+#solved-callout.yes {
+  visibility: visible;
+}
+
 #solved-callout p {
   margin-bottom: 2px;
   font-size: 12pt;

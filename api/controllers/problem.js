@@ -55,7 +55,7 @@ module.exports = {
       problem.task = problem.task_jp;
       problem.title = problem.title_jp;
       problem.assumptions = problem.assumptions_jp;
-      problem.flowchart = problem.flowchart_jp;      
+      problem.flowchart = problem.flowchart_jp;
     }
 
     // For Processing
@@ -71,8 +71,16 @@ module.exports = {
 
     problem.flowchart = replaceall('#', '\n', problem.flowchart);
 
+    var solved = await Solve.findOne({user_id: this.req.session.user_id, problem_id: problem.problem_id});
+    if (solved) {
+      var problem_solved = true;
+    }
+    else {
+      var problem_solved = false;
+    }
+
     var sessionId = await sails.helpers.initializeSession.with({user_id: this.req.session.user_id});
     var timeNow = Date.now();
-    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, group: this.req.session.group, languagePack: languagePack, problem: problem, session_id: sessionId, exercise_mode: 'logic', server_timestamp: timeNow});
+    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, group: this.req.session.group, languagePack: languagePack, problem: problem, problem_solved: problem_solved, session_id: sessionId, exercise_mode: 'logic', server_timestamp: timeNow});
   }
 }
