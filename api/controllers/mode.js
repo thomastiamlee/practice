@@ -22,7 +22,7 @@ module.exports = {
       return;
     }
     var account = await Account.findOne({user_id: this.req.session.user_id});
-    if (account.agreement == 'no') {
+    if (account && account.agreement == 'no') {
       exits.agreement('agreement');
       return;
     }
