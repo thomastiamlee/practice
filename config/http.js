@@ -35,6 +35,7 @@ module.exports.http = {
        'bodyParser',
        'compress',
        'poweredBy',
+       'requireHttps',
        'router',
        'www',
        'favicon',
@@ -54,6 +55,14 @@ module.exports.http = {
        var middlewareFn = skipper({ strict: true, limit: '50mb', parameterLimit: 1000000 });
        return middlewareFn;
      })(),
+
+     requireHttps: function(req, res, next) {
+       if (req.get('host') == 'localhost') return next();
+      if (!req.secure) {
+        return res.redirect('https://' + req.get('host') + req.url);
+      }
+      return next();
+    }
 
   },
 
