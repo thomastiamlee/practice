@@ -358,11 +358,6 @@ module.exports = {
   * > https://sailsjs.com/config/*#?sailsconfigssl                          *
   *                                                                         *
   **************************************************************************/
-  ssl: {
-    key: require('fs').readFileSync('/home/azure2s/ssl/private.key'),
-    cert: require('fs').readFileSync('/home/azure2s/ssl/certificate.crt')
-  },
-
 
 
   /**************************************************************************

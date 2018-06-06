@@ -10,6 +10,7 @@
     "@sailshq/socket.io-redis": "^5.2.0",
     "async": "2.0.1",
     "compile-run": "^1.2.2",
+    "connect-mongo": "1.1.0",
     "format-json": "^1.0.3",
     "grunt": "1.0.1",
     "mongodb": "^3.1.0-beta4",
