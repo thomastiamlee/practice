@@ -251,9 +251,8 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
      onlyAllowOrigins: [
-       'http://localhost'
-      // 'https://fun-programming.work',
-     //  'http://fun-programming.work',
+       'https://fun-programming.work',
+       'http://fun-programming.work'
      ],
 
 
