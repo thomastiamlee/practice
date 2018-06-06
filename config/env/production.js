@@ -361,7 +361,7 @@ module.exports = {
   ssl: {
     key: require('fs').readFileSync('/home/azure2s/ssl/ssl.key'),
     cert: require('fs').readFileSync('/home/azure2s/ssl/certificate.crt')
-  }
+  },
 
 
 
