@@ -252,7 +252,9 @@ module.exports = {
     ***************************************************************************/
      onlyAllowOrigins: [
        'https://fun-programming.work',
-       'http://fun-programming.work'
+       'http://fun-programming.work',
+       'http://localhost',
+       'https://localhost'
      ],
 
 
@@ -372,7 +374,7 @@ module.exports = {
   *                                                                         *
   ***************************************************************************/
   custom: {
-    baseUrl: 'https://fun-programming.work.com/',
+    baseUrl: 'https://fun-programming.work/',
     internalEmailAddress: 'kaoru-lab@gmail.com',
 
     // mailgunDomain: 'mg.example.com',
