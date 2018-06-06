@@ -358,7 +358,10 @@ module.exports = {
   * > https://sailsjs.com/config/*#?sailsconfigssl                          *
   *                                                                         *
   **************************************************************************/
-
+  ssl: {
+    key: require('fs').readFileSync('/home/azure2s/ssl/ssl.key'),
+    cert: require('fs').readFileSync('/home/azure2s/ssl/certificate.crt')
+  }
 
 
 
@@ -371,8 +374,8 @@ module.exports = {
   *                                                                         *
   ***************************************************************************/
   custom: {
-    baseUrl: 'https://example.com',
-    internalEmailAddress: 'support@example.com',
+    baseUrl: 'https://fun-programming.work.com',
+    internalEmailAddress: 'kaoru-lab@gmail.com',
 
     // mailgunDomain: 'mg.example.com',
     // mailgunSecret: 'key-prod_fake_bd32301385130a0bafe030c',
