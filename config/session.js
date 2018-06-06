@@ -36,7 +36,4 @@ module.exports.session = {
   //   return !!req.path.match(req._sails.LOOKS_LIKE_ASSET_RX);
   // },
 
-adapter: 'connect-mongo',
-url: 'mongodb://localhost:27017/session'
-
 };

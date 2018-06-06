@@ -10,7 +10,7 @@
  */
 
 module.exports.sockets = {
-  onlyAllowOrigins: ["http://www.fun-programming.work", "http://fun-programming.work"]
+  
   /***************************************************************************
   *                                                                          *
   * `transports`                                                             *
