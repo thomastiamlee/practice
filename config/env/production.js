@@ -358,7 +358,10 @@ module.exports = {
   * > https://sailsjs.com/config/*#?sailsconfigssl                          *
   *                                                                         *
   **************************************************************************/
-
+  ssl: {
+     key: require("fs").readFileSync("/etc/letsencrypt/live/fun-programming.work/privkey.pem"),
+     cert: require("fs").readFileSync("/etc/letsencrypt/live/fun-programming.work/cert.pem")
+  },
 
   /**************************************************************************
   *                                                                         *
