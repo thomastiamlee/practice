@@ -60,7 +60,7 @@ module.exports = {
 			var testCaseInputs = problem.test_case_inputs;
 			var testCaseOutputs = problem.test_case_outputs;
 			for (var i = 0; i < testCaseInputs.length; i++) {
-				testCaseInputs[i] = testCaseInputs[i].split(',');
+				testCaseInputs[i] = testCaseInputs[i].split(/\,\s?(?![^{]*})/);
 			}
 		}
 		var wrapped = await sails.helpers.wrapCode.with({code: inputs.code, user_id: inputs.user_id, problem_id: inputs.problem_id, test_cases: testCaseInputs});

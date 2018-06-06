@@ -1,6 +1,6 @@
 module.exports = {
 	attributes: {
-		user_id: { type: 'string', required: true },
-		problem_id: { type: 'string', required: true }
+		user_id: { type: 'number', required: true },
+		problem_id: { type: 'number', required: true }
 	}
 }

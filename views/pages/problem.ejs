@@ -91,7 +91,7 @@
 					<div id='div-test-panel'>
 						<div>
 							<% for (var i = 0; i < problem.argument_types.length; i++) { %>
-								<div class='test-input'><label class='code-text'><%- problem.argument_names[i] %></label><input class='test-input-field' type='text' value='<%- problem.test_case_inputs[0].split(',')[i] %>' /></div>
+								<div class='test-input'><label class='code-text'><%- problem.argument_names[i] %></label><input class='test-input-field' type='text' value='<%- problem.test_case_inputs[0].split(/\,\s?(?![^{]*})/)[i] %>' /></div>
 							<% } %>
 							<a class='test-panel-button' id='test-button' href='#'><%- languagePack.run_code; %></a>
 						</div>
