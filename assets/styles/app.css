@@ -18,6 +18,12 @@
   color: red;
 }
 
+.special {
+  background-color: #e1ff87;
+  padding: 10px;
+  border: 1px solid black;
+}
+
 /* Agreement Page */
 #div-agreement-panel {
   margin-top: 64px; }
@@ -615,11 +621,12 @@
   display: inline;
   padding: 8px 12px;
   margin-right: 12px;
-  background-image: linear-gradient(bottom, #481760 0%, #551b72 100%);
-  background-image: -o-linear-gradient(bottom, #481760 0%, #551b72 100%);
-  background-image: -moz-linear-gradient(bottom, #481760 0%, #551b72 100%);
-  background-image: -webkit-linear-gradient(bottom, #481760 0%, #551b72 100%);
-  background-image: -ms-linear-gradient(bottom, #481760 0%, #551b72 100%);
+  color: #000;
+  background-image: linear-gradient(bottom, #ccc3db 0%, #e2d7f4 100%);
+  background-image: -o-linear-gradient(bottom, #ccc3db 0%, #e2d7f4 100%);
+  background-image: -moz-linear-gradient(bottom, #ccc3db 0%, #e2d7f4 100%);
+  background-image: -webkit-linear-gradient(bottom, #ccc3db 0%, #e2d7f4 100%);
+  background-image: -ms-linear-gradient(bottom, #481760 0%, #e2d7f4 100%);
   color: #ffffff; }
 
   #give-up-button.disabled {

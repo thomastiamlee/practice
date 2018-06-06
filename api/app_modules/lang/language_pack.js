@@ -60,8 +60,8 @@ data = {
     jp: '論理演習モード'
   },
   syntax_practice_description: {
-    en: 'In this mode, you can practice the syntax of the programming language. You have to translate the given statements into the appropriate programming constructs. The problems change every time so you can keep on practicing!',
-    jp: 'このモードは、プログラミング言語の構文の演習ができます。与えられた文を適切なプログラミング構造に翻訳する演習です。問題は毎回変わり、続けて演習することができます！'
+    en: 'In this mode, you can practice the syntax of the programming language. You have to translate the given statements into the appropriate programming constructs. <span class=\'red\'>The problems change every time</span> so you can keep on practicing!',
+    jp: 'このモードは、プログラミング言語の構文の演習ができます。与えられた文を適切なプログラミング構造に翻訳する演習です。<span class=\'red\'>問題は毎回変わり</span>、続けて演習することができます！'
   },
   logic_practice_description: {
     en: 'In this mode, you can practice writing programs for all sorts of situations. You have to think of the right operations to perform the given tasks. There are many problems to solve so try and challenge them all!',
@@ -234,6 +234,10 @@ data = {
   terms_5: {
     en: 'All data collected from you, including typing and video data, will be treated as confidential and strictly for research purposes only.',
     jp: '入力データやビデオデータを含め、お客様から収集された全てのデータは機密扱いとなり，個人情報は保護され，研究目的でのみ扱われます．'
+  },
+  terms_6: {
+    en: 'Note: turning on camera can improve how this system can detect your emotion to help you while doing the programming exercises, so please allow access if possible!',
+    jp: 'Note: turning on camera can improve how this system can detect your emotion to help you while doing the programming exercises, so please allow access if possible!'
   },
   agree_terms: {
     en: 'I agree with the terms.',

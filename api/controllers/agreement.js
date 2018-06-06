@@ -18,6 +18,6 @@ module.exports = {
       return;
     }
     var languagePack = await sails.helpers.loadLanguagePack.with({language: this.req.session.region});
-    exits.agreement({languagePack: languagePack});
+    exits.agreement({languagePack: languagePack, group: this.req.session.group});
 	}
 }
