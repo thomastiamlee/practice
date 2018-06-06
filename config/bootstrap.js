@@ -31,8 +31,8 @@ module.exports.bootstrap = async function(done) {
   // (otherwise your server will never lift, since it's waiting on the bootstrap)
   var fs = require('fs');
     sails.config.express.serverOptions = {
-        key: fs.readFileSync('etc/letsencrypt/live/fun-programming.work/privkey.pem'),
-        cert: fs.readFileSync('etc/letsencrypt/live/fun-programming.work/cert.pem')
+        key: fs.readFileSync('/etc/letsencrypt/live/fun-programming.work/privkey.pem'),
+        cert: fs.readFileSync('/etc/letsencrypt/live/fun-programming.work/cert.pem')
     };
 
   return done();
