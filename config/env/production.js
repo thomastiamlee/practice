@@ -372,7 +372,7 @@ module.exports = {
   *                                                                         *
   ***************************************************************************/
   custom: {
-    baseUrl: 'https://fun-programming.work.com',
+    baseUrl: 'https://fun-programming.work.com/',
     internalEmailAddress: 'kaoru-lab@gmail.com',
 
     // mailgunDomain: 'mg.example.com',
