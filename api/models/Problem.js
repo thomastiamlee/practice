@@ -1,6 +1,6 @@
 module.exports = {
 	attributes: {
-    problem_id: { type: 'string', required: true },
+    problem_id: { type: 'number', required: true },
 		title: { type: 'string', required: true },
 		title_jp: { type: 'string', required: true },
 		return_type: { type: 'string' },

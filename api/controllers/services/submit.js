@@ -68,6 +68,8 @@ module.exports = {
 		var completed = false;
 		compile_run.runJava(wrapped.code, '', function(stdout, stderr, err) {
 			if (!err) {
+				sails.log.info(stdout);
+				sails.log.info(stderr);
 				if (stderr) {
 					exits.success({type: 'failed'});
 					completed = true;
@@ -85,6 +87,7 @@ module.exports = {
 					}
 					var correct = true;
 					for (var i = 0; i < testCaseOutputs.length; i++) {
+						sails.log.info(stdout[i] + '   and    ' + testCaseOutputs[i]);
 						if (stdout[i] != testCaseOutputs[i]) {
 							correct = false;
 							break;
