@@ -237,7 +237,7 @@ data = {
   },
   terms_6: {
     en: 'Note: turning on camera can improve how this system can detect your emotion to help you while doing the programming exercises, so please allow access if possible!',
-    jp: 'Note: turning on camera can improve how this system can detect your emotion to help you while doing the programming exercises, so please allow access if possible!'
+    jp: '注意：カメラをオンにすると，人工知能があなたの感情を検出し，プログラミング演習中に助けることができますので，可能な限りアクセスを許可してください！ '
   },
   agree_terms: {
     en: 'I agree with the terms.',
