@@ -53,19 +53,19 @@ data = {
   },
   syntax_practice: {
     en: 'Syntax Practice',
-    jp: '構文演習モード'
+    jp: '構文演習モード（無限∞問題）'
   },
   logic_practice: {
     en: 'Logic Practice',
-    jp: '論理演習モード'
+    jp: '論理演習モード（ストーリー問題　※更新があります）'
   },
   syntax_practice_description: {
     en: 'In this mode, you can practice the syntax of the programming language. You have to translate the given statements into the appropriate programming constructs. <span class=\'red\'>The problems change every time</span> so you can keep on practicing!',
-    jp: 'このモードは、プログラミング言語の構文の演習ができます。与えられた文を適切なプログラミング構造に翻訳する演習です。<span class=\'red\'>問題は毎回変わり</span>、続けて演習することができます！'
+    jp: 'このモードは、プログラミング言語の構文の演習です。与えられた「文」を適切な「プログラミング構造」に変換するための演習です。<span class=\'red\'>問題は毎回見るたびに新しい問題が表示されるようになっています</span>ので，何度も続けて挑戦してすることができます！'
   },
   logic_practice_description: {
     en: 'In this mode, you can practice writing programs for all sorts of situations. You have to think of the right operations to perform the given tasks. There are many problems to solve so try and challenge them all!',
-    jp: 'このモードでは、さまざまな状況のプログラムを書くことができます。与えられた課題を解決するために正しいコーディングについて考える必要があります。多くの演習問題がありますので、すべて試してみてください！'
+    jp: 'このモードは、異なるタイプのプログラムの演習です。与えられた課題を解決するためには正しいコーディングを考える必要があります。多くのタイプの演習問題がありますので、すべて試してみてください！'
   },
   solved_filter: {
     en: 'Solved',

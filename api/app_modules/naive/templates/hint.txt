@@ -41,7 +41,7 @@ return
 -To return a value from a function, use the `return`` keyword. For example:[LB]`return s;``
 
 looparray
--To loop through each element of the array, you can use a for loop in which `i`` starts at 0. In each loop, increment `i`` by 1 until the end of the array. For example:[LB]`for (int i = 0; i < arr.length; i++) {``[LB]`  // write your code here``[LB]`}``
+-To loop through each element of the array, you can use a for loop in which `i`` starts at 0. In each loop, increment `i`` by 1 until the end of the array. For example:[LB]`for (int i = 0; i < arr.length; i++) {``[LB]`  // write your code here``[LB]`}``[LB]Remember that the first element of the array is index 0!
 
 whileequal
 -To execute something as long as a condition is true, use a `while`` statement. For example:[LB]`while (a == b) {``[LB]`  // do while true``[LB]`}``
