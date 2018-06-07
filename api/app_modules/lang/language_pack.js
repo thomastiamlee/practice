@@ -57,11 +57,11 @@ data = {
   },
   logic_practice: {
     en: 'Logic Practice',
-    jp: '論理演習モード<br/>（ストーリー問題　※更新があります）'
+    jp: '論理演習モード<br/>（ストーリー問題　※更新されます）'
   },
   syntax_practice_description: {
     en: 'In this mode, you can practice the syntax of the programming language. You have to translate the given statements into the appropriate programming constructs. <span class=\'red\'>The problems change every time</span> so you can keep on practicing!',
-    jp: 'このモードは、プログラミング言語の構文の演習です。与えられた「文」を適切な「プログラミング構造」に変換するための演習です。<span class=\'red\'>問題は毎回見るたびに新しい問題が表示されるようになっています</span>ので，何度も続けて挑戦してすることができます！'
+    jp: 'このモードは、プログラミング言語の構文の演習です。与えられた「文」を適切な「プログラミング構造」に変換するための演習です。<span class=\'red\'>問題は毎回見るたびに新しい問題が表示されるようになっています</span>ので，何度も続けて挑戦することができます！'
   },
   logic_practice_description: {
     en: 'In this mode, you can practice writing programs for all sorts of situations. You have to think of the right operations to perform the given tasks. There are many problems to solve so try and challenge them all!',
@@ -189,7 +189,7 @@ data = {
   },
   inst_2: {
     en: 'The system will give you a <span class=\'red\'>different problem</span> every time.',
-    jp: 'システムは毎回<span class=\'red\'>違う問題</span>を出題します。'
+    jp: 'システムは毎回<span class=\'red\'>異なる問題</span>を出題します。'
   },
   inst_3: {
     en: 'If you are stuck you can give up to get a different problem.',
