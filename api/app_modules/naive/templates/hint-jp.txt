@@ -14,10 +14,10 @@ multiplication
 -2つの値の積を求めるには、 `*``演算子を使います。 その計算結果は変数に格納することができます。 Example:[LB]`s = a * b;``
 
 division
--2つの値の商を求めるには、 `/``演算子を使います。 その計算結果は変数に格納することができます。 Example:[LB]`s = a / b;``[LB]The `/`` operator ignores the remainder if the operands are integers.
+-2つの値の商を求めるには、 `/``演算子を使います。 その計算結果は変数に格納することができます。 Example:[LB]`s = a / b;``[LB]`/``演算子は、変数が整数の場合、余りを無視します。
 
 modulo
--剰余を求めるには、 `%``演算子を使います。 その計算結果は変数に格納することができます。 Example:[LB]`s = a % b;``[LB]The `%`` operator divides the two integers but gets the remainder instead of the quotient.
+-剰余を求めるには、 `%``演算子を使います。 その計算結果は変数に格納することができます。 Example:[LB]`s = a % b;``[LB]`％``演算子は2つの整数の割り算ですが、商ではなく余りが得られます。
 
 equal
 -2つの値を比較し同じ値かどうか求めるには、`if``構文と`==`演算子を用います。 Example:[LB]`if (a == b) {``[LB]`  // case if true``[LB]`} else {``[LB]`  // case if false``[LB]`}``
@@ -41,7 +41,7 @@ return
 -値を返す時は`return``を使います。
 
 looparray
--To loop through each element of the array, you can use a for loop in which `i`` starts at 0. In each loop, increment `i`` by 1 until the end of the array. Example:[LB]`for (int i = 0; i < arr.length; i++) {``[LB]`  // write your code here``[LB]`}``[LB]Remember that the first element of the array is index 0!
+-配列の各要素をループさせるためには、`for``ループを使うことができます。このループでは、iが0から始まります。各ループでは、`i``を配列の最後まで`1``づつインクリメント(足す)していきます。 Example:[LB]`for (int i = 0; i < arr.length; i++) {``[LB]`  // write your code here``[LB]`}``[LB]配列の最初の要素は、0から数えます。
 
 whileequal
--To execute something as long as a condition is true, use a `while`` statement. Example:[LB]`while (a == b) {``[LB]`  // do while true``[LB]`}``
+-条件が真である間、繰り返し何らかの処理を実行するには、`while``文を使うことができます。 Example:[LB]`while (a == b) {``[LB]`  // do while true``[LB]`}``
