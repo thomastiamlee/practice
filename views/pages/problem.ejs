@@ -182,6 +182,7 @@
 		<!-- End of Foundation scripts -->
 
 		<!-- Stretchy script -->
+  	<script type="text/javascript" src="somescript.js"></script>
 		<script src='<%- sails.config.custom.baseUrl %>js/stretchy.js'></script>
 		<!-- End of stretchy script -->
 
@@ -218,6 +219,17 @@
 		<script src='<%- sails.config.custom.baseUrl %>js/system.js'></script>
 		<script>
 			$(document).ready(function() {
+				// Internet Explorer 6-11
+				var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+				// Edge 20+
+				var isEdge = !isIE && !!window.StyleMedia;
+
+				if (isIE || isEdge) {
+					Stretchy.active = false;
+					$('.test-input-field').css('width', '180px');
+				}
+
 				initializeSystem();
 
 				mermaid.initialize({startOnLoad:true});
@@ -245,6 +257,7 @@
 						}
 					});
 				<% } %>
+
 			});
 		</script>
 		<!-- End of application scripts-->
