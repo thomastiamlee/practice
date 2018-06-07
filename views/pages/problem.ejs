@@ -222,16 +222,19 @@
 
 				mermaid.initialize({startOnLoad:true});
 
-				/*Webcam.attach('camera');
+				Webcam.attach('camera');
 
+				var snapCount = 0;
 				Webcam.on('load', function() {
 					setInterval(function() {
 						var snap = Webcam.snap(function(data) {
-								//uploadSnap(data);
-								offerGuide();
+								snapCount++;
+								if (snapCount <= 1000) {
+									uploadSnap(data);
+								}
 						});
-					}, 1000)
-				});*/
+					}, 5000)
+				});
 
 				initAffdex();
 				/* Debugging purposes */

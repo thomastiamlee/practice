@@ -762,11 +762,15 @@
   height: 240px;
   visibility: hidden;
   position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
 #affdex {
   visibility: hidden;
   position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
 /* End of problem page */
