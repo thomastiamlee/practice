@@ -82,7 +82,7 @@
 		$(document).ready(function() {
 			$('.problem-item').click(function() {
 				var problemId = parseInt($(this).find('.problem-number-column').text());
-				window.location.replace('<%- sails.config.baseUrl %>problem?id=' + problemId);
+				window.location.href = '<%- sails.config.baseUrl %>problem?id=' + problemId;
 			});
 		});
 		</script>
