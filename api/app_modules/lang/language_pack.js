@@ -53,11 +53,11 @@ data = {
   },
   syntax_practice: {
     en: 'Syntax Practice',
-    jp: '構文演習モード（無限∞問題）'
+    jp: '構文演習モード<br/>（無限∞問題）'
   },
   logic_practice: {
     en: 'Logic Practice',
-    jp: '論理演習モード（ストーリー問題　※更新があります）'
+    jp: '論理演習モード<br/>（ストーリー問題　※更新があります）'
   },
   syntax_practice_description: {
     en: 'In this mode, you can practice the syntax of the programming language. You have to translate the given statements into the appropriate programming constructs. <span class=\'red\'>The problems change every time</span> so you can keep on practicing!',
