@@ -99,6 +99,10 @@ data = {
     en: 'SYNTAX PRACTICE',
     jp: '構文演習'
   },
+  review_practice_header: {
+    en: 'REVIEW PAST EXERCISES',
+    jp: 'REVIEW PAST EXERCISES'
+  },
   run_message: {
     en: 'You can test your code here.',
     jp: 'ここでコードをテストできます。'

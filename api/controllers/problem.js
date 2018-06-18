@@ -81,6 +81,13 @@ module.exports = {
 
     var sessionId = await sails.helpers.initializeSession.with({user_id: this.req.session.user_id});
     var timeNow = Date.now();
-    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, group: this.req.session.group, languagePack: languagePack, problem: problem, problem_solved: problem_solved, session_id: sessionId, exercise_mode: 'logic', server_timestamp: timeNow});
+
+    if (problem.problem_id <= 1000) {
+      var mode_code = 'l';
+    }
+    else {
+      var mode_code = 'r';
+    }
+    exits.success({user_id: this.req.session.user_id, email: this.req.session.email, group: this.req.session.group, languagePack: languagePack, problem: problem, problem_solved: problem_solved, session_id: sessionId, exercise_mode: 'logic', server_timestamp: timeNow, mode_code: mode_code});
   }
 }
