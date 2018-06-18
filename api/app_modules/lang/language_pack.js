@@ -11,6 +11,10 @@ data = {
     en: 'LOGIC PRACTICE',
     jp: '論理演習'
   },
+  review_practice_topbar: {
+    en: 'REVIEW PAST EXERCISES',
+    jp: 'REVIEW PAST EXERCISES'
+  },
   home_topbar: {
     en: 'HOME',
     jp: 'ホーム'
@@ -59,6 +63,10 @@ data = {
     en: 'Logic Practice',
     jp: '論理演習モード<br/>（ストーリー問題　※更新されます）'
   },
+  review_practice: {
+    en: 'Review Past Exercises',
+    jp: 'Review Past Exercises'
+  },
   syntax_practice_description: {
     en: 'In this mode, you can practice the syntax of the programming language. You have to translate the given statements into the appropriate programming constructs. <span class=\'red\'>The problems change every time</span> so you can keep on practicing!',
     jp: 'このモードは、プログラミング言語の構文の演習です。与えられた「文」を適切な「プログラミング構造」に変換するための演習です。<span class=\'red\'>問題は毎回見るたびに新しい問題が表示されるようになっています</span>ので，何度も続けて挑戦することができます！'
@@ -66,6 +74,10 @@ data = {
   logic_practice_description: {
     en: 'In this mode, you can practice writing programs for all sorts of situations. You have to think of the right operations to perform the given tasks. There are many problems to solve so try and challenge them all!',
     jp: 'このモードは、異なるタイプのプログラムの演習です。与えられた課題を解決するためには正しいコーディングを考える必要があります。多くのタイプの演習問題がありますので、すべて試してみてください！'
+  },
+  review_practice_description: {
+    en: 'In this mode, you can practice the past exercises in your programming class.',
+    jp: 'In this mode, you can practice the past exercises in your programming class.'
   },
   solved_filter: {
     en: 'Solved',

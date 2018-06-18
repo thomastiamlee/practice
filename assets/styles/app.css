@@ -187,6 +187,20 @@
   background-image: -webkit-linear-gradient(bottom, #e84e17 0%, #ff581c 100%);
   background-image: -ms-linear-gradient(bottom, #e84e17 0%, #ff581c 100%); }
 
+#review-practice-button h4 {
+  background-image: linear-gradient(bottom, #0a6341 0%, #0c6d48 100%);
+  background-image: -o-linear-gradient(bottom, #0a6341 0%, #0c6d48 100%);
+  background-image: -moz-linear-gradient(bottom, #0a6341 0%, #0c6d48 100%);
+  background-image: -webkit-linear-gradient(bottom, #0a6341 0%, #0c6d48 100%);
+  background-image: -ms-linear-gradient(bottom, #0a6341 0%, #0c6d48 100%); }
+
+#review-practice-button h4:hover {
+  background-image: linear-gradient(bottom, #076b45 0%, #097c51 100%);
+  background-image: -o-linear-gradient(bottom, #076b45 0%, #097c51 100%);
+  background-image: -moz-linear-gradient(bottom, #076b45 0%, #097c51 100%);
+  background-image: -webkit-linear-gradient(bottom, #076b45 0%, #097c51 100%);
+  background-image: -ms-linear-gradient(bottom, #076b45 0%, #097c51 100%); }
+
 #logic-practice-button h4 {
   background-image: linear-gradient(bottom, #0a61ad 0%, #137bd6 100%);
   background-image: -o-linear-gradient(bottom, #0a61ad 0%, #137bd6 100%);
@@ -214,6 +228,14 @@
   background-image: -moz-linear-gradient(bottom, #cdedf2 0%, #d6f7fc 100%);
   background-image: -webkit-linear-gradient(bottom, #cdedf2 0%, #d6f7fc 100%);
   background-image: -ms-linear-gradient(bottom, #cdedf2 0%, #d6f7fc 100%); }
+
+#div-review-panel {
+  background-image: linear-gradient(bottom, #76e0b8 0%, #83efc6 100%);
+  background-image: -o-linear-gradient(bottom, #76e0b8 0%, #83efc6 100%);
+  background-image: -moz-linear-gradient(bottom, #76e0b8 0%, #83efc6 100%);
+  background-image: -webkit-linear-gradient(bottom, #76e0b8 0%, #83efc6 100%);
+  background-image: -ms-linear-gradient(bottom, #76e0b8 0%, #83efc6 100%);
+}
 
 .mode-panel {
   margin-bottom: 64px;
