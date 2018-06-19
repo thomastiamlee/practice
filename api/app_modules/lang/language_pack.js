@@ -13,7 +13,7 @@ data = {
   },
   review_practice_topbar: {
     en: 'REVIEW PAST EXERCISES',
-    jp: 'REVIEW PAST EXERCISES'
+    jp: 'チェックテスト問題集'
   },
   home_topbar: {
     en: 'HOME',
@@ -65,7 +65,7 @@ data = {
   },
   review_practice: {
     en: 'Review Past Exercises',
-    jp: 'Review Past Exercises'
+    jp: 'チェックテスト問題集'
   },
   syntax_practice_description: {
     en: 'In this mode, you can practice the syntax of the programming language. You have to translate the given statements into the appropriate programming constructs. <span class=\'red\'>The problems change every time</span> so you can keep on practicing!',
@@ -77,7 +77,7 @@ data = {
   },
   review_practice_description: {
     en: 'In this mode, you can practice the past exercises in your programming class.',
-    jp: 'In this mode, you can practice the past exercises in your programming class.'
+    jp: 'カテゴリ４とカテゴリ５の問題の演習です．'
   },
   solved_filter: {
     en: 'Solved',
@@ -101,7 +101,7 @@ data = {
   },
   review_practice_header: {
     en: 'REVIEW PAST EXERCISES',
-    jp: 'REVIEW PAST EXERCISES'
+    jp: 'チェックテスト問題集'
   },
   run_message: {
     en: 'You can test your code here.',
