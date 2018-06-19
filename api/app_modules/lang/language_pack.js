@@ -57,15 +57,15 @@ data = {
   },
   syntax_practice: {
     en: 'Syntax Practice',
-    jp: '構文演習モード<br/>（無限∞問題）'
+    jp: '構文演習モード<br/><span style="font-size:14pt;">（無限∞問題）</span>'
   },
   logic_practice: {
     en: 'Logic Practice',
-    jp: '論理演習モード<br/>（ストーリー問題　※更新されます）'
+    jp: '論理演習モード<br/><span style="font-size:14pt;">（ストーリー問題　※更新されます）</span>'
   },
   review_practice: {
     en: 'Review Past Exercises',
-    jp: 'チェックテスト問題集'
+    jp: 'チェックテスト問題集<br/><span style="font-size:14pt;">（過去問題 / 予想問題　※更新されます）</span>'
   },
   syntax_practice_description: {
     en: 'In this mode, you can practice the syntax of the programming language. You have to translate the given statements into the appropriate programming constructs. <span class=\'red\'>The problems change every time</span> so you can keep on practicing!',
