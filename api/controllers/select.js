@@ -74,17 +74,17 @@ module.exports = {
     if (inputs.f == 's') {
       var filter = 's';
       var problems = await Problem.find({select: ['problem_id', 'title', 'title_jp'], where: {problem_id: {'in': solved, '>=': minProblemId, '<=': maxProblemId}}}).sort([{ problem_id: 'ASC' }]).limit(10).skip(inputs.p * ITEMS_PER_PAGE);
-      var count = await Problem.count({where: {problem_id: solved}});
+      var count = await Problem.count({where: {problem_id: {'in': solved, '>=': minProblemId, '<=': maxProblemId}}});
     }
     else if (inputs.f == 'u') {
       var filter = 'u';
       var problems = await Problem.find({select: ['problem_id', 'title', 'title_jp'], where: {problem_id: {'nin': solved, '>=': minProblemId, '<=': maxProblemId}}}).sort([{ problem_id: 'ASC' }]).limit(10).skip(inputs.p * ITEMS_PER_PAGE);
-      var count = await Problem.count({where: {problem_id: {'!=': solved}}});
+      var count = await Problem.count({where: {problem_id: {'nin': solved, '>=': minProblemId, '<=': maxProblemId}}});
     }
     else {
       var filter = 'a';
       var problems = await Problem.find({select: ['problem_id', 'title', 'title_jp'], where: {problem_id: {'>=': minProblemId, '<=': maxProblemId}}}).sort([{ problem_id: 'ASC' }]).limit(10).skip(inputs.p * ITEMS_PER_PAGE);
-      var count = await Problem.count();
+      var count = await Problem.count({where: {problem_id: {'>=': minProblemId, '<=': maxProblemId}}});
     }
 
     exits.success({user_id: this.req.session.user_id, email: this.req.session.email, region: this.req.session.region, languagePack: languagePack, problems: problems, solved: solved, count: count, page: inputs.p, filter: filter, mode: inputs.m });
