@@ -36,6 +36,11 @@ module.exports = {
       type: [['string']],
       description: 'The test cases as a comma separated value of literals',
       required: true
+    },
+    return_type: {
+      type: 'string',
+      description: 'The return type of the function',
+      required: true
     }
   },
   fn: async function(inputs, exits) {
@@ -83,6 +88,9 @@ module.exports = {
     res += OBJECT_INSTIATION;
     res += PRINTSTREAM_INITIALIZATION;
     res += RESULT_STRING;
+    if (inputs.return_type.charAt(inputs.return_type.length - 1) == ']') {
+      res += inputs.return_type + ' _temp;\n';
+    }
 
     for (var i = 0; i < argumentNames.length; i++) {
       res += argumentTypes[i] + ' ' + argumentNames[i] + ';\n'
@@ -95,14 +103,33 @@ module.exports = {
         else
           res += argumentNames[j] + ' = new ' + argumentTypes[j] + testCases[i][j] + ';\n';
       }
-      res += '_result += o.' + methodName + '(';
-      for (var j = 0; j < argumentNames.length; j++) {
-        res += argumentNames[j];
-        if (j != argumentNames.length - 1) {
-          res += ', ';
+      if (inputs.return_type.charAt(inputs.return_type.length - 1) != ']') {
+        res += '_result += o.' + methodName + '(';
+        for (var j = 0; j < argumentNames.length; j++) {
+          res += argumentNames[j];
+          if (j != argumentNames.length - 1) {
+            res += ', ';
+          }
         }
+        res += ') + "\\n";\n';
       }
-      res += ') + "\\n";\n';
+      else {
+        res += '_temp = o.' + methodName + '(';
+        for (var j = 0; j < argumentNames.length; j++) {
+          res += argumentNames[j];
+          if (j != argumentNames.length - 1) {
+            res += ', ';
+          }
+        }
+        res += ');\n';
+
+        res += '_result += "{";\n';
+        res += 'for (int i = 0; i < _temp.length; i++) {\n';
+        res += '_result += _temp[i];\n'
+        res += 'if (i != _temp.length - 1) _result += ",";\n';
+        res += '}\n'
+        res += '_result += "}\\n";\n';
+      }
     }
 
     res += OUTPUT_STRING;

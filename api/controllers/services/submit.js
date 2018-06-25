@@ -51,19 +51,22 @@ module.exports = {
 			for (var i = 0; i < testCaseInputs.length; i++) {
 				testCaseInputs[i] = testCaseInputs[i].split(',');
 			}
+			var returnType = "int";
 		}
 		else {
 			var problem = await Problem.findOne({problem_id: inputs.problem_id});
 			if (!problem) {
 				exits.error({type: 'invalid', message: 'Invalid problem ID.'});
+				return;
 			}
 			var testCaseInputs = problem.test_case_inputs;
 			var testCaseOutputs = problem.test_case_outputs;
 			for (var i = 0; i < testCaseInputs.length; i++) {
 				testCaseInputs[i] = testCaseInputs[i].split(/\,\s?(?![^{]*})/);
 			}
+			var returnType = problem.return_type;
 		}
-		var wrapped = await sails.helpers.wrapCode.with({code: inputs.code, user_id: inputs.user_id, problem_id: inputs.problem_id, test_cases: testCaseInputs});
+		var wrapped = await sails.helpers.wrapCode.with({code: inputs.code, user_id: inputs.user_id, problem_id: inputs.problem_id, test_cases: testCaseInputs, return_type: returnType});
 
 		var completed = false;
 		compile_run.runJava(wrapped.code, '', function(stdout, stderr, err) {

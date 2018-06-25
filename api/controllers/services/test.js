@@ -35,9 +35,21 @@ module.exports = {
 			exits.error({type: 'unauthenticated', message: 'You are not logged in.'});
 			return;
 		}
-    var wrapped = await sails.helpers.wrapCode.with({code: inputs.code, problem_id: inputs.problem_id, user_id: inputs.user_id, test_cases: [inputs.test_case]});
+		if (inputs.problem_id >= 10000) {
+			var returnType = "int";
+		}
+		else {
+			var problem = await Problem.findOne({problem_id: inputs.problem_id});
+			if (!problem) {
+				exits.error({type: 'invalid', message: 'Invalid problem ID.'});
+				return;
+			}
+			var returnType = problem.return_type;
+		}
+    var wrapped = await sails.helpers.wrapCode.with({code: inputs.code, problem_id: inputs.problem_id, user_id: inputs.user_id, test_cases: [inputs.test_case], return_type: returnType});
 		var code = wrapped.code;
 		var offset = wrapped.offset;
+
 
 		return compile_run.runJava(code, ['-J-Duser.language=en'], function(stdout, stderr, err) {
       if (!err) {

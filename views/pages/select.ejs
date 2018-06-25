@@ -61,7 +61,7 @@
 							<% if (i == page) { %>
 								<li class='current'><%- i + 1 %></li>
 							<% } else { %>
-								<li><a href='<%- sails.config.baseUrl %>select?p=<%- i %>'><%- i + 1 %></a></li>
+								<li><a href='<%- sails.config.baseUrl %>select?p=<%- i %>&m=<%- mode %>'><%- i + 1 %></a></li>
 							<% } %>
 						<% } %>
 					</ul>
